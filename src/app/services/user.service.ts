@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
-import {User} from "../models/user";
 import {Observable} from "rxjs";
-import {House} from "../models/house";
+import {User} from "../models/user";
 const API_URL = environment.apiUrl;
 @Injectable({
   providedIn: 'root'
@@ -41,11 +40,6 @@ export class UserService {
 
   logout() {
     localStorage.removeItem('token');
-  }
-  delete(id: number): Observable<House> {
-    return this.http.delete<House>(API_URL + `/${id}`);
-
-
   }
 
 

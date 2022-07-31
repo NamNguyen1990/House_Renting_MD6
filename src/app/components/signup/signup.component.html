@@ -28,22 +28,31 @@
       </p>
     </div>
     <div class="row">
-
       <div class="col-md-6">
         <div class="login-form">
-          <form  [formGroup]="loginForm" (ngSubmit)="login()">
+          <form [formGroup]="registerForm" (ngSubmit)="register()">
             <div class="form-row">
               <div class="control-group col-sm-6">
                 <label>UserName</label>
-                <input type="email" class="form-control" required="required" formControlName="username">
+                <input type="text" class="form-control" required="required" placeholder="UserName" formControlName="username">
               </div>
               <div class="control-group col-sm-6">
-                <label>Password</label>
-                <input type="password" class="form-control" required="required" formControlName="password">
+                <label>Phone Number</label>
+                <input type="text" class="form-control" required="required" placeholder="Your Phone" formControlName="phoneNumber">
               </div>
             </div>
-            <div class="button"><button type="submit">Login</button></div>
-            <span>Create a User Account. <a routerLink="/register" style="color: #007bff">Create Now</a> </span>
+            <div class="form-row">
+              <div class="control-group col-sm-6">
+                <label>Your Password</label>
+                <input type="password" class="form-control" required="required"  placeholder="Password" formControlName="password">
+              </div>
+              <div class="control-group col-sm-6">
+                <label>Repeat Your Password</label>
+                <input type="password" class="form-control" required="required"  placeholder="Repeat Password" formControlName="confirmPassword">
+              </div>
+            </div>
+            <div class="button"><button type="submit">Registration</button></div>
+            <span>Do you already have an account. <a routerLink="/login" style="color: #007bff">Login now</a> </span>
           </form>
         </div>
       </div>

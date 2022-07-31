@@ -3,6 +3,7 @@ import {first} from "rxjs";
 import {FormControl, FormGroup} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AuthenticationService} from "../../services/authentication.service";
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,9 @@ export class LoginComponent implements OnInit {
     username: new FormControl(''),
     password: new FormControl('')
   });
+  // @ts-ignore
   returnUrl: string;
+  // @ts-ignore
   adminUrl: string;
   error = '';
   loading = false;
@@ -23,7 +26,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
-              private authenticationService: AuthenticationService) {
+              private authenticationService: AuthenticationService,
+              private toast : NgToastService) {
     console.log(this.authenticationService.currentUserValue);
     // if (this.authenticationService.currentUserValue) {
     //   this.router.navigate(['/']);
@@ -47,14 +51,16 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('USERNAME', data.username);
           localStorage.setItem('ID', data.id);
           if (data.roles[0].authority == "ROLE_ADMIN") {
+            this.toast.success({detail: "Thông Báo", summary: "Đăng nhập thành công", duration :3000})
             this.router.navigate([this.adminUrl])
           } else {
+            this.toast.success({detail: "Thông Báo", summary: "Đăng nhập thành công", duration :3000})
             this.router.navigate([this.returnUrl]);
           }
 
         },
         error => {
-          alert("Tài khoản của bạn đã bị khoá hoặc sai mật khẩu!");
+          this.toast.success({detail: "Thông Báo", summary: "Đăng nhập thất bại! Vui lòng kiểm tra lại", duration :3000})
           this.loading = false;
         });
   }
