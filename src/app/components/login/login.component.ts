@@ -51,16 +51,18 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('USERNAME', data.username);
           localStorage.setItem('ID', data.id);
           if (data.roles[0].authority == "ROLE_ADMIN") {
-            this.toast.success({detail: "Thông Báo", summary: "Đăng nhập thành công", duration :3000})
+            this.toast.success({detail: "Notification", summary: "\n" +
+                "Logged in successfully", duration :3000})
             this.router.navigate([this.adminUrl])
           } else {
-            this.toast.success({detail: "Thông Báo", summary: "Đăng nhập thành công", duration :3000})
+            this.toast.success({detail: "Notification", summary: "\n" +
+                "Logged in successfully", duration :3000})
             this.router.navigate([this.returnUrl]);
           }
 
         },
         error => {
-          this.toast.success({detail: "Thông Báo", summary: "Đăng nhập thất bại! Vui lòng kiểm tra lại", duration :3000})
+          this.toast.success({detail: "Notification", summary: "Login failed, Please check again", duration :3000})
           this.loading = false;
         });
   }

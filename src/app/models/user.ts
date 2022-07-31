@@ -10,7 +10,7 @@ export interface User {
   lastName?: string;
   gender?: string;
   email?: string;
-  phoneNumber?: string;
+  phone: string;
   enabled?: boolean;
   roles?: [Role];
   imageUrls?: string;

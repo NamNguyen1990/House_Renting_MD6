@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../services/user.service";
 import {Router} from "@angular/router";
 import {User} from "../../models/user";
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-signup',
@@ -16,28 +17,27 @@ export class SignupComponent implements OnInit {
     username: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
     password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
     confirmPassword: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
-    name: new FormControl('', [Validators.required, Validators.minLength(2)]),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    phoneNumber: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10)])
+    // name: new FormControl('', [Validators.required, Validators.minLength(2)]),
+    // email: new FormControl('', [Validators.required, Validators.email]),
+    phone: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10)])
   });
 
   constructor(private userService: UserService,
+              private toast: NgToastService,
               private router: Router) {
   }
-
   ngOnInit() {
   }
 
   register() {
     const user = this.setNewUser();
     this.userService.register(user).subscribe(() => {
-      console.log('Đăng ký thành công');
+      this.toast.success({detail: "Notification", summary: "Sign Up Success", duration :3000})
       this.registerForm.reset();
       this.router.navigate(['/login']);
     }, err => {
-      console.log(err);
+      this.toast.error({detail: "Notification", summary: "Registration failed", duration :3000})
     });
-    console.log(user);
   }
 
   private setNewUser() {
@@ -45,8 +45,8 @@ export class SignupComponent implements OnInit {
       username: this.registerForm.value.username,
       password: this.registerForm.value.password,
       confirmPassword: this.registerForm.value.confirmPassword,
-      email: this.registerForm.value.email,
-      phoneNumber: "1"
+      // email: this.registerForm.value.email,
+      phone: this.registerForm.value.phone,
     };
     return user;
   }
