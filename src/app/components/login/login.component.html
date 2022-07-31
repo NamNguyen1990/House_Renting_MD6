@@ -1,7 +1,7 @@
 <!-- Header Section Start -->
 <router-outlet></router-outlet>
 <header id="header">
-  <a href="index.html" class="logo"><img src="img/logo.png" alt="logo"></a>
+  <a href="index.html" class="logo"><img src="../../../assets/img/logo.png" alt="logo"></a>
   <div class="phone"><i class="fa fa-phone"></i>+1 234 567 8900</div>
   <div class="mobile-menu-btn"><i class="fa fa-bars"></i></div>
   <nav class="main-menu top-menu">
@@ -35,14 +35,14 @@
             <div class="form-row">
               <div class="control-group col-sm-6">
                 <label>UserName</label>
-                <input type="email" class="form-control" required="required" formControlName="username">
+                <input type="text" class="form-control" required="required" placeholder="UserName" formControlName="username">
               </div>
               <div class="control-group col-sm-6">
                 <label>Password</label>
-                <input type="password" class="form-control" required="required" formControlName="password">
+                <input type="password" class="form-control" required="required" placeholder="Password" formControlName="password">
               </div>
             </div>
-            <div class="button"><button type="submit" routerLink="/">Login</button></div>
+            <div class="button"><button type="submit" routerLink="">Login</button></div>
             <span>Create a User Account. <a routerLink="/register" style="color: #00CED1">Create Now</a> </span>
           </form>
         </div>
