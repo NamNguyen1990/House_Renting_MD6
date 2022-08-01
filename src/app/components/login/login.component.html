@@ -1,20 +1,6 @@
 <!-- Header Section Start -->
 <router-outlet></router-outlet>
-<header id="header">
-  <a href="index.html" class="logo"><img src="../../../assets/img/logo.png" alt="logo"></a>
-  <div class="phone"><i class="fa fa-user-circle"></i></div>
-  <div class="mobile-menu-btn"><i class="fa fa-bars"></i></div>
-  <nav class="main-menu top-menu">
-    <ul>
-      <li class="active"><a routerLink="/">Home</a></li>
-      <li><a href="about.html">About Us</a></li>
-      <li><a href="room.html">Apartments</a></li>
-      <li><a href="amenities.html">Amenities</a></li>
-      <li><a href="booking.html">Booking</a></li>
-      <li><a href="">Contact Us</a></li>
-    </ul>
-  </nav>
-</header>
+<app-navbar></app-navbar>
 <!-- Header Section End -->
 
 <!-- Login Section Start -->
@@ -22,27 +8,26 @@
   <div class="container">
     <div class="section-header">
       <h2>Login</h2>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in mi libero. Quisque convallis, enim at venenatis tincidunt.
-      </p>
+<!--      <p>-->
+<!--        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in mi libero. Quisque convallis, enim at venenatis tincidunt.-->
+<!--      </p>-->
     </div>
     <div class="row">
-
-      <div class="col-md-6">
-        <div class="login-form">
+      <div class="col-9">
+        <div class="login-form" style="width: 47%;margin-left: 40%">
           <form  [formGroup]="loginForm" (ngSubmit)="login()">
             <div class="form-row">
-              <div class="control-group col-sm-6">
+              <div class="control-group col-sm-12">
                 <label>UserName</label>
                 <input type="text" class="form-control" required="required" placeholder="UserName" formControlName="username">
               </div>
-              <div class="control-group col-sm-6">
+              <div class="control-group col-sm-12">
                 <label>Password</label>
                 <input type="password" class="form-control" required="required" placeholder="Password" formControlName="password">
               </div>
             </div>
             <div class="button"><button type="submit">Login</button></div>
-            <span>Create a User Account. <a routerLink="/register" style="color: #00CED1">Create Now</a> </span>
+            <span>Create a User Account. <a routerLink="/register" style="color: #666">Create Now</a> </span>
           </form>
         </div>
       </div>
@@ -51,7 +36,7 @@
 </div>
 <!-- Login Section End -->
 
-<br><br><br><br><br><br>
+
 
 <!-- Footer Section Start -->
 <div id="footer">
@@ -76,7 +61,6 @@
       <div class="col-12">
         <p>&copy; Copyright <a href="https://freewebsitecode.com/">Your Site Name</a>. All Rights Reserved</p>
 
-        <p>Designed By <a href="https://freewebsitecode.com/">Free Website Code</a></p>
       </div>
     </div>
   </div>
