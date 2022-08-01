@@ -8,12 +8,18 @@ import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgToastModule} from "ng-angular-popup";
 import { SignupComponent } from './components/signup/signup.component';
+import {HomepageComponent} from "./components/homepage/homepage.component";
+import { NavbarComponent } from './components/blocks/navbar/navbar.component';
+import { FotterComponent } from './components/blocks/fotter/fotter.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    HomepageComponent,
+    NavbarComponent,
+    FotterComponent
   ],
   imports: [
     BrowserModule,
