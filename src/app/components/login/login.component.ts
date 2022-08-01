@@ -29,9 +29,9 @@ export class LoginComponent implements OnInit {
               private authenticationService: AuthenticationService,
               private toast : NgToastService) {
     console.log(this.authenticationService.currentUserValue);
-    // if (this.authenticationService.currentUserValue) {
-    //   this.router.navigate(['/']);
-    // }
+    if (this.authenticationService.currentUserValue) {
+      this.router.navigate(['/']);
+    }
   }
 
   ngOnInit() {
