@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -11,6 +10,8 @@ import { SignupComponent } from './components/signup/signup.component';
 import {HomepageComponent} from "./components/homepage/homepage.component";
 import { NavbarComponent } from './components/blocks/navbar/navbar.component';
 import { FotterComponent } from './components/blocks/fotter/fotter.component';
+import {CategoryListComponent} from "./components/category/category-list/category-list.component";
+
 
 @NgModule({
   declarations: [
@@ -19,7 +20,9 @@ import { FotterComponent } from './components/blocks/fotter/fotter.component';
     SignupComponent,
     HomepageComponent,
     NavbarComponent,
-    FotterComponent
+    FotterComponent,
+    SignupComponent,
+    CategoryListComponent
   ],
   imports: [
     BrowserModule,
