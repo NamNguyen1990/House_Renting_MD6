@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../services/user.service";
 import {Router} from "@angular/router";
 import {User} from "../../models/user";
-import { NgToastService } from 'ng-angular-popup';
+import {NgToastService} from 'ng-angular-popup';
+import {ResponseMessage} from "../../models/response-message";
 
 @Component({
   selector: 'app-signup',
@@ -12,7 +13,7 @@ import { NgToastService } from 'ng-angular-popup';
 })
 export class SignupComponent implements OnInit {
 
-
+  status = 'Hãy điền đầy đủ thông tin vào biểu mẫu!';
   registerForm: FormGroup = new FormGroup({
     username: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
     password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
@@ -26,17 +27,21 @@ export class SignupComponent implements OnInit {
               private toast: NgToastService,
               private router: Router) {
   }
+
   ngOnInit() {
   }
 
   register() {
     const user = this.setNewUser();
-    this.userService.register(user).subscribe(() => {
-      this.toast.success({detail: "Notification", summary: "Sign Up Success", duration :3000})
+    // @ts-ignore
+    this.userService.register(user).subscribe((data: ResponseMessage) => {
+      this.status = data.message
+      this.toast.success({detail: "Notification", summary: "Sign Up Success", duration: 3000})
       this.registerForm.reset();
       this.router.navigate(['/login']);
+
     }, err => {
-      this.toast.error({detail: "Notification", summary: "Registration failed", duration :3000})
+      this.toast.error({detail: "Notification", summary: "Registration failed", duration: 3000})
     });
   }
 
@@ -49,6 +54,22 @@ export class SignupComponent implements OnInit {
       phone: this.registerForm.value.phone,
     };
     return user;
+  }
+
+  get username() {
+    return this.registerForm.get('username');
+  }
+
+  get password() {
+    return this.registerForm.get('password');
+  }
+
+  get phone() {
+    return this.registerForm.get('phone');
+  }
+
+  get confirmPassword() {
+    return this.registerForm.get('confirmPassword');
   }
 
 }

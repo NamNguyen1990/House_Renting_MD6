@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {first} from "rxjs";
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AuthenticationService} from "../../services/authentication.service";
 import { NgToastService } from 'ng-angular-popup';
@@ -13,7 +13,7 @@ import { NgToastService } from 'ng-angular-popup';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup = new FormGroup({
-    username: new FormControl(''),
+    username: new FormControl('',Validators.minLength(6)),
     password: new FormControl('')
   });
   // @ts-ignore
