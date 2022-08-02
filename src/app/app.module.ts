@@ -11,7 +11,9 @@ import { SignupComponent } from './components/signup/signup.component';
 import {HomepageComponent} from "./components/homepage/homepage.component";
 import { HousedetailComponent } from './components/housedetail/housedetail.component';
 import {NavbarComponent} from "./components/blocks/navbar/navbar.component";
-import { MyhouseComponent } from './components/myhouse/myhouse.component';
+import { MyhouseListComponent } from './components/myhouse/myhouse-list/myhouse-list.component';
+import { MyhouseCreateComponent } from './components/myhouse/myhouse-create/myhouse-create.component';
+import { MyhouseEditComponent } from './components/myhouse/myhouse-edit/myhouse-edit.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,10 @@ import { MyhouseComponent } from './components/myhouse/myhouse.component';
     HomepageComponent,
     HousedetailComponent,
     NavbarComponent,
-    MyhouseComponent
+    MyhouseListComponent,
+    MyhouseCreateComponent,
+    MyhouseEditComponent,
+
   ],
   imports: [
     BrowserModule,
