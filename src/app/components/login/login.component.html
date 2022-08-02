@@ -1,6 +1,6 @@
 <!-- Header Section Start -->
 <router-outlet></router-outlet>
-
+<app-navbar></app-navbar>
 <!-- Header Section End -->
 
 <!-- Login Section Start -->
@@ -20,10 +20,36 @@
               <div class="control-group col-sm-12">
                 <label>UserName</label>
                 <input type="text" class="form-control" required="required" placeholder="UserName" formControlName="username">
+                <div *ngIf="username?.invalid && (username?.dirty || username?.touched)"
+                     class="" style="color: red">
+
+                  <div *ngIf="username?.errors?.['required']">
+                    tên đăng nhập không được bỏ trống!
+                  </div>
+                  <div *ngIf="username?.errors?.['minlength']">
+                    tên đăng nhập có ít nhất 6 kí từ nhiều nhất 12 kí tự!
+                  </div>
+                  <div *ngIf="username?.errors?.['maxlength']">
+                    tên đăng nhập có ít nhất 6 kí từ nhiều nhất 12 kí tự!
+                  </div>
+                </div>
               </div>
               <div class="control-group col-sm-12">
                 <label>Password</label>
                 <input type="password" class="form-control" required="required" placeholder="Password" formControlName="password">
+                <div *ngIf="password?.invalid && (password?.dirty || password?.touched)"
+                     class="" style="color: red">
+
+                  <div *ngIf="password?.errors?.['required']">
+                    Mật khẩu không được để trống!
+                  </div>
+                  <div *ngIf="password?.errors?.['minlength']">
+                    mật khẩu ít nhất 6 kí tự và nhiều nhất 12 kí tự!
+                  </div>
+                  <div *ngIf="password?.errors?.['maxlength']">
+                    mật khẩu ít nhất 6 kí tự và nhiều nhất 12 kí tự!
+                  </div>
+                </div>
               </div>
             </div>
             <div class="button"><button type="submit">Login</button></div>
