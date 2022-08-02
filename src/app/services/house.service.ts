@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {House} from "../models/house";
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,7 @@ export class HouseService {
     return this.httpClient.post(this.API, house);
   }
 
-  findById(id: number): Observable<House> {
+   findById(id: number): Observable<House> {
     return this.httpClient.get<House>(this.API + `/${id}`);
   }
 

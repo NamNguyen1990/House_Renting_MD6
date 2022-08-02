@@ -35,6 +35,7 @@ export class HousedetailComponent implements OnInit {
 
 
 
+
   // houseForm: FormGroup = new FormGroup({
   //   name: new FormControl(),
   //   categoryId: new FormControl(),
