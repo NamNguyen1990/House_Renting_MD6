@@ -7,6 +7,9 @@ import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgToastModule} from "ng-angular-popup";
 import { SignupComponent } from './components/signup/signup.component';
+import {HomepageComponent} from "./components/homepage/homepage.component";
+import { NavbarComponent } from './components/blocks/navbar/navbar.component';
+import { FotterComponent } from './components/blocks/fotter/fotter.component';
 import {CategoryListComponent} from "./components/category/category-list/category-list.component";
 
 
@@ -14,6 +17,10 @@ import {CategoryListComponent} from "./components/category/category-list/categor
   declarations: [
     AppComponent,
     LoginComponent,
+    SignupComponent,
+    HomepageComponent,
+    NavbarComponent,
+    FotterComponent,
     SignupComponent,
     CategoryListComponent
   ],

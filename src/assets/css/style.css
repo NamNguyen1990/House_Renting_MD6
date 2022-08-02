@@ -263,15 +263,15 @@ h6 {
     #search.search-slider {
         display: none;
     }
-    
+
     #search.search-home {
         display: block;
     }
-    
+
     #search {
         padding: 30px 0 35px 0;
     }
-    
+
     #search .control-group-kid {
         margin-top: 15px;
     }
@@ -389,12 +389,12 @@ h6 {
         font-size: 40px;
         font-weight: 700;
     }
-    
+
     #welcome h4 {
         font-size: 30px;
         font-weight: 400;
     }
-    
+
     #welcome p {
         font-size: 18px;
         line-height: 28px;
@@ -407,12 +407,12 @@ h6 {
         font-weight: 700;
         letter-spacing: 0;
     }
-    
+
     #welcome h4 {
         font-size: 20px;
         font-weight: 400;
     }
-    
+
     #welcome p {
         font-size: 16px;
         line-height: 26px;
@@ -798,7 +798,7 @@ h6 {
         margin-right: 10px;
         margin-bottom: 10px;
     }
-    
+
 }
 
 #rooms .room-icon li.icon-1 {
@@ -1000,16 +1000,16 @@ h6 {
 
 @media only screen and (max-width: 479px) {
     #subscribe .subscribe-form input[type="email"] {
-        text-align: center; 
-    } 
+        text-align: center;
+    }
 }
 
 input::-webkit-input-placeholder,
 input:-moz-placeholder,
 input::-moz-placeholder,
 input:-ms-input-placeholder,
-input::-ms-input-placeholder { 
-    color: white; 
+input::-ms-input-placeholder {
+    color: white;
 }
 
 #subscribe .subscribe-form button {
@@ -1047,7 +1047,7 @@ input::-ms-input-placeholder {
         position: static;
         margin-top: 15px;
         width: 100%;
-    } 
+    }
 }
 
 /* ================================================= */
@@ -1222,7 +1222,7 @@ input::-ms-input-placeholder {
     border-radius: 30px;
 }
 
-@media screen and (-webkit-min-device-pixel-ratio:0) { 
+@media screen and (-webkit-min-device-pixel-ratio:0) {
     textarea:focus,
     input:focus {
         font-size: 16px;
@@ -1267,6 +1267,8 @@ input::-ms-input-placeholder {
 #login {
     position: relative;
     padding: 45px 0;
+  background: url("");
+  background-color: #C5D8A4;
 }
 
 #login .container {
@@ -1277,7 +1279,7 @@ input::-ms-input-placeholder {
     #login .container .col-md-6:first-child {
         margin-bottom: 30px;
     }
-} 
+}
 
 #login .login-form {
     position: relative;
@@ -1303,7 +1305,7 @@ input::-ms-input-placeholder {
     border-radius: 30px;
 }
 
-@media screen and (-webkit-min-device-pixel-ratio:0) { 
+@media screen and (-webkit-min-device-pixel-ratio:0) {
     input:focus {
         font-size: 16px;
         background: #fff;
