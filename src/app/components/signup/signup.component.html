@@ -1,21 +1,6 @@
 <!-- Header Section Start -->
 <router-outlet></router-outlet>
-<header id="header">
-  <a href="index.html" class="logo"><img src="../../../assets/img/logo.png" alt="logo"></a>
-  <div class="phone"><i class="fa fa-phone"></i>+1 234 567 8900</div>
-  <div class="mobile-menu-btn"><i class="fa fa-bars"></i></div>
-  <nav class="main-menu top-menu">
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About Us</a></li>
-      <li><a href="room.html">Apartments</a></li>
-      <li><a href="amenities.html">Amenities</a></li>
-      <li><a href="booking.html">Booking</a></li>
-      <li class="active"><a routerLink="/login">Login</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
-    </ul>
-  </nav>
-</header>
+
 <!-- Header Section End -->
 
 <!-- Login Section Start -->
@@ -23,36 +8,89 @@
   <div class="container">
     <div class="section-header">
       <h2>Register</h2>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in mi libero. Quisque convallis, enim at venenatis tincidunt.
-      </p>
+<!--      <p>-->
+<!--        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in mi libero. Quisque convallis, enim at venenatis tincidunt.-->
+<!--      </p>-->
     </div>
     <div class="row">
       <div class="col-md-6">
-        <div class="login-form">
+        <div class="login-form" style="width: 78%;margin-left: 65%">
           <form [formGroup]="registerForm" (ngSubmit)="register()">
+            <div class="alert alert-info" *ngIf="status">{{status}}</div>
             <div class="form-row">
-              <div class="control-group col-sm-6">
+              <div class="control-group col-sm-12">
                 <label>UserName</label>
                 <input type="text" class="form-control" required="required" placeholder="UserName" formControlName="username">
+                <div *ngIf="username?.invalid && (username?.dirty || username?.touched)"
+                     class="" style="color: red">
+
+                  <div *ngIf="username?.errors?.['required']">
+                    tên đăng nhập không được bỏ trống!
+                  </div>
+                  <div *ngIf="username?.errors?.['minlength']">
+                    tên đăng nhập có ít nhất 6 kí từ nhiều nhất 12 kí tự!
+                  </div>
+                  <div *ngIf="username?.errors?.['maxlength']">
+                    tên đăng nhập có ít nhất 6 kí từ nhiều nhất 12 kí tự!
+                  </div>
+                </div>
               </div>
-              <div class="control-group col-sm-6">
+              <div class="control-group col-sm-12">
                 <label>Phone Number</label>
                 <input type="text" class="form-control" required="required" placeholder="Your Phone" formControlName="phone">
+                <div *ngIf="phone?.invalid && (phone?.dirty || phone?.touched)"
+                     class="" style="color: red">
+
+                  <div *ngIf="phone?.errors?.['required']">
+                    Số điện thoại không được để trống!
+                  </div>
+                  <div *ngIf="phone?.errors?.['minlength']">
+                    số điện thoại có 10 chữ số!
+                  </div>
+                  <div *ngIf="phone?.errors?.['maxlength']">
+                    số điện thoại có 10 chữ số!
+                  </div>
+                </div>
               </div>
             </div>
             <div class="form-row">
-              <div class="control-group col-sm-6">
+              <div class="control-group col-sm-12">
                 <label>Your Password</label>
                 <input type="password" class="form-control" required="required"  placeholder="Password" formControlName="password">
+                <div *ngIf="password?.invalid && (password?.dirty || password?.touched)"
+                     class="" style="color: red">
+
+                  <div *ngIf="password?.errors?.['required']">
+                    Mật khẩu không được để trống!
+                  </div>
+                  <div *ngIf="password?.errors?.['minlength']">
+                    mật khẩu ít nhất 6 kí tự và nhiều nhất 12 kí tự!
+                  </div>
+                  <div *ngIf="password?.errors?.['maxlength']">
+                    mật khẩu ít nhất 6 kí tự và nhiều nhất 12 kí tự!
+                  </div>
+                </div>
               </div>
-              <div class="control-group col-sm-6">
+              <div class="control-group col-sm-12">
                 <label>Repeat Your Password</label>
                 <input type="password" class="form-control" required="required"  placeholder="Repeat Password" formControlName="confirmPassword">
+                <div *ngIf="confirmPassword?.invalid && (confirmPassword?.dirty || confirmPassword?.touched)"
+                     class="" style="color: red">
+
+                  <div *ngIf="confirmPassword?.errors?.['required']">
+                    Mật khẩu không được để trống!
+                  </div>
+                  <div *ngIf="confirmPassword?.errors?.['minlength']">
+                    mật khẩu ít nhất 6 kí tự và nhiều nhất 12 kí tự!
+                  </div>
+                  <div *ngIf="confirmPassword?.errors?.['maxlength']">
+                    mật khẩu ít nhất 6 kí tự và nhiều nhất 12 kí tự!
+                  </div>
+                </div>
               </div>
             </div>
             <div class="button"><button type="submit">Registration</button></div>
-            <span>Do you already have an account. <a routerLink="/login" style="color: #00CED1">Login now</a> </span>
+            <span>Do you already have an account. <a routerLink="/login" style="color: #666">Login now</a> </span>
           </form>
         </div>
       </div>
@@ -60,8 +98,6 @@
   </div>
 </div>
 <!-- Login Section End -->
-
-<br><br><br><br><br><br>
 
 <!-- Footer Section Start -->
 <div id="footer">
@@ -86,7 +122,6 @@
       <div class="col-12">
         <p>&copy; Copyright <a href="https://freewebsitecode.com/">Your Site Name</a>. All Rights Reserved</p>
 
-        <p>Designed By <a href="https://freewebsitecode.com/">Free Website Code</a></p>
       </div>
     </div>
   </div>

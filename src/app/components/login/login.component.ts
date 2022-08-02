@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {first} from "rxjs";
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AuthenticationService} from "../../services/authentication.service";
 import { NgToastService } from 'ng-angular-popup';
@@ -13,7 +13,7 @@ import { NgToastService } from 'ng-angular-popup';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup = new FormGroup({
-    username: new FormControl(''),
+    username: new FormControl('',Validators.minLength(6)),
     password: new FormControl('')
   });
   // @ts-ignore
@@ -29,9 +29,9 @@ export class LoginComponent implements OnInit {
               private authenticationService: AuthenticationService,
               private toast : NgToastService) {
     console.log(this.authenticationService.currentUserValue);
-    if (this.authenticationService.currentUserValue) {
-      this.router.navigate(['/']);
-    }
+    // if (this.authenticationService.currentUserValue) {
+    //   this.router.navigate(['/']);
+    // }
   }
 
   ngOnInit() {
@@ -52,15 +52,15 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('ID', data.id);
           if (data.roles[0].authority == "ROLE_ADMIN") {
             this.toast.success({detail: "Notification", summary: "Logged in successfully", duration :3000})
-            this.router.navigate([this.adminUrl])
+            this.router.navigate(["/"])
           } else {
             this.toast.success({detail: "Notification", summary: "Logged in successfully", duration :3000})
-            this.router.navigate([this.returnUrl]);
+            this.router.navigate(["/"]);
           }
 
         },
         error => {
-          this.toast.success({detail: "Notification", summary: "Login failed, Please check again", duration :3000})
+          this.toast.error({detail: "Notification", summary: "Login failed, Please check again", duration :3000})
           this.loading = false;
         });
   }
