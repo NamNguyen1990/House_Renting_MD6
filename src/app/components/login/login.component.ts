@@ -13,8 +13,8 @@ import { NgToastService } from 'ng-angular-popup';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup = new FormGroup({
-    username: new FormControl('',Validators.minLength(6)),
-    password: new FormControl('')
+    username: new FormControl('',[Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
+    password: new FormControl('',[Validators.required, Validators.minLength(6), Validators.maxLength(12)])
   });
   // @ts-ignore
   returnUrl: string;
@@ -37,6 +37,14 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.returnUrl = '/users';
     this.adminUrl = '/admin'
+  }
+
+  get username() {
+    return this.loginForm.get('username');
+  }
+
+  get password() {
+    return this.loginForm.get('password');
   }
 
   login() {

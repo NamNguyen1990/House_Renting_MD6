@@ -11,6 +11,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import {HomepageComponent} from "./components/homepage/homepage.component";
 import { HousedetailComponent } from './components/housedetail/housedetail.component';
 import {NavbarComponent} from "./components/blocks/navbar/navbar.component";
+import { OrderCreateComponent } from './components/orders/order-create/order-create.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {NavbarComponent} from "./components/blocks/navbar/navbar.component";
     SignupComponent,
     HomepageComponent,
     HousedetailComponent,
-    NavbarComponent
+    NavbarComponent,
+    OrderCreateComponent
   ],
   imports: [
     BrowserModule,
