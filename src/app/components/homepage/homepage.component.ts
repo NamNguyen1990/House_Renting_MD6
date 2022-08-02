@@ -19,5 +19,4 @@ export class HomepageComponent implements OnInit {
       this.homes = houses.content;
     })
   }
-
 }

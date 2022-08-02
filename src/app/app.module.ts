@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -8,10 +9,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgToastModule} from "ng-angular-popup";
 import { SignupComponent } from './components/signup/signup.component';
 import {HomepageComponent} from "./components/homepage/homepage.component";
-import { NavbarComponent } from './components/blocks/navbar/navbar.component';
-import { FotterComponent } from './components/blocks/fotter/fotter.component';
-import {CategoryListComponent} from "./components/category/category-list/category-list.component";
-
+import { HousedetailComponent } from './components/housedetail/housedetail.component';
 
 @NgModule({
   declarations: [
@@ -19,10 +17,7 @@ import {CategoryListComponent} from "./components/category/category-list/categor
     LoginComponent,
     SignupComponent,
     HomepageComponent,
-    NavbarComponent,
-    FotterComponent,
-    SignupComponent,
-    CategoryListComponent
+    HousedetailComponent,
   ],
   imports: [
     BrowserModule,
