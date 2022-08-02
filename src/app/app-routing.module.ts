@@ -5,6 +5,7 @@ import {SignupComponent} from "./components/signup/signup.component";
 import {HomepageComponent} from "./components/homepage/homepage.component";
 import {HousedetailComponent} from "./components/housedetail/housedetail.component";
 
+
 const routes: Routes = [
   {
     path: 'login',
@@ -22,7 +23,7 @@ const routes: Routes = [
   {
     path: 'view/:id',
     component: HousedetailComponent
-  }
+  },
 ];
 
 @NgModule({

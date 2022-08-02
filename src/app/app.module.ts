@@ -11,6 +11,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import {HomepageComponent} from "./components/homepage/homepage.component";
 import { HousedetailComponent } from './components/housedetail/housedetail.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,6 +19,7 @@ import { HousedetailComponent } from './components/housedetail/housedetail.compo
     SignupComponent,
     HomepageComponent,
     HousedetailComponent,
+
   ],
   imports: [
     BrowserModule,
