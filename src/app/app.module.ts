@@ -13,6 +13,7 @@ import { HousedetailComponent } from './components/housedetail/housedetail.compo
 import {NavbarComponent} from "./components/blocks/navbar/navbar.component";
 import { OrderCreateComponent } from './components/orders/order-create/order-create.component';
 import { MyhouseComponent } from './components/myhouse/myhouse.component';
+import {OrderListComponent} from "./components/orders/order-list/order-list.component";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { MyhouseComponent } from './components/myhouse/myhouse.component';
     NavbarComponent,
     OrderCreateComponent,
     NavbarComponent,
-    MyhouseComponent
+    MyhouseComponent,
+    OrderListComponent
   ],
   imports: [
     BrowserModule,
