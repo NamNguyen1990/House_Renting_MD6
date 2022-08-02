@@ -1,8 +1,11 @@
-<!-- Header Section Start -->
+/<!-- Header Section Start -->
 <app-navbar></app-navbar>
 <!-- Header Section End -->
 
 <!-- Header Bottom Start -->
+
+
+<a href="">Trang My House</a>
 <div id="header-bottom">
   <!-- Search Section Start -->
   <div id="search" class="search-slider">
@@ -276,13 +279,13 @@
     </div>
 
     <div>
-<!--      <button routerLink="/create">Create</button>-->
+      <!--      <button routerLink="/create">Create</button>-->
     </div>
     <br>
 
     <div class="row">
 
-      <div class="col-md-12 room" *ngFor="let item of homes; even as isEven">
+      <div class="col-md-12 room" *ngFor="let item ; even as isEven">
         <div class="row" *ngIf="isEven">
           <div class="col-md-6">
             <div class="room-img">
@@ -311,7 +314,7 @@
                 <li class="icon-10"></li>
               </ul>
               <div class="room-link">
-<!--                <a href="#" data-toggle="modal" data-target="#modal-id">Read More</a>-->
+                <!--                <a href="#" data-toggle="modal" data-target="#modal-id">Read More</a>-->
                 <a [routerLink]="['/view',item.id]"> Read More</a>
                 <a href="#">Book Now</a>
               </div>
@@ -341,7 +344,7 @@
                 <li class="icon-10"></li>
               </ul>
               <div class="room-link">
-<!--                <a href="#" data-toggle="modal" data-target="#modal-id">Read More</a>-->
+                <!--                <a href="#" data-toggle="modal" data-target="#modal-id">Read More</a>-->
                 <a [routerLink]="['/view',item.id]"> Read More</a>
                 <a href="#">Book Now</a>
               </div>

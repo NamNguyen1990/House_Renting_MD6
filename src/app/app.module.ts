@@ -10,7 +10,8 @@ import {NgToastModule} from "ng-angular-popup";
 import { SignupComponent } from './components/signup/signup.component';
 import {HomepageComponent} from "./components/homepage/homepage.component";
 import { HousedetailComponent } from './components/housedetail/housedetail.component';
-
+import {NavbarComponent} from "./components/blocks/navbar/navbar.component";
+import { MyhouseComponent } from './components/myhouse/myhouse.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HousedetailComponent } from './components/housedetail/housedetail.compo
     SignupComponent,
     HomepageComponent,
     HousedetailComponent,
-
+    NavbarComponent,
+    MyhouseComponent
   ],
   imports: [
     BrowserModule,
