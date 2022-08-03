@@ -35,7 +35,6 @@ import { MyhouseEditComponent } from './components/myhouse/myhouse-edit/myhouse-
     FormsModule,
     ReactiveFormsModule,
     NgToastModule
-
   ],
   providers: [],
   bootstrap: [AppComponent]

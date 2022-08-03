@@ -1,1 +1,45 @@
 <p>myhouse-create works!</p>
+
+<h1>Create My House</h1>
+<form [formGroup]="houseForm" (ngSubmit)="submit()" >
+  <table>
+    <tr>
+      <td>Name: </td>
+      <td><input type="text" formControlName="name"></td>
+    </tr>
+    <tr>
+      <td>Address: </td>
+      <td><input type="text" formControlName="address"></td>
+    </tr>
+    <tr>
+      <td>Bedroom</td>
+      <td><input type="number" formControlName="bedroom"></td>
+    </tr>
+    <tr>
+      <td>Bathroom</td>
+      <td><input type="number" formControlName="bathroom"></td>
+    </tr>
+    <tr>
+      <td>Description</td>
+      <td><input type="text" formControlName="description"></td>
+    </tr>
+    <tr>
+      <td>Price</td>
+      <td><input type="number" formControlName="price"></td>
+    </tr>
+    <tr>
+      <td>Loại</td>
+      <td>
+        <select type="text" formControlName="categoryId">
+          <option *ngFor="let category of listCategory" [value]="category.id">
+            {{category.name}}
+          </option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><button> Create </button></td>
+    </tr>
+  </table>
+</form>
