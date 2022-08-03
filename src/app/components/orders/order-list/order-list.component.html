@@ -1,7 +1,5 @@
 <div class="col-12">
-
   <h1 class="text-center">Order List</h1>
-
 
   <table class="table table-striped">
     <thead>
@@ -15,7 +13,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let o of oderrs; index as i">
+    <tr *ngFor="let o of orderr; index as i">
       <td>{{i + 1}}</td>
       <td>{{o.total}}</td>
       <td>{{o.endTime}}</td>
@@ -24,9 +22,6 @@
       <td>{{o.house.address}}</td>
       <td><button routerLink="/show-detail/{{o.id}}">Detail</button></td>
       <td><button (click)="deleteOrder(o.id)">Delete</button></td>
-      <td><a [routerLink]="['delete',o.id]">Edit</a></td>
-
-    </tr>
 
     </tbody>
   </table>

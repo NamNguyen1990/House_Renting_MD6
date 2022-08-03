@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Orderr} from "../models/orderr";
 import {Order} from "../models/order";
+import {House} from "../models/house";
 
 
 @Injectable({
@@ -37,4 +38,7 @@ export class OrderService {
     return this.httpClient.delete<Orderr>(this.API + `/${id}`);
   }
 
+  findAllOrderByCustomerId (customer_id: any): Observable<Order> {
+    return this.httpClient.get<Order>(this.API + `/find-order-by-customer-id?customer_id=${customer_id}`)
+  }
 }

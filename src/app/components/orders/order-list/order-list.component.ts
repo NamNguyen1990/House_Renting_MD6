@@ -10,19 +10,18 @@ import {Orderr} from "../../../models/orderr";
 })
 export class OrderListComponent implements OnInit {
   id:any;
-  oderrs: Orderr[] = [];
+  orderr: any;
   constructor(private orderService : OrderService) { }
 
   ngOnInit(): void {
-    this.getAllOrders();
-
+  this.getAllOrderByCustomerId();
   }
 
-  getAllOrders(){
-    this.orderService.findAll().subscribe((data)=>{
-    console.log(data.content)
-    this.oderrs=data.content;
-    console.log(this.oderrs);
+  getAllOrderByCustomerId(){
+  this.orderService.findAllOrderByCustomerId(localStorage.getItem('ID')).subscribe((order) => {
+    console.log(order)
+    // @ts-ignore
+    this.orderr = order;
   })
   }
   deleteOrder(id:any) {
@@ -30,7 +29,7 @@ export class OrderListComponent implements OnInit {
     if (confirm("are you sure?")){
       this.orderService.delete(id).subscribe(() => {
         alert(" Complete!! ?")
-        this.getAllOrders()
+        this.getAllOrderByCustomerId()
       }, error => {
         alert("Can't cancel ! Only cancel the rental 1 day before the start date")
         console.log(error)
