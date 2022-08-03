@@ -6,12 +6,11 @@ export interface User {
   username?: string;
   password?: string;
   confirmPassword?: string;
-  firstName?: string;
-  lastName?: string;
-  gender?: string;
-  email?: string;
   phone: string;
+  email?: string;
+  address?: string;
+  fullName?: string;
+  avatar?: string;
   enabled?: boolean;
   roles?: [Role];
-  imageUrls?: string;
 }

@@ -41,8 +41,8 @@ export class SignupComponent implements OnInit {
       } else {
         this.status = data;
         this.toast.success({detail: "Notification", summary: data.message, duration: 3000});
-        // this.registerForm.reset();
-        // this.router.navigate(['/login']);
+        this.registerForm.reset();
+        this.router.navigate(['/login']);
       }
 
     }, (err) => {

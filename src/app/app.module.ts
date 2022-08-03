@@ -15,6 +15,10 @@ import { MyhouseListComponent } from './components/myhouse/myhouse-list/myhouse-
 import { MyhouseCreateComponent } from './components/myhouse/myhouse-create/myhouse-create.component';
 import { MyhouseEditComponent } from './components/myhouse/myhouse-edit/myhouse-edit.component';
 import { OrderCreateComponent } from './components/orders/order-create/order-create.component';
+import { UpdateProfileComponent } from './components/update-profile/update-profile.component';
+import {AngularFireStorageModule} from "@angular/fire/compat/storage";
+import {environment} from "../environments/environment";
+import {AngularFireModule} from "@angular/fire/compat";
 
 @NgModule({
   declarations: [
@@ -29,6 +33,7 @@ import { OrderCreateComponent } from './components/orders/order-create/order-cre
     MyhouseListComponent,
     MyhouseCreateComponent,
     MyhouseEditComponent,
+    UpdateProfileComponent,
 
   ],
   imports: [
@@ -37,8 +42,9 @@ import { OrderCreateComponent } from './components/orders/order-create/order-cre
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgToastModule
-
+    NgToastModule,
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig, "cloud")
   ],
   providers: [],
   bootstrap: [AppComponent]

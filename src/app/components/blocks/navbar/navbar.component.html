@@ -18,7 +18,8 @@
 <!-- Header Section Start -->
 <header id="header" *ngIf="isLogin">
   <a href="index.html" class="logo"><img src="../assets/img/logo.png" alt="logo"></a>
-  <div class="phone"><i class="fa fa-user-circle"></i>{{USERNAME}}</div>
+
+  <div class="phone"><img src="{{img}}" style="width: 40px; height: 40px; border-radius: 50%"  alt=""><i class="fa fa" [routerLink]="['/update-profile',userId]">{{USERNAME}}</i></div>
   <div class="mobile-menu-btn"><i class="fa fa-bars"></i></div>
   <nav class="main-menu top-menu">
     <ul>

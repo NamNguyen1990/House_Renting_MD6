@@ -5,6 +5,7 @@ import {SignupComponent} from "./components/signup/signup.component";
 import {HomepageComponent} from "./components/homepage/homepage.component";
 import {HousedetailComponent} from "./components/housedetail/housedetail.component";
 import {MyhouseListComponent} from "./components/myhouse/myhouse-list/myhouse-list.component";
+import {UpdateProfileComponent} from "./components/update-profile/update-profile.component";
 
 
 
@@ -17,6 +18,10 @@ const routes: Routes = [
     path: 'register',
     component: SignupComponent
 
+  },
+  {
+    path: 'update-profile/:id',
+    component: UpdateProfileComponent
   },
   {
     path: '',

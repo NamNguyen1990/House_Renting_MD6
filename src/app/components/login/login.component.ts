@@ -4,6 +4,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AuthenticationService} from "../../services/authentication.service";
 import { NgToastService } from 'ng-angular-popup';
+import {user} from "@angular/fire/auth";
 
 @Component({
   selector: 'app-login',
@@ -58,6 +59,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('ROLE', data.roles[0].authority);
           localStorage.setItem('USERNAME', data.username);
           localStorage.setItem('ID', data.id);
+          localStorage.setItem('AVATAR',data.avatar)
           if (data.roles[0].authority == "ROLE_ADMIN") {
             this.toast.success({detail: "Notification", summary: "Logged in successfully", duration :3000})
             this.router.navigate(["/"])
