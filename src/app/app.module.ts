@@ -16,6 +16,7 @@ import { MyhouseCreateComponent } from './components/myhouse/myhouse-create/myho
 import { MyhouseEditComponent } from './components/myhouse/myhouse-edit/myhouse-edit.component';
 import { OrderCreateComponent } from './components/orders/order-create/order-create.component';
 import {GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule} from "@abacritt/angularx-social-login";
+import {OrderListComponent} from "./components/orders/order-list/order-list.component";
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import {GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule} from "@
     MyhouseCreateComponent,
     MyhouseEditComponent,
     NavbarComponent,
+    OrderListComponent
   ],
   imports: [
     BrowserModule,
