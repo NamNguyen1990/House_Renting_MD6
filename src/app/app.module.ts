@@ -11,10 +11,13 @@ import { SignupComponent } from './components/signup/signup.component';
 import {HomepageComponent} from "./components/homepage/homepage.component";
 import { HousedetailComponent } from './components/housedetail/housedetail.component';
 import {NavbarComponent} from "./components/blocks/navbar/navbar.component";
+import { MyhouseListComponent } from './components/myhouse/myhouse-list/myhouse-list.component';
+import { MyhouseCreateComponent } from './components/myhouse/myhouse-create/myhouse-create.component';
+import { MyhouseEditComponent } from './components/myhouse/myhouse-edit/myhouse-edit.component';
 import { OrderCreateComponent } from './components/orders/order-create/order-create.component';
-import { MyhouseComponent } from './components/myhouse/myhouse.component';
 import {OrderListComponent} from "./components/orders/order-list/order-list.component";
 import { OrderDetailComponent } from './components/orders/order-detail/order-detail.component';
+import {GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule} from "@abacritt/angularx-social-login";
 
 @NgModule({
   declarations: [
@@ -26,9 +29,12 @@ import { OrderDetailComponent } from './components/orders/order-detail/order-det
     NavbarComponent,
     OrderCreateComponent,
     NavbarComponent,
-    MyhouseComponent,
     OrderListComponent,
-    OrderDetailComponent
+    OrderDetailComponent,
+    MyhouseListComponent,
+    MyhouseCreateComponent,
+    MyhouseEditComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,10 +42,27 @@ import { OrderDetailComponent } from './components/orders/order-detail/order-det
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgToastModule
+    NgToastModule,
+    SocialLoginModule,
 
+    NgToastModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: true,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '600600839708-k9l98tk4a2n1hlko1qdgejotbkt1brm4.apps.googleusercontent.com'
+            ),
+          },
+        ],
+      } as SocialAuthServiceConfig,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

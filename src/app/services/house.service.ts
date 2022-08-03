@@ -25,4 +25,8 @@ export class HouseService {
     return this.httpClient.get<House>(this.API + `/${id}`);
   }
 
+  findHouseByOwnerId (owner_id: any): Observable<House> {
+    return this.httpClient.get<House>(this.API + `/find-by-ownerId?owner_id=${owner_id}`)
+  }
+
 }

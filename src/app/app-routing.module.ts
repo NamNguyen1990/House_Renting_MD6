@@ -4,9 +4,11 @@ import {LoginComponent} from "./components/login/login.component";
 import {SignupComponent} from "./components/signup/signup.component";
 import {HomepageComponent} from "./components/homepage/homepage.component";
 import {HousedetailComponent} from "./components/housedetail/housedetail.component";
-import {MyhouseComponent} from "./components/myhouse/myhouse.component";
 import {OrderListComponent} from "./components/orders/order-list/order-list.component";
 import {OrderDetailComponent} from "./components/orders/order-detail/order-detail.component";
+import {MyhouseListComponent} from "./components/myhouse/myhouse-list/myhouse-list.component";
+import {MyhouseCreateComponent} from "./components/myhouse/myhouse-create/myhouse-create.component";
+
 
 
 const routes: Routes = [
@@ -28,18 +30,20 @@ const routes: Routes = [
     component: HousedetailComponent
   },
   {
-    path: 'myhouse',
-    component: MyhouseComponent
-  },
-
-  {
     path:'orderlist',
     component:OrderListComponent
   },
   {
     path:'show-detail/:id',
     component:OrderDetailComponent
+  },{
+    path: 'myhouse', children: [
+      {path: 'list', component: MyhouseListComponent},
+      {path: 'create', component: MyhouseCreateComponent},
+
+    ]
   }
+
 ];
 
 @NgModule({

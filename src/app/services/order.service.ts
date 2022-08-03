@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Orderr} from "../models/orderr";
-import {House} from "../models/house";
-
 
 
 @Injectable({
@@ -14,7 +12,7 @@ export class OrderService {
   API = 'http://localhost:8888/orders'
   constructor(private httpClient: HttpClient) { }
 
-  findAll(): Observable<Orderr[]> {
+  findAll(): Observable<any> {
     // @ts-ignore
 
     return this.httpClient.get(this.API);

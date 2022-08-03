@@ -1,16 +1,15 @@
-import {Category} from "./category";
 import {User} from "./user";
+import {Category} from "./category";
 
 export interface House {
-id?: String;
-name?:String;
-category :Category;
-address?: String;
-bedroom?:String;
-bathroom?:String;
-description?:String;
-price?:String;
-owner:User;
-status?:String;
-
+  id: string,
+  name: string,
+  address: string,
+  bedroom: string,
+  bathroom: string,
+  description: string,
+  price: string,
+  status: string,
+  category: Category,
+  user: User,
 }
