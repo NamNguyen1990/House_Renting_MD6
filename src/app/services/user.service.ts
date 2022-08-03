@@ -3,6 +3,7 @@ import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {User} from "../models/user";
+import {ResponseBody} from "../models/response-body";
 const API_URL = environment.apiUrl;
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,8 @@ const API_URL = environment.apiUrl;
 export class UserService {
 
   constructor(private http : HttpClient) { }
-  register(user: User): Observable<User> {
-    return this.http.post<User>(API_URL + '/register', user);
+  register(user: User): Observable<ResponseBody> {
+    return this.http.post<ResponseBody>(API_URL + '/register', user);
   }
 
   registerSuccess(token: string): Observable<any> {
