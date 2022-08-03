@@ -9,6 +9,7 @@ import {OrderDetailComponent} from "./components/orders/order-detail/order-detai
 import {MyhouseListComponent} from "./components/myhouse/myhouse-list/myhouse-list.component";
 import {UpdateProfileComponent} from "./components/update-profile/update-profile.component";
 import {MyhouseCreateComponent} from "./components/myhouse/myhouse-create/myhouse-create.component";
+import {OrderCreateComponent} from "./components/orders/order-create/order-create.component";
 
 
 
@@ -33,6 +34,10 @@ const routes: Routes = [
   {
     path: 'view/:id',
     component: HousedetailComponent
+  },
+  {
+    path: 'order/:idHome',
+    component: OrderCreateComponent
   },
   {
     path:'orderlist',

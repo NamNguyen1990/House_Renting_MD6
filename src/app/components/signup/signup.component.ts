@@ -4,7 +4,6 @@ import {UserService} from "../../services/user.service";
 import {Router} from "@angular/router";
 import {User} from "../../models/user";
 import {NgToastService} from 'ng-angular-popup';
-import {ResponseMessage} from "../../models/response-message";
 import {ResponseBody} from "../../models/response-body";
 
 @Component({

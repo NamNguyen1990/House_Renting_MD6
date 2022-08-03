@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Orderr} from "../models/orderr";
+import {Order} from "../models/order";
 
 
 @Injectable({
@@ -10,7 +11,9 @@ import {Orderr} from "../models/orderr";
 export class OrderService {
 
   API = 'http://localhost:8888/orders'
-  constructor(private httpClient: HttpClient) { }
+
+  constructor(private httpClient: HttpClient) {
+  }
 
   findAll(): Observable<any> {
     // @ts-ignore
@@ -22,11 +25,8 @@ export class OrderService {
     return this.httpClient.post(this.API, orderr);
   }
 
-  findById(id: number): Observable<Orderr> {
-    return this.httpClient.get<Orderr>(this.API + `/${id}`);
+  create(order: Order, idHouse: string | null, idCustomer: string | null): Observable<Order> {
+    return this.httpClient.post<Order>(this.API+`/${idHouse}`+`/${idCustomer}`,order)
   }
 
-  delete (id: any): Observable<Orderr> {
-    return this.httpClient.delete<Orderr>(this.API + `/${id}`);
-  }
 }
