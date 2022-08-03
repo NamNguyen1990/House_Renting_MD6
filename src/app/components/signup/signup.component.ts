@@ -4,7 +4,7 @@ import {UserService} from "../../services/user.service";
 import {Router} from "@angular/router";
 import {User} from "../../models/user";
 import {NgToastService} from 'ng-angular-popup';
-import {ResponseMessage} from "../../models/response-message";
+import {ResponseBody} from "../../models/response-body";
 
 @Component({
   selector: 'app-signup',
@@ -13,14 +13,14 @@ import {ResponseMessage} from "../../models/response-message";
 })
 export class SignupComponent implements OnInit {
 
-  status = 'Hãy điền đầy đủ thông tin vào biểu mẫu!';
+  status: ResponseBody = {code: '0000', message: 'Hãy điền đầy đủ thông tin vào biểu mẫu'};
   registerForm: FormGroup = new FormGroup({
-    username: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
-    password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
-    confirmPassword: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
+    username: new FormControl('khoaitay', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
+    password: new FormControl('123456', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
+    confirmPassword: new FormControl('123456', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
     // name: new FormControl('', [Validators.required, Validators.minLength(2)]),
     // email: new FormControl('', [Validators.required, Validators.email]),
-    phone: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10)])
+    phone: new FormControl('0346543215', [Validators.required, Validators.minLength(10), Validators.maxLength(10)])
   });
 
   constructor(private userService: UserService,
@@ -33,14 +33,21 @@ export class SignupComponent implements OnInit {
 
   register() {
     const user = this.setNewUser();
-    // @ts-ignore
-    this.userService.register(user).subscribe((data: ResponseMessage) => {
-      this.status = data.message
-      this.toast.success({detail: "Notification", summary: "Sign Up Success", duration: 3000})
-      this.registerForm.reset();
-      this.router.navigate(['/login']);
+    this.userService.register(user).subscribe((data: ResponseBody) => {
+      if (data.message) {
+        this.status = data;
+        this.toast.success({detail: "Notification", summary: data.message, duration: 3000, position: 'bottom'});
+        this.router.navigate(['/login']);
+      } else {
+        this.status = data;
+        this.toast.success({detail: "Notification", summary: data.message, duration: 3000});
+        this.registerForm.reset();
+        this.router.navigate(['/login']);
+      }
 
-    }, err => {
+    }, (err) => {
+      console.log(err);
+      this.status = err.message;
       this.toast.error({detail: "Notification", summary: "Registration failed", duration: 3000})
     });
   }

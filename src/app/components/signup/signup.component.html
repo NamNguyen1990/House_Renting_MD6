@@ -16,7 +16,7 @@
       <div class="col-md-6">
         <div class="login-form" style="width: 78%;margin-left: 65%">
           <form [formGroup]="registerForm" (ngSubmit)="register()">
-            <div class="alert alert-info" *ngIf="status">{{status}}</div>
+            <div class="alert " [ngClass]="status.code === '0000' ? 'alert-info' : 'alert-danger'" *ngIf="status.code">{{status.message}}</div>
             <div class="form-row">
               <div class="control-group col-sm-12">
                 <label>UserName</label>

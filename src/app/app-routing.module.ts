@@ -4,8 +4,9 @@ import {LoginComponent} from "./components/login/login.component";
 import {SignupComponent} from "./components/signup/signup.component";
 import {HomepageComponent} from "./components/homepage/homepage.component";
 import {HousedetailComponent} from "./components/housedetail/housedetail.component";
-import {MyhouseComponent} from "./components/myhouse/myhouse.component";
 import {OrderCreateComponent} from "./components/orders/order-create/order-create.component";
+import {MyhouseListComponent} from "./components/myhouse/myhouse-list/myhouse-list.component";
+
 
 
 const routes: Routes = [
@@ -31,9 +32,12 @@ const routes: Routes = [
     component: OrderCreateComponent
   },
   {
-    path: 'myhouse',
-    component: MyhouseComponent
-  },
+    path: 'myhouse', children: [
+      {path: 'list', component: MyhouseListComponent},
+
+    ]
+  }
+
 ];
 
 @NgModule({

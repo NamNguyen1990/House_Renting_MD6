@@ -27,6 +27,9 @@ export class OrderCreateComponent implements OnInit {
   orderCreate() {
     this.activatedRouter.paramMap.subscribe((para: ParamMap) => {
       this.orderService.create(this.orderForm.value, para.get('idHome'), localStorage.getItem("ID"))
+      console.log(this.orderForm.value)
+      console.log(para.get('idHome'))
+      console.log(localStorage.getItem("ID"))
     })
 
   }
