@@ -4,6 +4,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AuthenticationService} from "../../services/authentication.service";
 import { NgToastService } from 'ng-angular-popup';
+import {GoogleLoginProvider, SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 
 @Component({
   selector: 'app-login',
@@ -23,11 +24,15 @@ export class LoginComponent implements OnInit {
   error = '';
   loading = false;
   submitted = false;
+  user: SocialUser | undefined;
+  GoogleLoginProvider = GoogleLoginProvider;
 
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
               private authenticationService: AuthenticationService,
-              private toast : NgToastService) {
+              private toast : NgToastService,
+              private readonly _authService: SocialAuthService
+              ) {
     console.log(this.authenticationService.currentUserValue);
     // if (this.authenticationService.currentUserValue) {
     //   this.router.navigate(['/']);
@@ -36,7 +41,11 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.returnUrl = '/users';
-    this.adminUrl = '/admin'
+    this.adminUrl = '/admin';
+    this._authService.authState.subscribe((user) => {
+      console.log(user)
+      this.user = user;
+    })
   }
 
   get username() {
@@ -71,6 +80,25 @@ export class LoginComponent implements OnInit {
           this.toast.error({detail: "Notification", summary: "Login failed, Please check again", duration :3000})
           this.loading = false;
         });
+  }
+
+  signOut(): void {
+    this._authService.signOut();
+  }
+
+  refreshGoogleToken(): void {
+    this._authService.refreshAuthToken(GoogleLoginProvider.PROVIDER_ID);
+  }
+
+  signInWithGoogle() {
+    this._authService.signIn(GoogleLoginProvider.PROVIDER_ID).then((data:SocialUser ) => {
+      console.log('sign in with google', data);
+    }).then(() => {
+      this.router.navigate(["/"]);
+      console.log('sign in with google then', this.user);
+    }, (error) => {
+      console.log('error', error);
+    });
   }
 
 }
