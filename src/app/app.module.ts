@@ -11,6 +11,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import {HomepageComponent} from "./components/homepage/homepage.component";
 import { HousedetailComponent } from './components/housedetail/housedetail.component';
 import {NavbarComponent} from "./components/blocks/navbar/navbar.component";
+import {GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule} from "@abacritt/angularx-social-login";
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {NavbarComponent} from "./components/blocks/navbar/navbar.component";
     SignupComponent,
     HomepageComponent,
     HousedetailComponent,
-    NavbarComponent
+    NavbarComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -27,10 +29,26 @@ import {NavbarComponent} from "./components/blocks/navbar/navbar.component";
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgToastModule
+    NgToastModule,
+    SocialLoginModule
 
   ],
-  providers: [],
+  providers: [
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: true,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '600600839708-k9l98tk4a2n1hlko1qdgejotbkt1brm4.apps.googleusercontent.com'
+            ),
+          },
+        ],
+      } as SocialAuthServiceConfig,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
