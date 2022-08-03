@@ -20,7 +20,6 @@ import {environment} from "../environments/environment";
 import {OrderListComponent} from "./components/orders/order-list/order-list.component";
 import { OrderDetailComponent } from './components/orders/order-detail/order-detail.component';
 import {GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule} from "@abacritt/angularx-social-login";
-import { OrderDeleteComponent } from './components/orders/order-delete/order-delete.component';
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {AngularFireModule} from "@angular/fire/compat";
 
@@ -40,9 +39,7 @@ import {AngularFireModule} from "@angular/fire/compat";
     MyhouseCreateComponent,
     MyhouseEditComponent,
     UpdateProfileComponent,
-
     NavbarComponent,
-    OrderDeleteComponent,
   ],
   imports: [
     BrowserModule,
