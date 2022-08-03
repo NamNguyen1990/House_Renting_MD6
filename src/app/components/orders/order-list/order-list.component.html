@@ -1,6 +1,6 @@
 <div class="col-12">
 
-  <h1 class="text-center">Danh sách hóa đơn</h1>
+  <h1 class="text-center">Order List</h1>
 
 
   <table class="table table-striped">
@@ -23,7 +23,7 @@
       <td>{{o.customer.username}}</td>
       <td>{{o.house.address}}</td>
       <td><button routerLink="/show-detail/{{o.id}}">Detail</button></td>
-      <td><a [routerLink]="['delete',o.id]">Delete</a></td>
+      <td><button (click)="deleteOrder(o.id)">Delete</button></td>
       <td><a [routerLink]="['delete',o.id]">Edit</a></td>
 
     </tr>

@@ -18,6 +18,7 @@ import { OrderCreateComponent } from './components/orders/order-create/order-cre
 import {OrderListComponent} from "./components/orders/order-list/order-list.component";
 import { OrderDetailComponent } from './components/orders/order-detail/order-detail.component';
 import {GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule} from "@abacritt/angularx-social-login";
+import { OrderDeleteComponent } from './components/orders/order-delete/order-delete.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import {GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule} from "@
     MyhouseCreateComponent,
     MyhouseEditComponent,
     NavbarComponent,
+    OrderDeleteComponent,
   ],
   imports: [
     BrowserModule,
