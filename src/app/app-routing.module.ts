@@ -7,6 +7,7 @@ import {HousedetailComponent} from "./components/housedetail/housedetail.compone
 import {OrderListComponent} from "./components/orders/order-list/order-list.component";
 import {OrderDetailComponent} from "./components/orders/order-detail/order-detail.component";
 import {MyhouseListComponent} from "./components/myhouse/myhouse-list/myhouse-list.component";
+import {UpdateProfileComponent} from "./components/update-profile/update-profile.component";
 import {MyhouseCreateComponent} from "./components/myhouse/myhouse-create/myhouse-create.component";
 
 
@@ -20,6 +21,10 @@ const routes: Routes = [
     path: 'register',
     component: SignupComponent
 
+  },
+  {
+    path: 'update-profile/:id',
+    component: UpdateProfileComponent
   },
   {
     path: '',
