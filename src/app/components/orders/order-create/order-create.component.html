@@ -1,1 +1,5 @@
-<p>order-create works!</p>
+<form [formGroup]="orderForm" method="post" (submit)="orderCreate()">
+  <input type="Date" formControlName="startTime" id="startTime" name="startTime">
+  <input type="Date" formControlName="endTime" id="endTime" name="endTime">
+  <button type="submit">tạo mới order</button>
+</form>
