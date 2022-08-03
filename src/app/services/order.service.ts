@@ -28,4 +28,7 @@ export class OrderService {
     return this.httpClient.get<Orderr>(this.API + `/${id}`);
   }
 
+  delete (id: any): Observable<Orderr> {
+    return this.httpClient.delete<Orderr>(this.API + `/${id}`);
+  }
 }

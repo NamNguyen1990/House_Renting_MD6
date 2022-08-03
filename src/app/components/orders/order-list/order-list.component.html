@@ -2,28 +2,6 @@
 
   <h1 class="text-center">Danh sách hóa đơn</h1>
 
-  <!--<table border="1px">-->
-  <!--  <tr>-->
-  <!--    <td>ID</td>-->
-  <!--    <td>Total</td>-->
-  <!--    <td>End_Time</td>-->
-  <!--    <td>Start_Time</td>-->
-  <!--    <td>Customer of Name</td>-->
-  <!--    <td>House</td>-->
-  <!--    <td>Status</td>-->
-  <!--  </tr>-->
-  <!--  <tr *ngFor="let o of oderrs; index as i">-->
-  <!--    <td>{{i + 1}}</td>-->
-  <!--    <td>{{o.total}}</td>-->
-  <!--    <td>{{o.endTime}}</td>-->
-  <!--    <td>{{o.startTime}}</td>-->
-  <!--    <td>{{o.customer.username}}</td>-->
-  <!--    <td>{{o.house.address}}</td>-->
-  <!--    -->
-  <!--  </tr>-->
-  <!--</table>-->
-
-
 
   <table class="table table-striped">
     <thead>
@@ -44,6 +22,9 @@
       <td>{{o.startTime}}</td>
       <td>{{o.customer.username}}</td>
       <td>{{o.house.address}}</td>
+      <td><button routerLink="/show-detail/{{o.id}}">Detail</button></td>
+      <td><a [routerLink]="['delete',o.id]">Delete</a></td>
+      <td><a [routerLink]="['delete',o.id]">Edit</a></td>
 
     </tr>
 

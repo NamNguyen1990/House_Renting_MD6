@@ -6,6 +6,7 @@ import {HomepageComponent} from "./components/homepage/homepage.component";
 import {HousedetailComponent} from "./components/housedetail/housedetail.component";
 import {MyhouseComponent} from "./components/myhouse/myhouse.component";
 import {OrderListComponent} from "./components/orders/order-list/order-list.component";
+import {OrderDetailComponent} from "./components/orders/order-detail/order-detail.component";
 
 
 const routes: Routes = [
@@ -34,6 +35,10 @@ const routes: Routes = [
   {
     path:'orderlist',
     component:OrderListComponent
+  },
+  {
+    path:'show-detail/:id',
+    component:OrderDetailComponent
   }
 ];
 
