@@ -29,4 +29,12 @@ export class OrderService {
     return this.httpClient.post<Order>(this.API+`/${idHouse}`+`/${idCustomer}`,order)
   }
 
+  findById(id: number): Observable<Orderr> {
+    return this.httpClient.get<Orderr>(this.API + `/${id}`);
+  }
+
+  delete (id: any): Observable<Orderr> {
+    return this.httpClient.delete<Orderr>(this.API + `/${id}`);
+  }
+
 }
