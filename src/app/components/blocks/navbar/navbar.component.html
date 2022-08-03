@@ -1,7 +1,27 @@
 <!-- Header Section Start -->
 <header id="header" *ngIf="!isLogin">
   <a routerLink="/" class="logo"><img src="../assets/img/logo.png" alt="logo"></a>
-  <div class="phone"><i class="fa fa-user-circle"></i></div>
+
+
+  <div style="margin-top: -8px" class="phone btn dropdown-toggle" data-toggle="dropdown" type="" id="" data-bs-toggle="dropdown"
+       aria-expanded="false"><i class="fa fa-user-circle"></i>
+    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+      <li>
+        <a class="btn btn-transparent text-uppercase font-size-3 heading-default-color focus-reset"
+           routerLink="/login">
+          Login
+        </a>
+      </li>
+      <li>
+        <a class="btn btn-transparent text-uppercase font-size-3 heading-default-color focus-reset"
+           href="javacript:" data-toggle="modal" data-target="#signupForCompany" routerLink="/register">
+          Register
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
   <div class="mobile-menu-btn"><i class="fa fa-bars"></i></div>
   <nav class="main-menu top-menu">
     <ul>
@@ -9,23 +29,47 @@
       <li><a href="about.html">About Us</a></li>
       <li><a href="booking.html">Booking</a></li>
       <li><a href="">Contact Us</a></li>
-      <li><a routerLink="/login">Login</a></li>
     </ul>
   </nav>
 </header>
+
+
+
+
 <!-- Header Section Start -->
 <header id="header" *ngIf="isLogin">
   <a routerLink="/" class="logo"><img src="../assets/img/logo.png" alt="logo"></a>
-  <div class="phone"><i class="fa fa-user-circle"></i>{{USERNAME}}</div>
+  <div style="margin-top: -7px" class="phone btn dropdown-toggle" data-toggle="dropdown" type="" data-bs-toggle="dropdown"
+       aria-expanded="false"><i class="fa fa-user-circle"></i>{{USERNAME}}
+    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+      <li>
+        <a class="btn btn-transparent text-uppercase font-size-3 heading-default-color focus-reset">
+          Edit Profile
+        </a>
+      </li>
+      <li>
+        <a class="btn btn-transparent text-uppercase font-size-3 heading-default-color focus-reset">
+          Password Change
+        </a>
+      </li>
+      <li>
+        <a class="btn btn-transparent text-uppercase font-size-3 heading-default-color focus-reset" (click)="logOut()">
+          Logout
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+
   <div class="mobile-menu-btn"><i class="fa fa-bars"></i></div>
   <nav class="main-menu top-menu">
     <ul>
       <li><a routerLink="/">Home</a></li>
       <li><a [routerLink]="['/myhouse/list']">My House</a></li>
       <li><a [routerLink]="['/myhouse/create']">Create House</a></li>
-      <li><a href="booking.html">Booking</a></li>
+      <li><a href=""> Booking</a></li>
       <li><a href="">Contact Us</a></li>
-      <li><a (click)="logOut()" style="color: #00CED1; cursor: pointer">LogOut</a></li>
     </ul>
   </nav>
 </header>
