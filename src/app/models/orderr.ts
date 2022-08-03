@@ -2,11 +2,17 @@ import {House} from "./house";
 import {User} from "./user";
 
 export interface Orderr {
-  id?: String;
+  id?: string;
   house: House;
   customer: User;
-  startTime?: String;
-  endTime?: String;
-  total?: String;
-  status?:String;
+  startTime?: string;
+  endTime?: string;
+  total?: string;
+  status?:string;
+  name?:string;
+  email?:string;
+  phone?:string;
+  request?:string;
+  adult?:string;
+  kis?:string;
 }

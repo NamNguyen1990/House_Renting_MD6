@@ -10,27 +10,43 @@ import {ActivatedRoute, ParamMap} from "@angular/router";
 })
 export class OrderCreateComponent implements OnInit {
   orderForm!: FormGroup
+  idHome!: string | null
+    constructor
+(
+  private fb: FormBuilder
+,
+  private orderService: OrderService
+,
+  private activatedRouter: ActivatedRoute
+) {
+}
 
-  constructor(private fb: FormBuilder,
-              private orderService: OrderService,
-              private activatedRouter: ActivatedRoute
-  ) {
-  }
+ngOnInit()
+:
+void {
+  this.orderForm = this.fb.group({
+    startTime: [''],
+    endTime: [''],
+    name: [''],
+    phone: [''],
+    email: [''],
+    request: [''],
+    adult: [''],
+    kis: [''],
+  })
+  this.activatedRouter.paramMap.subscribe((param: ParamMap) => {
+    this.idHome = param.get("idHome")
+  })
+}
 
-  ngOnInit(): void {
-    this.orderForm = this.fb.group({
-      startTime: [''],
-      endTime: ['']
-    })
-  }
+orderCreate()
+{
+  this.orderService.create(this.orderForm.value, this.idHome, localStorage.getItem("ID")).subscribe((data) => {
+    console.log(data)
+  })
 
-  orderCreate() {
-    this.activatedRouter.paramMap.subscribe((para: ParamMap) => {
-      this.orderService.create(this.orderForm.value, para.get('idHome'), localStorage.getItem("ID"))
-      console.log(this.orderForm.value)
-      console.log(para.get('idHome'))
-      console.log(localStorage.getItem("ID"))
-    })
 
-  }
+
+
+}
 }

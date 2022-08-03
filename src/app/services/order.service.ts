@@ -2,7 +2,8 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Orderr} from "../models/orderr";
-import {Order} from "../models/order";
+import {ResponseBody} from "../models/response-body";
+
 
 
 @Injectable({
@@ -25,8 +26,8 @@ export class OrderService {
     return this.httpClient.post(this.API, orderr);
   }
 
-  create(order: Order, idHouse: string | null, idCustomer: string | null): Observable<Order> {
-    return this.httpClient.post<Order>(this.API+`/${idHouse}`+`/${idCustomer}`,order)
+  create(order: Orderr, idHouse: string | null, idCustomer: string | null): Observable<ResponseBody> {
+    return this.httpClient.post<ResponseBody>(this.API+`/${idHouse}`+`/${idCustomer}`,order)
   }
 
   findById(id: number): Observable<Orderr> {
