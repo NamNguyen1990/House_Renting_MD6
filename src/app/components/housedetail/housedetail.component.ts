@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {HouseService} from "../../services/house.service";
 import {ActivatedRoute, ParamMap} from "@angular/router";
-import {FormControl, FormGroup} from "@angular/forms";
-import { Category } from 'src/app/models/category';
-import {CategoryService} from "../../services/category.service";
+
+
 import {HttpClient} from "@angular/common/http";
 
 @Component({
@@ -28,6 +27,7 @@ export class HousedetailComponent implements OnInit {
       })
     })
   }
+
 
 
 

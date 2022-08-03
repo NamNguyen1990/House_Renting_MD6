@@ -1,18 +1,32 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Order} from "../models/order";
 import {Observable} from "rxjs";
-import {environment} from "../../environments/environment";
+import {Orderr} from "../models/orderr";
+import {Order} from "../models/order";
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrderService {
 
-  constructor(private http: HttpClient) {
+  API = 'http://localhost:8888/orders'
+
+  constructor(private httpClient: HttpClient) {
+  }
+
+  findAll(): Observable<any> {
+    // @ts-ignore
+
+    return this.httpClient.get(this.API);
+  }
+
+  save(orderr: Orderr): Observable<any> {
+    return this.httpClient.post(this.API, orderr);
   }
 
   create(order: Order, idHouse: string | null, idCustomer: string | null): Observable<Order> {
-    return this.http.post<Order>(environment.apiUrl + "/orders"+`/${idHouse}`+`/${idCustomer}`,order)
+    return this.httpClient.post<Order>(this.API+`/${idHouse}`+`/${idCustomer}`,order)
   }
+
 }

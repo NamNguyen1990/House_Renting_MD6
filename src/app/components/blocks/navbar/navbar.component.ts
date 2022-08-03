@@ -7,7 +7,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-
+  img: any;
   isLogin = false;
   USERNAME = "";
   userId = "";
@@ -17,6 +17,7 @@ export class NavbarComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.img = localStorage.getItem('AVATAR');
     this.isLogin = localStorage.getItem('USERNAME') == null ? false : true;
     // @ts-ignore
     this.USERNAME = localStorage.getItem('USERNAME');

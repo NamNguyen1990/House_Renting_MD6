@@ -4,8 +4,12 @@ import {LoginComponent} from "./components/login/login.component";
 import {SignupComponent} from "./components/signup/signup.component";
 import {HomepageComponent} from "./components/homepage/homepage.component";
 import {HousedetailComponent} from "./components/housedetail/housedetail.component";
+import {OrderListComponent} from "./components/orders/order-list/order-list.component";
+import {OrderDetailComponent} from "./components/orders/order-detail/order-detail.component";
 import {MyhouseListComponent} from "./components/myhouse/myhouse-list/myhouse-list.component";
+import {UpdateProfileComponent} from "./components/update-profile/update-profile.component";
 import {MyhouseCreateComponent} from "./components/myhouse/myhouse-create/myhouse-create.component";
+import {OrderCreateComponent} from "./components/orders/order-create/order-create.component";
 
 
 
@@ -20,6 +24,10 @@ const routes: Routes = [
 
   },
   {
+    path: 'update-profile/:id',
+    component: UpdateProfileComponent
+  },
+  {
     path: '',
     component: HomepageComponent
   },
@@ -28,6 +36,17 @@ const routes: Routes = [
     component: HousedetailComponent
   },
   {
+    path: 'order/:idHome',
+    component: OrderCreateComponent
+  },
+  {
+    path:'orderlist',
+    component:OrderListComponent
+  },
+  {
+    path:'show-detail/:id',
+    component:OrderDetailComponent
+  },{
     path: 'myhouse', children: [
       {path: 'list', component: MyhouseListComponent},
       {path: 'create', component: MyhouseCreateComponent},

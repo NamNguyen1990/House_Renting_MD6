@@ -1,1 +1,34 @@
-<p>order-list works!</p>
+<div class="col-12">
+
+  <h1 class="text-center">Danh sách hóa đơn</h1>
+
+
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Total</th>
+      <th scope="col">End_Time</th>
+      <th scope="col">Start_Time</th>
+      <th scope="col">Customer of Name</th>
+      <th scope="col">House Of Address</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let o of oderrs; index as i">
+      <td>{{i + 1}}</td>
+      <td>{{o.total}}</td>
+      <td>{{o.endTime}}</td>
+      <td>{{o.startTime}}</td>
+      <td>{{o.customer.username}}</td>
+      <td>{{o.house.address}}</td>
+      <td><button routerLink="/show-detail/{{o.id}}">Detail</button></td>
+      <td><a [routerLink]="['delete',o.id]">Delete</a></td>
+      <td><a [routerLink]="['delete',o.id]">Edit</a></td>
+
+    </tr>
+
+    </tbody>
+  </table>
+
+</div>
