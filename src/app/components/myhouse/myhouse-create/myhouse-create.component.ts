@@ -5,6 +5,8 @@ import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute} from "@angular/router";
 import {HouseService} from "../../../services/house.service";
 import {CategoryService} from "../../../services/category.service";
+import {finalize, Observable} from "rxjs";
+import {AngularFireStorage} from "@angular/fire/compat/storage";
 
 
 @Component({
@@ -23,7 +25,8 @@ export class MyhouseCreateComponent implements OnInit {
     price: new FormControl(''),
     categoryId: new FormControl(''),
     ownerId: new FormControl(''),
-    status: new FormControl('1')
+    status: new FormControl('1'),
+    avatarHouse: new FormControl('')
 
   })
 
@@ -47,7 +50,8 @@ export class MyhouseCreateComponent implements OnInit {
   constructor(private httpClient: HttpClient,
               private activatedRoute: ActivatedRoute,
               private houseService: HouseService,
-              private categoryService: CategoryService) { }
+              private categoryService: CategoryService,
+              private storage: AngularFireStorage) { }
 
   ngOnInit(): void {
     this.categoryService.findAll().subscribe((data) => {
@@ -77,22 +81,10 @@ export class MyhouseCreateComponent implements OnInit {
       owner: {
         id: localStorage.getItem("ID")
       },
+      avatarHouse: this.fb
 
-      //     owner: {
-      //       id: localStorage.getItem("ID")
-      //     },
-      //   }
-      //
-      //   this.houseService.save(this.obj).subscribe((data) => {
-      //     console.log(data)
-      //     alert('Thành công')
-      //     // this.router.navigate(['/product/list'])
-      //   }, error => {
-      //     alert('Lỗi')
-      //   })
-      //
-      //
     }
+    console.log(this.obj)
     this.houseService.save(this.obj).subscribe(()=>{
       alert('Thanh cong')
     }, error => {
@@ -100,4 +92,47 @@ export class MyhouseCreateComponent implements OnInit {
     })
 
   }
+
+
+
+  // up load filebase
+  title = "cloudsSorage";
+  selectedFile: any;
+  fb: any;
+  downloadURL: any;
+
+  onFileSelected(event: any) {
+    var n = Date.now();
+    const file = event.target.files[0];
+    const filePath = `RoomsImages/${n}`;
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(`RoomsImages/${n}`, file);
+    task
+      .snapshotChanges()
+      .pipe(
+        finalize(() => {
+          this.downloadURL = fileRef.getDownloadURL();
+          this.downloadURL.subscribe((url: any) => {
+            if (url) {
+              this.fb = url;
+            }
+            console.log(this.fb);
+          });
+        })
+      )
+      .subscribe(url => {
+        if (url) {
+          console.log(url);
+        }
+      });
+  }
+
+
+
+
+
+
+
+
+
 }

@@ -33,7 +33,7 @@
 <table class="table table-striped table-dark">
   <thead>
   <tr>
-    <th scope="col">No.</th>
+<!--    <th scope="col">No.</th>-->
     <th scope="col">Name</th>
     <th scope="col">Address</th>
     <th scope="col">Bedroom</th>
@@ -45,7 +45,7 @@
   </thead>
   <tbody>
   <tr>
-    <th scope="row">{{house.id}}</th>
+<!--    <th scope="row">{{house.id}}</th>-->
     <td>{{house.name}}</td>
     <td>{{house.address}}</td>
     <td>{{house.bedroom}}</td>
@@ -53,6 +53,9 @@
     <td>{{house.description}}</td>
     <td>{{house.price}}</td>
     <td>{{house.category.name}}</td>
+  </tr>
+  <tr>
+    <img src="{{house.avatarHouse}}">
   </tr>
 
   </tbody>

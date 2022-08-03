@@ -16,6 +16,9 @@ import { MyhouseCreateComponent } from './components/myhouse/myhouse-create/myho
 import { MyhouseEditComponent } from './components/myhouse/myhouse-edit/myhouse-edit.component';
 import { OrderCreateComponent } from './components/orders/order-create/order-create.component';
 import {GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule} from "@abacritt/angularx-social-login";
+import {AngularFireStorageModule} from "@angular/fire/compat/storage";
+import {AngularFireModule} from "@angular/fire/compat";
+import {environment} from "../environments/environment";
 
 @NgModule({
   declarations: [
@@ -40,8 +43,9 @@ import {GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule} from "@
     ReactiveFormsModule,
     NgToastModule,
     SocialLoginModule,
-
-    NgToastModule
+    NgToastModule,
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig, "cloud")
   ],
   providers: [
     {

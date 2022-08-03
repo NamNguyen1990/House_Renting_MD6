@@ -29,6 +29,13 @@ export class HousedetailComponent implements OnInit {
     })
   }
 
+  // images: any[] = [];
+  // getImages(id: number) {
+  //   this.imageService.showFullImage(id).subscribe((images) => {
+  //     this.images = images;
+  //   })
+  // }
+
 
 
 
