@@ -41,8 +41,9 @@ import {OrderListComponent} from "./components/orders/order-list/order-list.comp
     FormsModule,
     ReactiveFormsModule,
     NgToastModule,
-    SocialLoginModule
+    SocialLoginModule,
 
+    NgToastModule
   ],
   providers: [
     {

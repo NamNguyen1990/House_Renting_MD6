@@ -11,6 +11,5 @@ export interface House {
   price: string,
   status: string,
   category: Category,
-  user: User
-
+  user: User,
 }
