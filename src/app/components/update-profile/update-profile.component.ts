@@ -5,6 +5,7 @@ import {UserService} from "../../services/user.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {finalize} from "rxjs";
+import {NgToastModule, NgToastService} from "ng-angular-popup";
 
 @Component({
   selector: 'app-update-profile',
@@ -20,13 +21,15 @@ export class UpdateProfileComponent implements OnInit {
     fullName : new FormControl(),
     avatar : new FormControl(),
   })
+
    id = localStorage.getItem('ID');
   user : User | any;
 
   constructor(private userService : UserService,
               private router : Router,
               private activatedRoute : ActivatedRoute,
-              private storage: AngularFireStorage) { }
+              private storage: AngularFireStorage,
+              private toast: NgToastService) { }
 
   getUser(){
     this.userService.getUserProfile(this.id).subscribe((data) =>{
@@ -35,7 +38,6 @@ export class UpdateProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    localStorage.getItem('')
     this.id = localStorage.getItem('ID')
     this.userService.getUserProfile(this.id).subscribe(data => {
         this.editForm.patchValue({
@@ -46,6 +48,7 @@ export class UpdateProfileComponent implements OnInit {
           avatar : data.avatar,
         })
         console.log(data)
+      console.log(data.fullName)
       },
       error => {
         console.log(error);
@@ -68,7 +71,7 @@ export class UpdateProfileComponent implements OnInit {
       console.log('id',this.id)
       localStorage.setItem('AVATAR',this.user.avatar)
       this.router.navigate(["/"])
-      alert("Đã sửa xong!!")
+      this.toast.success({detail: "Notification", summary: "Successfully changed information", duration :3000})
     }, error => {
       console.log(error)
     })
@@ -88,11 +91,13 @@ export class UpdateProfileComponent implements OnInit {
       .snapshotChanges()
       .pipe(
         finalize(() => {
+          this.toast.success({detail: "Notification", summary: "Please wait a moment", duration :2000})
+
           this.downloadURL = fileRef.getDownloadURL();
           this.downloadURL.subscribe((url:any) => {
             if (url) {
               this.fb = url;
-              alert("upload successful!")
+
             }
             console.log(this.fb);
           });

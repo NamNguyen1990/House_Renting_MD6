@@ -22,6 +22,7 @@ import { OrderDetailComponent } from './components/orders/order-detail/order-det
 import {GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule} from "@abacritt/angularx-social-login";
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {AngularFireModule} from "@angular/fire/compat";
+import { UpdatePasswordComponent } from './components/update-password/update-password.component';
 import {FotterComponent} from "./components/blocks/fotter/fotter.component";
 
 @NgModule({
@@ -41,6 +42,7 @@ import {FotterComponent} from "./components/blocks/fotter/fotter.component";
         MyhouseEditComponent,
         UpdateProfileComponent,
         FotterComponent,
+      UpdatePasswordComponent,
     ],
   imports: [
     BrowserModule,
