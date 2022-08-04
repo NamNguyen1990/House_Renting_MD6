@@ -11,6 +11,7 @@ import {ActivatedRoute, ParamMap} from "@angular/router";
 export class OrderCreateComponent implements OnInit {
   orderForm!: FormGroup
   idHome!: string | null
+  status!: string | null
     constructor
 (
   private fb: FormBuilder
