@@ -23,8 +23,9 @@ export class UserService {
     return this.http.post<User>(API_URL + '/login', user);
   }
 
-  updatePassword(user: User, id: any): Observable<User> {
-    return this.http.put<User>(API_URL + `users/change-password/${id}`, user);
+  updatePassword(id: any ,user: User): Observable<User> {
+    console.log(user)
+    return this.http.put<User>(API_URL + `/users/update-password/${id}`, user);
   }
 
   userDetail(id: string): Observable<User> {

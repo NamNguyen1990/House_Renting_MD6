@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {UserService} from "../../services/user.service";
 import {FormControl, FormGroup} from "@angular/forms";
 import firebase from "firebase/compat";
-import User = firebase.User;
 import {Router} from "@angular/router";
 import {AuthenticationService} from "../../services/authentication.service";
 
@@ -12,11 +11,12 @@ import {AuthenticationService} from "../../services/authentication.service";
   styleUrls: ['./update-password.component.css']
 })
 export class UpdatePasswordComponent implements OnInit {
+
   id: any = localStorage.getItem('ID')
-  user: User | any
+
   editForm: FormGroup = new FormGroup({
     oldPassword : new FormControl(),
-    newPassword : new FormControl(),
+    password : new FormControl(),
     confirmPassword : new FormControl(),
   })
   constructor(private userService: UserService,
@@ -26,31 +26,25 @@ export class UpdatePasswordComponent implements OnInit {
   ngOnInit(): void {
 
   }
-  getUser(){
-    this.user = {
-      password: this.editForm.value.password,
-      confirmPassword: this.editForm.value.confirmPassword,
-    }
-  }
 
-
-  editPass() {
-    if (this.editForm.value.oldPassword==localStorage.getItem('PASSWORD')){
-      console.log(localStorage.getItem('PASSWORD'))
-      if ((this.editForm.value.oldPassword !== this.editForm.value.newPassword) &&(this.editForm.value.newPassword === this.editForm.value.confirmPassword )){
-        console.log(this.editForm.value.newPassword)
-        this.userService.updatePassword(this.id, this.user).subscribe(() => {
-          alert('Đổi mật khẩu thành công');
+  editPassword(){
+    if (this.editForm.value.oldPassword == localStorage.getItem('PASSWORD')){
+      if((this.editForm.value.oldPassword!==this.editForm.value.password) && (this.editForm.value.password=== this.editForm.value.confirmPassword)) {
+        console.log(this.editForm.value)
+        this.userService.updatePassword(this.id, this.editForm.value).subscribe(() => {
+          alert('Successful!');
+          localStorage.setItem('PASSWORD', this.editForm.value.password);
           this.editForm.reset();
+          this.router.navigateByUrl('/');
         }, err => {
           console.log(err)
         });
       }else {
-        alert('Lỗi trong')
+        alert('Error 2')
       }
     }else {
-      alert('Error ngoài')
+      alert('Error1')
     }
-
   }
+
 }
