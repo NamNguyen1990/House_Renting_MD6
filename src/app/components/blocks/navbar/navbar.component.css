@@ -8,3 +8,25 @@
 .open {
   display: none !important;
 }
+
+#header {
+  display: flex;
+  align-items: center;
+}
+
+.login {
+  font-family: 'Roboto Slab', serif;
+  color: #00CED1;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 400;
+  padding: 0 10px;
+  line-height: 60px;
+  letter-spacing: .5px;
+  display: block;
+  transition: color .25s ease, background-color .25s ease;
+  cursor: pointer;
+}
+.login:hover {
+  color: #fff;
+}

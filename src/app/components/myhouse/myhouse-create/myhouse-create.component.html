@@ -37,9 +37,9 @@
               </div>
             </div>
             <div class="form-row">
-              <div class="control-group col-sm-6">
-                <label>Type</label>
-                <select type="text" formControlName="categoryId" style="margin-left: 10px; border-radius: 20px">
+              <div class="control-group col-sm-6" style="margin-top: 34px">
+                <label style="margin-top: -2px">Type</label>
+                <select type="text" formControlName="categoryId" style="margin-left: 10px; border-radius: 20px; padding: 5px 20px">
                   <option *ngFor="let category of listCategory" [value]="category.id">{{category.name}}</option>
                 </select>
                 <p class="help-block text-danger"></p>
@@ -51,11 +51,11 @@
                        data-validation-required-message="Please enter price" formControlName="price">
                 <p class="help-block text-danger"></p>
               </div>
-              <div class="control-group col-sm-6">
+              <div class="control-group col-sm-6" style="margin-top: 30px">
                 <label>Description</label>
                 <textarea  class="form-control datetimepicker-input" id="date-1"
                        placeholder="Enter description" required="required"
-                       data-validation-required-message="Please enter description" formControlName="description"></textarea>
+                       data-validation-required-message="Please enter description" formControlName="description" style="height: 100px"></textarea>
                 <p class="help-block text-danger"></p>
               </div>
             </div>
@@ -63,9 +63,8 @@
             </div>
             <div class="button">
               <button type="submit">Create</button>
-              <button [routerLink]="['/myhouse/list']" style="width: 110px; margin-left: 88%">Back</button>
+              <button class="button-back" [routerLink]="['/myhouse/list']" >Back</button>
             </div>
-
           </form>
         </div>
       </div>

@@ -13,14 +13,14 @@ import {ResponseBody} from "../../models/response-body";
 })
 export class SignupComponent implements OnInit {
 
-  status: ResponseBody = {code: '0000', message: 'Hãy điền đầy đủ thông tin vào biểu mẫu'};
+  status: ResponseBody = {code: '#fff' , message: 'Please fill out the form completely', toast: 'error'};
   registerForm: FormGroup = new FormGroup({
-    username: new FormControl('khoaitay', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
-    password: new FormControl('123456', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
-    confirmPassword: new FormControl('123456', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
+    username: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
+    password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
+    confirmPassword: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
     // name: new FormControl('', [Validators.required, Validators.minLength(2)]),
     // email: new FormControl('', [Validators.required, Validators.email]),
-    phone: new FormControl('0346543215', [Validators.required, Validators.minLength(10), Validators.maxLength(10)])
+    phone: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10)])
   });
 
   constructor(private userService: UserService,

@@ -1,0 +1,8 @@
+.button-back{
+  display: flex;
+  width: 100px;
+  margin-left: 88%;
+  margin-top: -44px;
+  justify-content: flex-end
+}
+
