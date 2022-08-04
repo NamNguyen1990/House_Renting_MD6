@@ -1,5 +1,4 @@
-<p>myhouse-create works!</p>
-
+<body>
 <div id="booking">
   <div class="container">
     <div class="section-header">
@@ -27,20 +26,23 @@
             <div class="form-row">
               <div class="control-group col-sm-6">
                 <label>Bedroom</label>
-                <input type="text" class="form-control" placeholder="Number of bedrooms" required="required" data-validation-required-message="Please enter number of bedrooms" formControlName="bedroom">
+                <input type="text" class="form-control" placeholder="Number of bedrooms" required="required"
+                       data-validation-required-message="Please enter number of bedrooms" formControlName="bedroom">
                 <p class="help-block text-danger"></p>
               </div>
               <div class="control-group col-sm-6">
                 <label>Bathroom</label>
                 <input type="text" class="form-control" placeholder="Number of bathroom"
-                       required="required" data-validation-required-message="Please enter number of bathroom" formControlName="bathroom">
+                       required="required" data-validation-required-message="Please enter number of bathroom"
+                       formControlName="bathroom">
                 <p class="help-block text-danger"></p>
               </div>
             </div>
             <div class="form-row">
               <div class="control-group col-sm-6" style="margin-top: 34px">
                 <label style="margin-top: -2px">Type</label>
-                <select type="text" formControlName="categoryId" style="margin-left: 10px; border-radius: 20px; padding: 5px 20px">
+                <select type="text" formControlName="categoryId"
+                        style="margin-left: 10px; border-radius: 20px; padding: 5px 20px">
                   <option *ngFor="let category of listCategory" [value]="category.id">{{category.name}}</option>
                 </select>
                 <p class="help-block text-danger"></p>
@@ -48,40 +50,31 @@
 
               <div class="control-group col-sm-6">
                 <label>Price</label>
-                <input type="text" class="form-control datetimepicker-input" id="date-2" placeholder="Enter price" required="required"
+                <input type="text" class="form-control datetimepicker-input" id="date-2" placeholder="Enter price"
+                       required="required"
                        data-validation-required-message="Please enter price" formControlName="price">
                 <p class="help-block text-danger"></p>
               </div>
-              <div class="control-group col-sm-6" style="margin-top: 30px">
+              <div class="control-group col-sm-6" style="margin-top: 30px;margin-left: 486px">
                 <label>Description</label>
-                <textarea  class="form-control datetimepicker-input" id="date-1"
-                       placeholder="Enter description" required="required"
-                       data-validation-required-message="Please enter description" formControlName="description" style="height: 100px"></textarea>
+                <textarea class="form-control datetimepicker-input" id="date-1"
+                          placeholder="Enter description" required="required"
+                          data-validation-required-message="Please enter description" formControlName="description"
+                          style="height: 200px"></textarea>
                 <p class="help-block text-danger"></p>
 
               </div>
-              <div>
-                <input type="file"
-                       id="file"
-                       #userPhoto
-                       (change)="onFileSelected($event)"
-                       name="image"
-                       autocomplete="off"
-                />
-                <img src="{{fb}}" style="width: 100%">
+              <div class="control-group col-sm-6" style="margin-top: -242px">
+                <input type="file" id="file" #userPhoto (change)="onFileSelected($event)" name="image"
+                       autocomplete="off"/>
+                <img src="{{fb}}" style="width: 200px;height: 200px">
               </div>
-<!--              <div class="control-group col-sm-6">-->
-<!--                <label>Image</label>-->
-<!--                <input type="file" class="form-control datetimepicker-input" id="" required="required"-->
-<!--                        formControlName="price">-->
-<!--                <p class="help-block text-danger"></p>-->
-<!--              </div>-->
             </div>
             <div class="form-row">
             </div>
             <div class="button">
               <button type="submit">Create</button>
-              <button class="button-back" [routerLink]="['/myhouse/list']" >Back</button>
+              <button class="button-back" [routerLink]="['/myhouse/list']">Back</button>
             </div>
           </form>
         </div>
@@ -89,3 +82,4 @@
     </div>
   </div>
 </div>
+</body>
