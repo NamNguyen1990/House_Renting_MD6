@@ -1,5 +1,4 @@
-<p>myhouse-create works!</p>
-
+<body>
 <div id="booking">
   <div class="container">
     <div class="section-header">
@@ -56,32 +55,20 @@
                        data-validation-required-message="Please enter price" formControlName="price">
                 <p class="help-block text-danger"></p>
               </div>
-              <div class="control-group col-sm-6" style="margin-top: 30px">
+              <div class="control-group col-sm-6" style="margin-top: 30px;margin-left: 486px">
                 <label>Description</label>
                 <textarea class="form-control datetimepicker-input" id="date-1"
                           placeholder="Enter description" required="required"
                           data-validation-required-message="Please enter description" formControlName="description"
-                          style="height: 100px"></textarea>
+                          style="height: 200px"></textarea>
                 <p class="help-block text-danger"></p>
 
               </div>
-              <div>
-                <label>Avatar House</label>
-                <input type="file"
-                       id="file"
-                       #userPhoto
-                       (change)="onFileSelected($event)"
-                       name="image"
-                       autocomplete="off"
-                />
-                <img src="{{fb}}" style="width: 100%">
+              <div class="control-group col-sm-6" style="margin-top: -242px">
+                <input type="file" id="file" #userPhoto (change)="onFileSelected($event)" name="image"
+                       autocomplete="off"/>
+                <img src="{{fb}}" style="width: 200px;height: 200px">
               </div>
-              <!--              <div class="control-group col-sm-6">-->
-              <!--                <label>Image</label>-->
-              <!--                <input type="file" class="form-control datetimepicker-input" id="" required="required"-->
-              <!--                        formControlName="price">-->
-              <!--                <p class="help-block text-danger"></p>-->
-              <!--              </div>-->
             </div>
             <div class="form-row">
             </div>
@@ -95,3 +82,4 @@
     </div>
   </div>
 </div>
+</body>
