@@ -12,4 +12,5 @@ export interface House {
   status: string,
   category: Category,
   user: User,
+  avatarHouse: string
 }

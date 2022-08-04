@@ -1,3 +1,4 @@
+<p>myhouse-create works!</p>
 
 <div id="booking">
   <div class="container">
@@ -57,6 +58,17 @@
                        placeholder="Enter description" required="required"
                        data-validation-required-message="Please enter description" formControlName="description"></textarea>
                 <p class="help-block text-danger"></p>
+
+              </div>
+              <div>
+                <input type="file"
+                       id="file"
+                       #userPhoto
+                       (change)="onFileSelected($event)"
+                       name="image"
+                       autocomplete="off"
+                />
+                <img src="{{fb}}" style="width: 100%">
               </div>
             </div>
             <div class="form-row">

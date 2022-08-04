@@ -20,6 +20,19 @@ import {environment} from "../environments/environment";
 import {OrderListComponent} from "./components/orders/order-list/order-list.component";
 import { OrderDetailComponent } from './components/orders/order-detail/order-detail.component';
 import {GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule} from "@abacritt/angularx-social-login";
+import { MyhouseDetailComponent } from './components/myhouse/myhouse-detail/myhouse-detail.component';
+import {MatCardModule} from "@angular/material/card";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatIconModule} from "@angular/material/icon";
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {MatProgressBarModule} from "@angular/material/progress-bar";
+import {NgxPaginationModule} from "ngx-pagination";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatButtonModule} from "@angular/material/button";
+import {MatInputModule} from "@angular/material/input";
+import {MatRadioModule} from "@angular/material/radio";
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {AngularFireModule} from "@angular/fire/compat";
 import { UpdatePasswordComponent } from './components/update-password/update-password.component';
@@ -42,9 +55,22 @@ import {FotterComponent} from "./components/blocks/fotter/fotter.component";
         MyhouseEditComponent,
         UpdateProfileComponent,
         FotterComponent,
+      MyhouseDetailComponent,
       UpdatePasswordComponent,
     ],
   imports: [
+    MatInputModule,
+    MatCardModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatRadioModule,
+    MatCheckboxModule,
+    MatSlideToggleModule,
+    MatButtonModule,
+    MatProgressSpinnerModule,
+    MatProgressBarModule,
+    MatPaginatorModule,
+    NgxPaginationModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
@@ -53,10 +79,7 @@ import {FotterComponent} from "./components/blocks/fotter/fotter.component";
     NgToastModule,
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
-    NgToastModule,
     SocialLoginModule,
-
-    NgToastModule
   ],
   providers: [
     {
