@@ -282,7 +282,7 @@
 
     <div class="row">
 
-      <div class="col-md-12 room" *ngFor="let item of homes; even as isEven">
+      <div class="col-md-12 room" *ngFor="let item of homes| paginate: { itemsPerPage: 2, currentPage: p, totalItems: total } ; even as isEven">
         <div class="row" *ngIf="isEven">
           <div class="col-md-6">
             <div class="room-img">
@@ -317,6 +317,7 @@
               </div>
             </div>
           </div>
+
         </div>
         <div class="row" *ngIf="!isEven">
           <div class="col-md-6">
@@ -352,11 +353,9 @@
               <img src="{{item.avatarHouse}}">
             </div>
           </div>
-
         </div>
       </div>
-
-
+      <pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls>
     </div>
   </div>
 </div>

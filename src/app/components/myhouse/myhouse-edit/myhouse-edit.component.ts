@@ -72,6 +72,7 @@ export class MyhouseEditComponent implements OnInit {
         status: new FormControl(data.status),
         avatarHouse: new FormControl(data.avatarHouse)
       })
+      this.fb = data.avatarHouse
     });
   }
 
