@@ -25,6 +25,16 @@
                 <label>Full Name</label>
                 <input type="text" class="form-control" formControlName="name" id="name" name="name" placeholder="name.." required="required"
                        data-validation-required-message="Please enter first name"/>
+                <div *ngIf="name?.invalid && (name?.dirty || name?.touched)"
+                     class="" style="color: red">
+
+                  <div *ngIf="name?.errors?.['required']">
+                    Name cannot be left blank!
+                  </div>
+                  <div *ngIf="name?.errors?.['maxlength']">
+                    Username must have maximum 30 characters!
+                  </div>
+                </div>
                 <p class="help-block text-danger"></p>
               </div>
             </div>
@@ -33,12 +43,36 @@
                 <label>Mobile</label>
                 <input type="text" class="form-control" formControlName="phone" id="phone" name="phone"  placeholder="phone.."
                        required="required" data-validation-required-message="Please enter your mobile number"/>
+                <div *ngIf="phone?.invalid && (phone?.dirty || phone?.touched)"
+                     class="" style="color: red">
+
+                  <div *ngIf="phone?.errors?.['required']">
+                    Phone cannot be left blank!
+                  </div>
+                  <div *ngIf="phone?.errors?.['maxlength']">
+                    Phone number must have 10 characters!
+                  </div>
+                  <div *ngIf="phone?.errors?.['minlength']">
+                    Phone number must have 10 characters!
+                  </div>
+                </div>
                 <p class="help-block text-danger"></p>
               </div>
               <div class="control-group col-sm-6">
                 <label>Email</label>
                 <input type="text" class="form-control" formControlName="email" id="email" name="email" placeholder="email@example.com"
                        required="required" data-validation-required-message="Please enter your email"/>
+                <div *ngIf="email?.invalid && (email?.dirty || email?.touched)"
+                     class="" style="color: red">
+
+                  <div *ngIf="email?.errors?.['required']">
+                    Email cannot be left blank!
+                  </div>
+                  <div *ngIf="email?.errors?.['email']">
+                    Email invalidate!
+                  </div>
+
+                </div>
                 <p class="help-block text-danger"></p>
               </div>
             </div>
@@ -75,6 +109,13 @@
                   <option value="9">9</option>
                   <option value="10">10</option>
                 </select>
+                <div *ngIf="adult?.invalid && (adult?.dirty || adult?.touched)"
+                     class="" style="color: red">
+
+                  <div *ngIf="adult?.errors?.['required']">
+                    Adult cannot be left blank!
+                  </div>
+                </div>
                 <p class="help-block text-danger"></p>
               </div>
               <div class="control-group col-sm-6">
@@ -93,6 +134,13 @@
                   <option value="9">9</option>
                   <option value="10">10</option>
                 </select>
+                <div *ngIf="kis?.invalid && (kis?.dirty || kis?.touched)"
+                     class="" style="color: red">
+
+                  <div *ngIf="kis?.errors?.['required']">
+                    Kis cannot be left blank!
+                  </div>
+                </div>
                 <p class="help-block text-danger"></p>
               </div>
             </div>
@@ -100,6 +148,13 @@
               <label>Special Request</label>
               <input type="text" class="form-control" formControlName="request" id="request" name="request" placeholder="Special Request"
                      required="required" data-validation-required-message="Please enter your special request"/>
+              <div *ngIf="request?.invalid && (request?.dirty || request?.touched)"
+                   class="" style="color: red">
+
+                <div *ngIf="request?.errors?.['maxlength']">
+                  Request number must have 1000 characters!
+                </div>
+              </div>
               <p class="help-block text-danger"></p>
             </div>
             <div class="button">

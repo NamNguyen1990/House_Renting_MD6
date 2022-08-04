@@ -47,7 +47,6 @@ import {FotterComponent} from "./components/blocks/fotter/fotter.component";
         HousedetailComponent,
         NavbarComponent,
         OrderCreateComponent,
-        NavbarComponent,
         OrderListComponent,
         OrderDetailComponent,
         MyhouseListComponent,
