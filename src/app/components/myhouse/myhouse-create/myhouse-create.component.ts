@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {Category} from "../../../models/category";
 import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute} from "@angular/router";
 import {HouseService} from "../../../services/house.service";
 import {CategoryService} from "../../../services/category.service";
+import {NgToastService} from "ng-angular-popup";
 
 
 @Component({
@@ -26,39 +27,22 @@ export class MyhouseCreateComponent implements OnInit {
     status: new FormControl('1')
 
   })
-
-  // houseForm: FormGroup = new FormGroup({
-  //   name: new FormControl(),
-  //   categoryId: new FormControl(),
-  //   address: new FormControl(),
-  //   bedroom: new FormControl(),
-  //   bathroom: new FormControl(),
-  //   description: new FormControl(),
-  //   price: new FormControl(),
-  //   ownerId: new FormControl()
-  // });
-
-  // list: any;
-  //
   obj: any;
-  //
-  listCategory:Category[] = [];
+
+  listCategory: Category[] = [];
 
   constructor(private httpClient: HttpClient,
               private activatedRoute: ActivatedRoute,
               private houseService: HouseService,
-              private categoryService: CategoryService) { }
+              private categoryService: CategoryService,
+              private toast: NgToastService) {
+  }
 
   ngOnInit(): void {
     this.categoryService.findAll().subscribe((data) => {
       console.log(data)
       this.listCategory = data;
     })
-    // this.houseService.findAll().subscribe((data) => {
-    //   console.log(data)
-    //   this.list = data;
-    // }, error => {
-    // })
   }
 
   submit() {
@@ -77,27 +61,11 @@ export class MyhouseCreateComponent implements OnInit {
       owner: {
         id: localStorage.getItem("ID")
       },
-
-      //     owner: {
-      //       id: localStorage.getItem("ID")
-      //     },
-      //   }
-      //
-      //   this.houseService.save(this.obj).subscribe((data) => {
-      //     console.log(data)
-      //     alert('Thành công')
-      //     // this.router.navigate(['/product/list'])
-      //   }, error => {
-      //     alert('Lỗi')
-      //   })
-      //
-      //
     }
-    this.houseService.save(this.obj).subscribe(()=>{
-      alert('Thanh cong')
+    this.houseService.save(this.obj).subscribe(() => {
+      this.toast.success({detail: "Notification", summary: "More successful houses", duration: 3000});
     }, error => {
-      alert('loi');
+      this.toast.error({detail: "Notification", summary: "More failed houses", duration: 3000});
     })
-
   }
 }

@@ -22,23 +22,26 @@ import { OrderDetailComponent } from './components/orders/order-detail/order-det
 import {GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule} from "@abacritt/angularx-social-login";
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {AngularFireModule} from "@angular/fire/compat";
+import {FotterComponent} from "./components/blocks/fotter/fotter.component";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    SignupComponent,
-    HomepageComponent,
-    HousedetailComponent,
-    NavbarComponent,
-    OrderCreateComponent,
-    OrderListComponent,
-    OrderDetailComponent,
-    MyhouseListComponent,
-    MyhouseCreateComponent,
-    MyhouseEditComponent,
-    UpdateProfileComponent,
-  ],
+    declarations: [
+        AppComponent,
+        LoginComponent,
+        SignupComponent,
+        HomepageComponent,
+        HousedetailComponent,
+        NavbarComponent,
+        OrderCreateComponent,
+        NavbarComponent,
+        OrderListComponent,
+        OrderDetailComponent,
+        MyhouseListComponent,
+        MyhouseCreateComponent,
+        MyhouseEditComponent,
+        UpdateProfileComponent,
+        FotterComponent,
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
