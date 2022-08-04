@@ -1,0 +1,38 @@
+<p>myhouse-detail works!</p>
+
+
+<h1>Infomation My House</h1>
+<table class="table table-striped table-dark">
+  <thead>
+  <tr>
+    <!--    <th scope="col">No.</th>-->
+    <th scope="col">Name</th>
+    <th scope="col">Address</th>
+    <th scope="col">Bedroom</th>
+    <th scope="col">Bathroom</th>
+    <th scope="col">Description</th>
+    <th scope="col">Price</th>
+    <th scope="col">Category</th>
+    <th scope="col">Chỉnh sửa</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <!--    <th scope="row">{{house.id}}</th>-->
+    <td>{{house.name}}</td>
+    <td>{{house.address}}</td>
+    <td>{{house.bedroom}}</td>
+    <td>{{house.bathroom}}</td>
+    <td>{{house.description}}</td>
+    <td>{{house.price}}</td>
+    <td>{{house.category.name}}</td>
+    <td><a [routerLink]="['/myhouse/edit',house.id]" style="color: white"> Edit</a></td>
+    <td><a> Delete</a></td>
+  </tr>
+  <tr>
+    <img src="{{house.avatarHouse}}">
+  </tr>
+
+  </tbody>
+</table>
+

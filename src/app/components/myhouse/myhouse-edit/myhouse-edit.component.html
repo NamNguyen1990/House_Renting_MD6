@@ -1,1 +1,64 @@
 <p>myhouse-edit works!</p>
+
+
+<h1>Sửa thông tin căn nhà:</h1>
+<form [formGroup]="houseForm" (ngSubmit)="update(id)">
+  <table>
+    <tr>
+      <td>Name House:</td>
+      <td><input type="text" formControlName="name"></td>
+    </tr>
+    <tr>
+      <td>Address House:</td>
+      <td><input type="text" formControlName="address"></td>
+    </tr>
+    <tr>
+      <td>	Bedroom House:</td>
+      <td><input type="number" formControlName="bedroom"></td>
+    </tr>
+    <tr>
+      <td>Bathroom House:</td>
+      <td><input type="number" formControlName="bathroom"></td>
+    </tr>
+    <tr>
+      <td>Description:</td>
+      <td><input type="text" formControlName="description"></td>
+    </tr>
+    <tr>
+      <td>Price House:</td>
+      <td><input type="number" formControlName="price"></td>
+    </tr>
+    <tr>
+      <td>Loại:</td>
+      <td>
+        <select type="text" formControlName="categoryId">
+          <option *ngFor="let category of listCategory" [value]="category.id">
+            {{category.name}}
+          </option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>Trạng Thái</td>
+      <td>
+        <select type="text" formControlName="status">
+          <option value="1">Trống</option>
+          <option value="2">Đã có người thuê</option>
+          <option value="3">Đang nâng cấp</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>Ảnh:</td>
+      <td>
+        <input type="file" name="avatarHouse" class="form-control" id="file" formControlName="avatarHouse" #userPhoto
+                       (change)="onFileSelected($event)" autocomplete="off"/>
+        <img src="{{fb}}" style="width: 100%">
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><button>Cập nhật</button></td>
+    </tr>
+  </table>
+</form>

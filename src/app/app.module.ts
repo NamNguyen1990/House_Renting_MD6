@@ -19,6 +19,7 @@ import {GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule} from "@
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {AngularFireModule} from "@angular/fire/compat";
 import {environment} from "../environments/environment";
+import { MyhouseDetailComponent } from './components/myhouse/myhouse-detail/myhouse-detail.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import {environment} from "../environments/environment";
     MyhouseCreateComponent,
     MyhouseEditComponent,
     NavbarComponent,
+    MyhouseDetailComponent,
   ],
   imports: [
     BrowserModule,

@@ -29,4 +29,8 @@ export class HouseService {
     return this.httpClient.get<House>(this.API + `/find-by-ownerId?owner_id=${owner_id}`)
   }
 
+  update(id: number, house: House): Observable<House> {
+    return this.httpClient.put<House>(`${this.API}` + `/${id}`, house);
+  }
+
 }
