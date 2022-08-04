@@ -19,6 +19,7 @@ import { UpdateProfileComponent } from './components/update-profile/update-profi
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {environment} from "../environments/environment";
 import {AngularFireModule} from "@angular/fire/compat";
+import { UpdatePasswordComponent } from './components/update-password/update-password.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import {AngularFireModule} from "@angular/fire/compat";
     MyhouseCreateComponent,
     MyhouseEditComponent,
     UpdateProfileComponent,
+    UpdatePasswordComponent,
 
   ],
   imports: [

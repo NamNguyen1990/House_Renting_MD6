@@ -20,6 +20,7 @@ export class UpdateProfileComponent implements OnInit {
     fullName : new FormControl(),
     avatar : new FormControl(),
   })
+
    id = localStorage.getItem('ID');
   user : User | any;
 
@@ -35,7 +36,6 @@ export class UpdateProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    localStorage.getItem('')
     this.id = localStorage.getItem('ID')
     this.userService.getUserProfile(this.id).subscribe(data => {
         this.editForm.patchValue({
@@ -46,6 +46,7 @@ export class UpdateProfileComponent implements OnInit {
           avatar : data.avatar,
         })
         console.log(data)
+      console.log(data.fullName)
       },
       error => {
         console.log(error);
