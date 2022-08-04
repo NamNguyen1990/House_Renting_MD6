@@ -44,16 +44,34 @@
 <!--  <div class="phone"><img src="{{img}}" style="width: 40px; height: 40px; border-radius: 50%" alt=""><i class="fa fa" [routerLink]="['/update-profile',userId]">{{USERNAME}}</i>-->
 <!--  </div>-->
   <div class="mobile-menu-btn"><i class="fa fa-bars"></i></div>
-  <nav class="main-menu top-menu">
+  <nav class="main-menu top-menu" style="background-color: #545454">
     <ul>
       <li><a routerLink="/">Home</a></li>
 
-      <li><a [routerLink]="['/myhouse/list']" >Apartment</a></li>
+      <li>
+        <a  class="btn dropdown-toggle" data-toggle="dropdown" type="" data-bs-toggle="dropdown"
+           aria-expanded="false">Apartment</a>
+        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2" >
+          <li>
+            <a class="btn btn-transparent text-uppercase font-size-3 heading-default-color focus-reset" [routerLink]="['/myhouse/list']">
+              My Apartment
+            </a>
+          </li>
+          <li>
+            <a class="btn btn-transparent text-uppercase font-size-3 heading-default-color focus-reset" [routerLink]="['/myhouse/create']">
+              Create House
+            </a>
+          </li>
+          <li>
+            <a class="btn btn-transparent text-uppercase font-size-3 heading-default-color focus-reset" routerLink="/orderlist">
+              History
+            </a>
+          </li>
+        </ul>
+      </li>
 
-
-
-      <li><a [routerLink]="['/myhouse/create']">Create House</a></li>
-      <li><a href=""> Booking</a></li>
+<!--      <li><a [routerLink]="['/myhouse/create']">Create House</a></li>-->
+<!--      <li><a routerLink="/orderlist">Booking</a></li>-->
       <li><a href="">Contact Us</a></li>
     </ul>
   </nav>
