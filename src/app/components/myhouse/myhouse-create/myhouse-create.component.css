@@ -1,0 +1,8 @@
+.button {
+  display: flex;
+  justify-content: space-between;
+}
+.button-back{
+  width: 100px;
+  height: 50px;
+}

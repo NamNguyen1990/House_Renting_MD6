@@ -1,8 +1,5 @@
 <div class="col-12">
-
   <h1 class="text-center">Order List</h1>
-
-
   <table class="table table-striped">
     <thead>
     <tr>
@@ -25,10 +22,7 @@
       <td><button routerLink="/show-detail/{{o.id}}">Detail</button></td>
       <td><button (click)="deleteOrder(o.id)">Delete</button></td>
       <td><a [routerLink]="['delete',o.id]">Edit</a></td>
-
     </tr>
-
     </tbody>
   </table>
-
 </div>

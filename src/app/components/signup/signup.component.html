@@ -8,47 +8,50 @@
   <div class="container">
     <div class="section-header">
       <h2>Register</h2>
-<!--      <p>-->
-<!--        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in mi libero. Quisque convallis, enim at venenatis tincidunt.-->
-<!--      </p>-->
+      <!--      <p>-->
+      <!--        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in mi libero. Quisque convallis, enim at venenatis tincidunt.-->
+      <!--      </p>-->
     </div>
     <div class="row">
       <div class="col-md-6">
         <div class="login-form" style="width: 78%;margin-left: 65%">
           <form [formGroup]="registerForm" (ngSubmit)="register()">
-            <div class="alert " [ngClass]="status.code === '0000' ? 'alert-info' : 'alert-danger'" *ngIf="status.code">{{status.message}}</div>
+            <div class="alert " [ngClass]="status.code === '0000' ? 'alert-info' : 'alert-danger'"
+                 *ngIf="status.code">{{status.message}}</div>
             <div class="form-row">
               <div class="control-group col-sm-12">
                 <label>UserName</label>
-                <input type="text" class="form-control" required="required" placeholder="UserName" formControlName="username">
+                <input type="text" class="form-control" required="required" placeholder="UserName"
+                       formControlName="username">
                 <div *ngIf="username?.invalid && (username?.dirty || username?.touched)"
                      class="" style="color: red">
 
                   <div *ngIf="username?.errors?.['required']">
-                    tên đăng nhập không được bỏ trống!
+                    Username cannot be left blank!
                   </div>
                   <div *ngIf="username?.errors?.['minlength']">
-                    tên đăng nhập có ít nhất 6 kí từ nhiều nhất 12 kí tự!
+                    Username must have at least 6 characters, maximum 12 characters!
                   </div>
                   <div *ngIf="username?.errors?.['maxlength']">
-                    tên đăng nhập có ít nhất 6 kí từ nhiều nhất 12 kí tự!
+                    Username must have at least 6 characters, maximum 12 characters!
                   </div>
                 </div>
               </div>
               <div class="control-group col-sm-12">
                 <label>Phone Number</label>
-                <input type="text" class="form-control" required="required" placeholder="Your Phone" formControlName="phone">
+                <input type="text" class="form-control" required="required" placeholder="Your Phone"
+                       formControlName="phone">
                 <div *ngIf="phone?.invalid && (phone?.dirty || phone?.touched)"
                      class="" style="color: red">
 
                   <div *ngIf="phone?.errors?.['required']">
-                    Số điện thoại không được để trống!
+                    Phone cannot be left blank!
                   </div>
                   <div *ngIf="phone?.errors?.['minlength']">
-                    số điện thoại có 10 chữ số!
+                    10 digit phone number!
                   </div>
                   <div *ngIf="phone?.errors?.['maxlength']">
-                    số điện thoại có 10 chữ số!
+                    10 digit phone number!
                   </div>
                 </div>
               </div>
@@ -56,40 +59,44 @@
             <div class="form-row">
               <div class="control-group col-sm-12">
                 <label>Your Password</label>
-                <input type="password" class="form-control" required="required"  placeholder="Password" formControlName="password">
+                <input type="password" class="form-control" required="required" placeholder="Password"
+                       formControlName="password">
                 <div *ngIf="password?.invalid && (password?.dirty || password?.touched)"
                      class="" style="color: red">
 
                   <div *ngIf="password?.errors?.['required']">
-                    Mật khẩu không được để trống!
+                    Password cannot be left blank!
                   </div>
                   <div *ngIf="password?.errors?.['minlength']">
-                    mật khẩu ít nhất 6 kí tự và nhiều nhất 12 kí tự!
+                    Password must have at least 6 characters, maximum 12 characters!
                   </div>
                   <div *ngIf="password?.errors?.['maxlength']">
-                    mật khẩu ít nhất 6 kí tự và nhiều nhất 12 kí tự!
+                    Password must have at least 6 characters, maximum 12 characters!
                   </div>
                 </div>
               </div>
               <div class="control-group col-sm-12">
                 <label>Repeat Your Password</label>
-                <input type="password" class="form-control" required="required"  placeholder="Repeat Password" formControlName="confirmPassword">
+                <input type="password" class="form-control" required="required" placeholder="Repeat Password"
+                       formControlName="confirmPassword">
                 <div *ngIf="confirmPassword?.invalid && (confirmPassword?.dirty || confirmPassword?.touched)"
                      class="" style="color: red">
 
                   <div *ngIf="confirmPassword?.errors?.['required']">
-                    Mật khẩu không được để trống!
+                    Password cannot be left blank!
                   </div>
                   <div *ngIf="confirmPassword?.errors?.['minlength']">
-                    mật khẩu ít nhất 6 kí tự và nhiều nhất 12 kí tự!
+                    Password must have at least 6 characters, maximum 12 characters!
                   </div>
                   <div *ngIf="confirmPassword?.errors?.['maxlength']">
-                    mật khẩu ít nhất 6 kí tự và nhiều nhất 12 kí tự!
+                    Password must have at least 6 characters, maximum 12 characters!
                   </div>
                 </div>
               </div>
             </div>
-            <div class="button"><button type="submit">Register</button></div>
+            <div class="button">
+              <button type="submit" style="height: 37px">Register</button>
+            </div>
             <span>Do you already have an account. <a routerLink="/login" style="color: #666">Login now</a> </span>
           </form>
         </div>
@@ -100,32 +107,40 @@
 <!-- Login Section End -->
 
 <!-- Footer Section Start -->
-<div id="footer">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="social">
-          <a href="https://www.freewebsitecode.com/"><li class="fa fa-instagram"></li></a>
-          <a href="https://www.facebook.com/freewebsitecode/"><li class="fa fa-facebook-f"></li></a>
-          <a href="https://www.freewebsitecode.com/"><li class="fa fa-twitter"></li></a>
-          <a href="https://www.youtube.com/channel/UC9HlQRmKgG3jeVD_fBxj1Pw/videos"><li class="fa fa-youtube"></li></a>
-        </div>
-      </div>
-      <div class="col-12">
-        <ul>
-          <li><a href="">Home</a></li>
-          <li><a href="">About</a></li>
-          <li><a href="">Terms</a></li>
-          <li><a href="">Contact</a></li>
-        </ul>
-      </div>
-      <div class="col-12">
-        <p>&copy; Copyright <a href="https://freewebsitecode.com/">Your Site Name</a>. All Rights Reserved</p>
+<!--<div id="footer">-->
+<!--  <div class="container">-->
+<!--    <div class="row">-->
+<!--      <div class="col-12">-->
+<!--        <div class="social">-->
+<!--          <a href="https://www.freewebsitecode.com/">-->
+<!--            <li class="fa fa-instagram"></li>-->
+<!--          </a>-->
+<!--          <a href="https://www.facebook.com/freewebsitecode/">-->
+<!--            <li class="fa fa-facebook-f"></li>-->
+<!--          </a>-->
+<!--          <a href="https://www.freewebsitecode.com/">-->
+<!--            <li class="fa fa-twitter"></li>-->
+<!--          </a>-->
+<!--          <a href="https://www.youtube.com/channel/UC9HlQRmKgG3jeVD_fBxj1Pw/videos">-->
+<!--            <li class="fa fa-youtube"></li>-->
+<!--          </a>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="col-12">-->
+<!--        <ul>-->
+<!--          <li><a href="">Home</a></li>-->
+<!--          <li><a href="">About</a></li>-->
+<!--          <li><a href="">Terms</a></li>-->
+<!--          <li><a href="">Contact</a></li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--      <div class="col-12">-->
 
-      </div>
-    </div>
-  </div>
-</div>
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<app-fotter></app-fotter>
 <!-- Footer Section End -->
 
 <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>

@@ -24,13 +24,13 @@
                      class="" style="color: red">
 
                   <div *ngIf="username?.errors?.['required']">
-                    tên đăng nhập không được bỏ trống!
+                    Username cannot be left blank!
                   </div>
                   <div *ngIf="username?.errors?.['minlength']">
-                    tên đăng nhập có ít nhất 6 kí từ nhiều nhất 12 kí tự!
+                    Username has at least 6 characters, maximum 12 characters!
                   </div>
                   <div *ngIf="username?.errors?.['maxlength']">
-                    tên đăng nhập có ít nhất 6 kí từ nhiều nhất 12 kí tự!
+                    Username has at least 6 characters, maximum 12 characters!
                   </div>
                 </div>
               </div>
@@ -41,27 +41,26 @@
                      class="" style="color: red">
 
                   <div *ngIf="password?.errors?.['required']">
-                    Mật khẩu không được để trống!
+                    Password cannot be left blank!
                   </div>
                   <div *ngIf="password?.errors?.['minlength']">
-                    mật khẩu ít nhất 6 kí tự và nhiều nhất 12 kí tự!
+                    Password must be at least 6 characters and maximum 12 characters!
                   </div>
                   <div *ngIf="password?.errors?.['maxlength']">
-                    mật khẩu ít nhất 6 kí tự và nhiều nhất 12 kí tự!
+                    Password must be at least 6 characters and maximum 12 characters!
                   </div>
                 </div>
               </div>
             </div>
-            <div class="button"><button type="submit">Login</button></div>
+            <br>
+            <div class="button"><button type="submit" style="height: 37px">Login</button></div>
 
-              <asl-google-signin-button type='icon' size='large'></asl-google-signin-button>
+
+<!--              <asl-google-signin-button type='icon' size='large'></asl-google-signin-button>-->
 <!--              <button-->
 <!--                class="btn btn-social-icon btn-microsoft mx-1"-->
 <!--                (click)="signInWithGoogle()">-->
 <!--              </button>-->
-
-
-
             <span>Create a User Account. <a routerLink="/register" style="color: #666">Create Now</a> </span>
           </form>
         </div>
@@ -71,36 +70,8 @@
 </div>
 <!-- Login Section End -->
 
-
-
 <!-- Footer Section Start -->
-<div id="footer">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="social">
-<!--          <asl-google-signin-button type='icon' size='large' style="text-align: center"></asl-google-signin-button>-->
-<!--          <a><li class="fa fa-google"></li></a>-->
-<!--          <a href="https://www.facebook.com/freewebsitecode/"><li class="fa fa-facebook-f"></li></a>-->
-<!--          <a href="https://www.freewebsitecode.com/"><li class="fa fa-twitter"></li></a>-->
-<!--          <a href="https://www.youtube.com/channel/UC9HlQRmKgG3jeVD_fBxj1Pw/videos"><li class="fa fa-youtube"></li></a>-->
-        </div>
-      </div>
-      <div class="col-12">
-        <ul>
-          <li><a href="">Home</a></li>
-          <li><a href="">About</a></li>
-          <li><a href="">Terms</a></li>
-          <li><a href="">Contact</a></li>
-        </ul>
-      </div>
-      <div class="col-12">
-        <p>&copy; Copyright <a href="https://freewebsitecode.com/">Your Site Name</a>. All Rights Reserved</p>
-
-      </div>
-    </div>
-  </div>
-</div>
+<app-fotter></app-fotter>
 <!-- Footer Section End -->
 
 <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
