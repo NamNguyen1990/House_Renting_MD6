@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {OrderService} from "../../../services/order.service";
 import {ActivatedRoute, ParamMap} from "@angular/router";
+import {ResponseBody} from "../../../models/response-body";
 
 @Component({
   selector: 'app-order-create',
@@ -11,7 +12,7 @@ import {ActivatedRoute, ParamMap} from "@angular/router";
 export class OrderCreateComponent implements OnInit {
   orderForm!: FormGroup
   idHome!: string | null
-  status!: string | null
+  status: ResponseBody = {code: '#fff' , message: '', toast: 'error'};
     constructor
 (
   private fb: FormBuilder
@@ -43,6 +44,7 @@ void {
 orderCreate()
 {
   this.orderService.create(this.orderForm.value, this.idHome, localStorage.getItem("ID")).subscribe((data) => {
+    this.status = data;
     console.log(data)
   })
 

@@ -16,11 +16,13 @@ export class HomepageComponent implements OnInit {
   houseId = 1;
   p: number = 1;
   total: number = 0;
+  currentId: any;
   constructor(private houseService: HouseService,
               private activatedRouter: ActivatedRoute,
               private httClient: HttpClient) {
   }
   ngOnInit(): void {
+    this.currentId=localStorage.getItem("ID")
   this.getAll()
 
   }
