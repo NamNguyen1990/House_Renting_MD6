@@ -26,8 +26,8 @@ export class MyhouseCreateComponent implements OnInit {
     price: new FormControl(''),
     categoryId: new FormControl(''),
     ownerId: new FormControl(''),
-    status: new FormControl('1')
-
+    status: new FormControl('1'),
+    avatarHouse: new FormControl('')
   })
   obj: any;
 
@@ -65,6 +65,7 @@ export class MyhouseCreateComponent implements OnInit {
       owner: {
         id: localStorage.getItem("ID")
       },
+      avatarHouse: this.fb
     }
     this.houseService.save(this.obj).subscribe(() => {
       this.toast.success({detail: "Notification", summary: "More successful houses", duration: 3000});
