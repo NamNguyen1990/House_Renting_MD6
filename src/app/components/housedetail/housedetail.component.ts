@@ -4,6 +4,7 @@ import {ActivatedRoute, ParamMap} from "@angular/router";
 
 
 import {HttpClient} from "@angular/common/http";
+import {ImageService} from "../../services/image.service";
 
 @Component({
   selector: 'app-housedetail',
@@ -13,17 +14,19 @@ import {HttpClient} from "@angular/common/http";
 export class HousedetailComponent implements OnInit {
 
   API = 'http://localhost:8888/houses/'
-
+ id:any
   house: any;
 
   constructor(private houseService: HouseService,
               private activatedRouter: ActivatedRoute,
-              private httClient: HttpClient) { }
+              private httClient: HttpClient,
+              private imageService: ImageService) { }
 
   ngOnInit(): void {
     this.activatedRouter.paramMap.subscribe((param: ParamMap) => {
       this.httClient.get(this.API + param.get('id')).subscribe((data) => {
         this.house = data
+        this.showImages(this.house.id);
       })
     })
   }
@@ -36,9 +39,12 @@ export class HousedetailComponent implements OnInit {
   // }
 
 
-
-
-
+ images: any[] = []
+ showImages(id: any) {
+    this.imageService.findByIdHouse(id).subscribe((data) => {
+      this.images = data;
+    })
+ }
 
 
 

@@ -9,7 +9,7 @@
       <div class="col-12">
         <div class="booking-form">
           <div id="success"></div>
-          <form [formGroup]="houseForm" (ngSubmit)="submit()">
+          <form [formGroup]="houseForm" (ngSubmit)="add()">
             <div class="form-row">
               <div class="control-group col-sm-6">
                 <label>Apartment Name</label>
@@ -44,7 +44,7 @@
                 <label style="margin-top: -2px">Type</label>
                 <select type="text" formControlName="categoryId"
                         style="margin-left: 10px; border-radius: 20px; padding: 5px 20px">
-                  <option *ngFor="let category of listCategory" [value]="category.id">{{category.name}}</option>
+                  <option *ngFor="let category of listCategories" [value]="category.id">{{category.name}}</option>
                 </select>
                 <p class="help-block text-danger"></p>
               </div>
@@ -67,14 +67,9 @@
               </div>
               <div>
                 <label>Avatar House</label>
-                <input type="file"
-                       id="file"
-                       #userPhoto
-                       (change)="onFileSelected($event)"
-                       name="image"
-                       autocomplete="off"
-                />
-                <img src="{{fb}}" style="width: 100%">
+                <input type="file" placeholder="Chọn ảnh" id="file" #userPhoto multiple (change)="showPreview($event)" name="image" autocomplete="off">
+<!--                <img src="{{fb}}" style="width: 100%">-->
+                <div *ngFor="let img of images"><img src="{{img}}" alt=""></div>
               </div>
               <!--              <div class="control-group col-sm-6">-->
               <!--                <label>Image</label>-->

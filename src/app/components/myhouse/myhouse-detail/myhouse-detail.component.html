@@ -29,8 +29,12 @@
     <td><a [routerLink]="['/myhouse/edit',house.id]" style="color: white"> Edit</a></td>
     <td><a> Delete</a></td>
   </tr>
-  <tr>
-    <img src="{{house.avatarHouse}}">
+<!--  <tr>-->
+<!--    <img src="{{house.avatarHouse}}">-->
+<!--  </tr>-->
+
+  <tr *ngFor="let img of images">
+    <img src="{{img.image}}">
   </tr>
 
   </tbody>
