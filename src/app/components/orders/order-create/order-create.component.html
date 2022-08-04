@@ -18,6 +18,8 @@
         <div class="booking-form">
           <div id="success"></div>
           <form [formGroup]="orderForm" method="post" (submit)="orderCreate()">
+            <div  class="alert " [ngClass]="status.code === '0000' ? 'alert-info' : 'alert-danger'"
+                 *ngIf="status.code">{{status.message}}</div>
             <div class="form-row">
               <div class="control-group col-sm-6">
                 <label>Full Name</label>
