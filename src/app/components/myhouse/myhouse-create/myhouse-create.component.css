@@ -1,8 +1,9 @@
-.button-back{
+.button {
   display: flex;
+  justify-content: space-between;
+}
+.button-back{
   width: 100px;
-  margin-left: 88%;
-  margin-top: -44px;
-  justify-content: flex-end
+  height: 50px;
 }
 
