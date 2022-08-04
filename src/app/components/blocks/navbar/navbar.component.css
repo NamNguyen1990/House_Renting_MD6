@@ -30,3 +30,24 @@
 .login:hover {
   color: #fff;
 }
+
+
+.open {
+  display: none !important;
+}
+.dropdown-menu{
+  background-color: white;
+}
+.dropdown-menu li {
+  text-align: center;
+}
+.dropdown-menu li a{
+  text-align: center;
+  font-size: 12px;
+}
+.dropdown-menu li:hover{
+  display: block;
+  /*color: white;*/
+  text-align: center;
+  background-color: pink;
+}
