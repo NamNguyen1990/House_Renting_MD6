@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <body>
 <div id="booking">
   <div class="container">
@@ -64,15 +65,15 @@
                 <p class="help-block text-danger"></p>
 
               </div>
-              <div class="control-group col-sm-6" style="margin-top: -242px">
+              <div class="control-group col-sm-6" style="margin-top: -256px">
                 <input type="file" id="file" #userPhoto (change)="onFileSelected($event)" name="image"
                        autocomplete="off">
-                <img src="{{fb}}" style="width: 200px;height: 200px">
+                <img src="{{fb}}" style="width: 200px;height: 200px; margin-top: 15px">
               </div>
             </div>
             <div class="form-row">
             </div>
-            <div class="button">
+            <div class="button" style="">
               <button type="submit">Create</button>
               <button class="button-back" [routerLink]="['/myhouse/list']">Back</button>
             </div>
