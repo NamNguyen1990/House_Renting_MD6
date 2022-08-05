@@ -16,7 +16,7 @@
     <th scope="col">Chỉnh sửa</th>
   </tr>
   </thead>
-  <tbody>
+
   <tr>
     <!--    <th scope="row">{{house.id}}</th>-->
     <td>{{house.name}}</td>
@@ -29,14 +29,71 @@
     <td><a [routerLink]="['/myhouse/edit',house.id]" style="color: white"> Edit</a></td>
     <td><a> Delete</a></td>
   </tr>
-<!--  <tr>-->
-<!--    <img src="{{house.avatarHouse}}">-->
-<!--  </tr>-->
+  <!--  <tr>-->
+  <!--    <img src="{{house.avatarHouse}}">-->
+  <!--  </tr>-->
 
   <tr *ngFor="let img of images">
     <img src="{{img.image}}">
   </tr>
+  <!--<app-navbar></app-navbar>-->
 
-  </tbody>
+  <!-- Room Section Start -->
+  <!--<body>-->
+  <!--<div id="rooms">-->
+  <!--  <div class="container">-->
+  <!--    <div class="section-header">-->
+  <!--      <h2>-->
+  <!--        Apartment information</h2>-->
+  <!--      <p>-->
+  <!--      </p>-->
+  <!--    </div>-->
+  <!--    <br>-->
+  <!--    <div class="row">-->
+
+  <!--      <div class="col-md-12 room" >-->
+  <!--        <div class="row">-->
+  <!--          <div class="col-md-6">-->
+  <!--            <div class="room-img">-->
+  <!--              <img src="{{house.avatarHouse}}">-->
+  <!--            </div>-->
+  <!--          </div>-->
+  <!--          <div class="col-md-6">-->
+  <!--            <div class="room-des">-->
+  <!--              <h3 style="color: black">{{house.name}}</h3>-->
+  <!--              <h1 style="color: black">{{house.price}}(USD)<span style="color: black">/ Night</span></h1>-->
+  <!--              <ul class="room-size">-->
+  <!--                <li><i class="fa fa-arrow-right" style="color: black"></i>Bedroom: {{house.bedroom}} </li>-->
+  <!--                <li><i class="fa fa-arrow-right" style="color: black"></i>Bathroom: {{house.bathroom}} </li>-->
+  <!--                <li><i class="fa fa-arrow-right" style="color: black"></i>Address: {{house.address}} </li>-->
+  <!--              </ul>-->
+  <!--              <ul class="room-icon">-->
+  <!--                <li class="icon-1"></li>-->
+  <!--                <li class="icon-2"></li>-->
+  <!--                <li class="icon-3"></li>-->
+  <!--                <li class="icon-4"></li>-->
+  <!--                <li class="icon-5"></li>-->
+  <!--                <li class="icon-6"></li>-->
+  <!--                <li class="icon-7"></li>-->
+  <!--                <li class="icon-8"></li>-->
+  <!--                <li class="icon-9"></li>-->
+  <!--                <li class="icon-10"></li>-->
+  <!--              </ul>-->
+  <!--              <div class="room-link">-->
+  <!--                <a [routerLink]="['/myhouse/edit',house.id]" > Edit</a>-->
+  <!--              </div>-->
+  <!--            </div>-->
+  <!--          </div>-->
+  <!--        </div>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--  </div>-->
+  <!--</div>-->
+  <!--<br>-->
+  <!--<br>-->
+  <!--</body>-->
+  <app-fotter></app-fotter>
+
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
 </table>
-

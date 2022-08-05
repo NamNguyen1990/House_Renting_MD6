@@ -1,0 +1,10 @@
+body{
+  height: 100%;
+  background: url("../../../../assets/img/slider/white-room-interior-space-background-with-soft-shadow-3d-illustration_64749-4859.jpg");
+  opacity: 0.7;
+}
+
+.container .section-header h2{
+  color: #1b1e21;
+}
+
