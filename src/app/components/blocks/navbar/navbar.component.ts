@@ -11,7 +11,7 @@ export class NavbarComponent implements OnInit {
   isLogin = false;
   USERNAME = "";
   userId = "";
-
+  avatar = "";
   constructor(private router: Router) {
   }
 
@@ -28,7 +28,7 @@ export class NavbarComponent implements OnInit {
   logOut(){
     localStorage.clear();
     this.isLogin = false;
-    this.router.navigate(['/']);
+    this.router.navigate(['/login']);
   }
 
 }

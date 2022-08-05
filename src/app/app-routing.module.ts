@@ -12,6 +12,7 @@ import {MyhouseCreateComponent} from "./components/myhouse/myhouse-create/myhous
 import {OrderCreateComponent} from "./components/orders/order-create/order-create.component";
 import {MyhouseDetailComponent} from "./components/myhouse/myhouse-detail/myhouse-detail.component";
 import {MyhouseEditComponent} from "./components/myhouse/myhouse-edit/myhouse-edit.component";
+import {UpdatePasswordComponent} from "./components/update-password/update-password.component";
 
 
 
@@ -24,6 +25,10 @@ const routes: Routes = [
     path: 'register',
     component: SignupComponent
 
+  },
+  {
+    path: 'update-password/:id',
+    component: UpdatePasswordComponent
   },
   {
     path: 'update-profile/:id',

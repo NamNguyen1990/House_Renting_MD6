@@ -47,14 +47,13 @@ export class UpdateProfileComponent implements OnInit {
           fullName : data.fullName,
           avatar : data.avatar,
         })
+      this.avatar = data.avatar
         console.log(data)
-      console.log(data.fullName)
       },
       error => {
         console.log(error);
       });
   }
-
   editUser() {
     this.user = {
       username: '',
@@ -64,7 +63,7 @@ export class UpdateProfileComponent implements OnInit {
       email : this.editForm.value.email,
       address : this.editForm.value.address,
       fullName : this.editForm.value.fullName,
-      avatar : this.fb,
+      avatar : this.avatar,
       enabled : '',
     }
     this.userService.updateUserProfile(this.id, this.user).subscribe(() => {
@@ -76,10 +75,9 @@ export class UpdateProfileComponent implements OnInit {
       console.log(error)
     })
   }
-
+  avatar: any;
   title = 'firebase';
   selectedFile:any;
-  fb:any;
   downloadURL: any;
   onFileSelected(event:any) {
     var n = Date.now();
@@ -96,10 +94,10 @@ export class UpdateProfileComponent implements OnInit {
           this.downloadURL = fileRef.getDownloadURL();
           this.downloadURL.subscribe((url:any) => {
             if (url) {
-              this.fb = url;
+              this.avatar = url;
 
             }
-            console.log(this.fb);
+            console.log(this.avatar);
           });
         })
       )
