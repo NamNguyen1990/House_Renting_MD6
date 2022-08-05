@@ -96,6 +96,7 @@ export class MyhouseEditComponent implements OnInit {
     this.houseService.update(id, this.obj).subscribe(() => {
       // this.router.navigate(['/product/list']);
       alert('Cập nhật thành công');
+      this.router.navigate(['/myhouse/list'])
     }, error => {
       console.log(error);
     });

@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {Category} from "../../../models/category";
 import {HttpClient} from "@angular/common/http";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {HouseService} from "../../../services/house.service";
 import {CategoryService} from "../../../services/category.service";
 import {NgToastService} from "ng-angular-popup";
@@ -38,7 +38,8 @@ export class MyhouseCreateComponent implements OnInit {
               private houseService: HouseService,
               private categoryService: CategoryService,
               private toast: NgToastService,
-              private storage: AngularFireStorage
+              private storage: AngularFireStorage,
+              private rou: Router,
   ) {
   }
 
@@ -69,6 +70,7 @@ export class MyhouseCreateComponent implements OnInit {
     }
     this.houseService.save(this.obj).subscribe(() => {
       this.toast.success({detail: "Notification", summary: "More successful houses", duration: 3000});
+      this.rou.navigate(['/myhouse/list'])
     }, error => {
       this.toast.error({detail: "Notification", summary: "More failed houses", duration: 3000});
     })
