@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <body>
 <div id="booking">
   <div class="container">
@@ -13,13 +14,13 @@
               <div class="control-group col-sm-6">
                 <label>Apartment Name</label>
                 <input type="text" class="form-control" placeholder="Enter apartment name" required="required"
-                       data-validation-required-message="Please enter apartment name" formControlName="name" style="color: white">
+                       data-validation-required-message="Please enter apartment name" formControlName="name">
                 <p class="help-block text-danger"></p>
               </div>
               <div class="control-group col-sm-6">
                 <label>Address</label>
                 <input type="text" class="form-control" placeholder="Enter address" required="required"
-                       data-validation-required-message="Please enter address" formControlName="address" style="color: white">
+                       data-validation-required-message="Please enter address" formControlName="address">
                 <p class="help-block text-danger"></p>
               </div>
             </div>
@@ -27,14 +28,14 @@
               <div class="control-group col-sm-6">
                 <label>Bedroom</label>
                 <input type="text" class="form-control" placeholder="Number of bedrooms" required="required"
-                       data-validation-required-message="Please enter number of bedrooms" formControlName="bedroom" style="color: white">
+                       data-validation-required-message="Please enter number of bedrooms" formControlName="bedroom">
                 <p class="help-block text-danger"></p>
               </div>
               <div class="control-group col-sm-6">
                 <label>Bathroom</label>
                 <input type="text" class="form-control" placeholder="Number of bathroom"
                        required="required" data-validation-required-message="Please enter number of bathroom"
-                       formControlName="bathroom" style="color: white">
+                       formControlName="bathroom">
                 <p class="help-block text-danger"></p>
               </div>
             </div>
@@ -42,8 +43,8 @@
               <div class="control-group col-sm-6">
                 <label style="margin-top: -2px">Type</label>
                 <select type="text" formControlName="categoryId"
-                        style="margin-left: 10px; border-radius: 20px; padding: 5px 20px">
-                  <option *ngFor="let category of listCategories" [value]="category.id">{{category.name}}</option>
+                        style=" border-radius: 20px; padding: 5px 20px" class="form-control datetimepicker-input">
+                  <option *ngFor="let category of listCategories" [value]="category.id" style="background-color: #fff">{{category.name}}</option>
                 </select>
                 <p class="help-block text-danger"></p>
               </div>
@@ -52,7 +53,7 @@
                 <label>Price</label>
                 <input type="text" class="form-control datetimepicker-input" id="date-2" placeholder="Enter price"
                        required="required"
-                       data-validation-required-message="Please enter price" formControlName="price" style="color: white">
+                       data-validation-required-message="Please enter price" formControlName="price">
                 <p class="help-block text-danger" ></p>
               </div>
               <div class="control-group col-sm-6" style="margin-top: 30px;margin-left: 486px">
@@ -64,18 +65,20 @@
                 <p class="help-block text-danger"></p>
 
               </div>
-              <div>
-                <label>Avatar House</label>
-                <input type="file" placeholder="Chọn ảnh" id="file" #userPhoto multiple (change)="showPreview($event)" name="image" autocomplete="off">
-<!--                <img src="{{fb}}" style="width: 100%">-->
-                <div *ngFor="let img of images"><img src="{{img}}" alt=""></div>
+<!--              <div class="control-group col-sm-6" style="margin-top: -256px">-->
+<!--                <input type="file" id="file" #userPhoto multiple (change)="showPreview($event)" name="image" autocomplete="off">-->
+<!--                <div *ngFor="let img of images">-->
+<!--                  <img src="{{img}}" alt="" style="width: 200px;height: 200px;margin-top: 15px">-->
+<!--                </div>-->
+<!--              </div>-->
+
+              <div class="control-group col-sm-6" style="height: 235px; margin-top: -256px; overflow: auto">
+                <input type="file" id="file" #userPhoto multiple (change)="showPreview($event)" name="image" autocomplete="off">
+                <img *ngFor="let img of images" src="{{img}}" alt="" style="height: 150px; width: 200px;margin-top: 15px; margin-left: 10px">
+                <!-- glightbox Albums left bar END  -->
               </div>
-              <!--              <div class="control-group col-sm-6">-->
-              <!--                <label>Image</label>-->
-              <!--                <input type="file" class="form-control datetimepicker-input" id="" required="required"-->
-              <!--                        formControlName="price">-->
-              <!--                <p class="help-block text-danger"></p>-->
-              <!--              </div>-->
+
+
             </div>
             <div class="form-row">
             </div>
