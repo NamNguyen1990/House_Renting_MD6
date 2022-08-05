@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <body>
 <div id="booking">
   <div class="container">
@@ -64,11 +65,20 @@
                 <p class="help-block text-danger"></p>
 
               </div>
-              <div class="control-group col-sm-6" style="margin-top: -256px">
+<!--              <div class="control-group col-sm-6" style="margin-top: -256px">-->
+<!--                <input type="file" id="file" #userPhoto multiple (change)="showPreview($event)" name="image" autocomplete="off">-->
+<!--                <div *ngFor="let img of images">-->
+<!--                  <img src="{{img}}" alt="" style="width: 200px;height: 200px;margin-top: 15px">-->
+<!--                </div>-->
+<!--              </div>-->
+
+              <div class="control-group col-sm-6" style="height: 235px; margin-top: -256px; overflow: auto">
                 <input type="file" id="file" #userPhoto multiple (change)="showPreview($event)" name="image" autocomplete="off">
-<!--                <img src="{{fb}}" style="width: 100%">-->
-                <div *ngFor="let img of images"><img src="{{img}}" alt="" style="width: 200px;height: 200px;margin-top: 15px"></div>
+                <img *ngFor="let img of images" src="{{img}}" alt="" style="height: 150px; width: 200px;margin-top: 15px; margin-left: 10px">
+                <!-- glightbox Albums left bar END  -->
               </div>
+
+
             </div>
             <div class="form-row">
             </div>

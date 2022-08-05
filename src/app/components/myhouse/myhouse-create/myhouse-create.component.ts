@@ -9,7 +9,7 @@ import {NgToastService} from "ng-angular-popup";
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import {finalize} from "rxjs";
 import {ImageService} from "../../../services/image.service";
-
+import { OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
   selector: 'app-myhouse-create',
@@ -17,6 +17,31 @@ import {ImageService} from "../../../services/image.service";
   styleUrls: ['./myhouse-create.component.css']
 })
 export class MyhouseCreateComponent implements OnInit {
+
+  customOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: false,
+    touchDrag: false,
+    pullDrag: false,
+    dots: false,
+    navSpeed: 700,
+    navText: ['', ''],
+    responsive: {
+      0: {
+        items: 1
+      },
+      400: {
+        items: 2
+      },
+      740: {
+        items: 3
+      },
+      940: {
+        items: 4
+      }
+    },
+    nav: true
+  }
 
   // houseForm = new FormGroup({
   //   name: new FormControl(''),
