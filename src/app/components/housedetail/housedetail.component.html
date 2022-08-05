@@ -54,11 +54,10 @@
     <td>{{house.price}}</td>
     <td>{{house.category.name}}</td>
   </tr>
-  <tr>
-    <img src="{{house.avatarHouse}}" style="width: 600px;height: 450px">
+  <tr *ngFor="let img of images">
+    <img src="{{img.image}}">
   </tr>
 
   </tbody>
 </table>
-
 
