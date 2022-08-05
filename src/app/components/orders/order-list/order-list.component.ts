@@ -15,13 +15,11 @@ export class OrderListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllOrders();
-
   }
 
   getAllOrders(){
-    this.orderService.findAll().subscribe((data)=>{
-    console.log(data.content)
-    this.oderrs=data.content;
+    this.orderService.findAll(localStorage.getItem("ID")).subscribe((data)=>{
+    this.oderrs=data;
     console.log(this.oderrs);
   })
   }
