@@ -23,6 +23,7 @@
     "@angular/router": "^14.0.0",
     "firebase": "^9.9.1",
     "ng-angular-popup": "^0.1.2",
+    "ngx-owl-carousel-o": "^14.0.1",
     "ngx-pagination": "^6.0.2",
     "rxjs": "~7.5.0",
     "toast": "^0.3.47",
