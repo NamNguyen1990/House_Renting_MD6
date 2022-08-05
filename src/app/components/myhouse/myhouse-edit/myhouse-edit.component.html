@@ -49,12 +49,20 @@
       </td>
     </tr>
     <tr>
-      <td>Ảnh:</td>
-      <td>
-        <input type="file" name="avatarHouse" class="form-control" id="file" formControlName="avatarHouse" #userPhoto
-                       (change)="onFileSelected($event)" autocomplete="off"/>
-        <img src="{{fb}}" style="width: 10%">
-      </td>
+
+      <div>
+        <label>Avatar House</label>
+        <input type="file" placeholder="Chọn ảnh" id="file" #userPhoto multiple (change)="showPreview($event)" name="image" autocomplete="off">
+        <!--                <img src="{{fb}}" style="width: 100%">-->
+        <div *ngFor="let img of images"><img src="{{img.image}}" alt=""></div>
+      </div>
+
+<!--      <td>Ảnh:</td>-->
+<!--      <td>-->
+<!--        <input type="file" name="avatarHouse" class="form-control" id="file" formControlName="avatarHouse" #userPhoto-->
+<!--                       (change)="onFileSelected($event)" autocomplete="off"/>-->
+<!--        <img src="{{fb}}" style="width: 10%">-->
+<!--      </td>-->
     </tr>
     <tr>
       <td></td>

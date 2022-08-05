@@ -6,7 +6,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {HouseService} from "../../../services/house.service";
 import {CategoryService} from "../../../services/category.service";
 import {NgToastService} from "ng-angular-popup";
-import { AngularFireStorage } from '@angular/fire/compat/storage';
+import {AngularFireStorage} from '@angular/fire/compat/storage';
 import {finalize} from "rxjs";
 import {ImageService} from "../../../services/image.service";
 
