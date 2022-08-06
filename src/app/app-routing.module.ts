@@ -40,7 +40,7 @@ const routes: Routes = [
   },
   {
     path: 'view/:id',
-    component: HousedetailComponent
+    component: HousedetailComponent,
   },
   {
     path: 'order/:idHome',
