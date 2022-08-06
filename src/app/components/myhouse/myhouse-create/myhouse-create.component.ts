@@ -122,7 +122,8 @@ export class MyhouseCreateComponent implements OnInit {
               private categoryService: CategoryService,
               private router: Router,
               private storage: AngularFireStorage,
-              private imageService: ImageService,) {
+              private imageService: ImageService,
+              ) {
   }
 
   ngOnInit(): void {
