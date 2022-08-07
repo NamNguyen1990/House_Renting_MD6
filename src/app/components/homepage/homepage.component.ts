@@ -11,7 +11,6 @@ import {HttpClient} from "@angular/common/http";
 export class HomepageComponent implements OnInit {
 
   homes: any;
-
   house: any;
   houseId = 1;
   p: number = 1;
@@ -23,7 +22,8 @@ export class HomepageComponent implements OnInit {
   }
   ngOnInit(): void {
     this.currentId=localStorage.getItem("ID")
-  this.getAll()
+  this.getAll();
+    this.getTop5();
 
   }
   getAll(){
@@ -54,4 +54,13 @@ export class HomepageComponent implements OnInit {
     this.p = event;
     this.getAll();
   }
+
+  getTop5(){
+    this.houseService.findTop5().subscribe((houses)=>{
+      console.log(houses)
+      // @ts-ignore
+      this.homes=houses.content;
+    })
+  }
+
 }
