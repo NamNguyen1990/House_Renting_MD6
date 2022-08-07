@@ -38,7 +38,6 @@ import {AngularFireModule} from "@angular/fire/compat";
 import { UpdatePasswordComponent } from './components/update-password/update-password.component';
 import {FotterComponent} from "./components/blocks/fotter/fotter.component";
 import {CarouselModule} from "ngx-owl-carousel-o";
-import { CommentListComponent } from './components/comment/comment-list/comment-list.component';
 
 @NgModule({
     declarations: [
@@ -58,7 +57,6 @@ import { CommentListComponent } from './components/comment/comment-list/comment-
         FotterComponent,
       MyhouseDetailComponent,
       UpdatePasswordComponent,
-      CommentListComponent,
     ],
   imports: [
     MatInputModule,
