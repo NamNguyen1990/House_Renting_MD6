@@ -7,7 +7,7 @@
     <ul>
       <li><a routerLink="/">Home</a></li>
       <li><a href="about.html">About Us</a></li>
-      <li><a href="booking.html">Booking</a></li>
+<!--      <li><a href="booking.html">Booking</a></li>-->
       <li><a href="">Contact Us</a></li>
     </ul>
   </nav>
@@ -24,7 +24,7 @@
        aria-expanded="false" ><img src="{{img}}" style=" border-radius: 50%; margin-right: 18px;width: 40px;height: 40px " ><a
     style="color: #00CED1">{{USERNAME}}</a>
 
-    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2" >
+    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2" style="margin-left: 35px">
       <li>
         <a class="btn btn-transparent text-uppercase font-size-3 heading-default-color focus-reset" [routerLink]="['/update-profile',userId]" >
           Edit Profile
@@ -49,11 +49,10 @@
   <nav class="main-menu top-menu" style="background-color: #545454">
     <ul>
       <li><a routerLink="/">Home</a></li>
-
       <li>
-        <a  class="btn dropdown-toggle" data-toggle="dropdown" type="" data-bs-toggle="dropdown"
-           aria-expanded="false">Apartment</a>
-        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2" >
+        <a  class="apartment btn dropdown-toggle" data-toggle="dropdown" type="" data-bs-toggle="dropdown"
+           aria-expanded="false" style="color:#00CED1;" >Apartment</a>
+        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2" style="width: 30px; text-align: center;margin-left: -17px; margin-top: 4px;height: 140px">
           <li>
             <a class="btn btn-transparent text-uppercase font-size-3 heading-default-color focus-reset" [routerLink]="['/myhouse/list']">
               My Apartment
@@ -65,15 +64,17 @@
             </a>
           </li>
           <li>
-            <a class="btn btn-transparent text-uppercase font-size-3 heading-default-color focus-reset" routerLink="/orderlist">
+            <a class="btn btn-transparent text-uppercase font-size-3 heading-default-color focus-reset" [routerLink]="['/myhouse/orderlist']">
               History
             </a>
           </li>
+
         </ul>
       </li>
 
 <!--      <li><a [routerLink]="['/myhouse/create']">Create House</a></li>-->
 <!--      <li><a routerLink="/orderlist">Booking</a></li>-->
+      <li><a href="">About Us</a></li>
       <li><a href="">Contact Us</a></li>
     </ul>
   </nav>

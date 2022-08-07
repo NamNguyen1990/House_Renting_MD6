@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {LoginComponent} from "./components/login/login.component";
 import {SignupComponent} from "./components/signup/signup.component";
 import {HomepageComponent} from "./components/homepage/homepage.component";
@@ -56,11 +56,15 @@ const routes: Routes = [
     component:OrderDetailComponent
   },
   {
+    path: 'show-detail/:id',
+    component: OrderDetailComponent
+  }, {
     path: 'myhouse', children: [
       {path: 'list', component: MyhouseListComponent},
       {path: 'create', component: MyhouseCreateComponent},
       {path: 'list/myhouse-detail/:id', component: MyhouseDetailComponent},
       {path: 'edit/:id', component: MyhouseEditComponent},
+      {path: 'orderlist', component: OrderListComponent}
 
     ]
   },
@@ -75,4 +79,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

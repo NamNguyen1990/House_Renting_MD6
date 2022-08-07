@@ -36,12 +36,12 @@ export class SignupComponent implements OnInit {
     this.userService.register(user).subscribe((data: ResponseBody) => {
       if (data.message) {
         this.status = data;
-        this.toast.success({detail: "Notification", summary: data.message, duration: 3000, position: 'bottom'});
+        this.toast.success({detail: "Notification", summary: data.message, duration: 3000, position: 'br'});
         this.router.navigate(['/login']);
 
       } else {
         this.status = data;
-        this.toast.success({detail: "Notification", summary: data.message, duration: 3000});
+        this.toast.success({detail: "Notification", summary: data.message, duration: 3000 ,position: 'br'});
         this.registerForm.reset();
         this.router.navigate(['/login']);
       }
@@ -49,7 +49,7 @@ export class SignupComponent implements OnInit {
     }, (err) => {
       console.log(err);
       this.status = err.message;
-      this.toast.error({detail: "Notification", summary: "Registration failed", duration: 3000})
+      this.toast.error({detail: "Notification", summary: "Registration failed", duration: 3000, position: 'br'})
     });
   }
 
