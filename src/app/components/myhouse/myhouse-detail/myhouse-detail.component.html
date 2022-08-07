@@ -1,42 +1,42 @@
-
-<!--<h1>Infomation My House</h1>-->
-<!--<table class="table table-striped table-dark">-->
-<!--  <thead>-->
-<!--  <tr>-->
-<!--    &lt;!&ndash;    <th scope="col">No.</th>&ndash;&gt;-->
-<!--    <th scope="col">Name</th>-->
-<!--    <th scope="col">Address</th>-->
-<!--    <th scope="col">Bedroom</th>-->
-<!--    <th scope="col">Bathroom</th>-->
-<!--    <th scope="col">Description</th>-->
-<!--    <th scope="col">Price</th>-->
-<!--    <th scope="col">Category</th>-->
-<!--    <th scope="col">Chỉnh sửa</th>-->
-<!--  </tr>-->
-<!--  </thead>-->
-
-<!--  <tr>-->
-<!--    &lt;!&ndash;    <th scope="row">{{house.id}}</th>&ndash;&gt;-->
-<!--    <td>{{house.name}}</td>-->
-<!--    <td>{{house.address}}</td>-->
-<!--    <td>{{house.bedroom}}</td>-->
-<!--    <td>{{house.bathroom}}</td>-->
-<!--    <td>{{house.description}}</td>-->
-<!--    <td>{{house.price}}</td>-->
-<!--    <td>{{house.category.name}}</td>-->
-<!--    <td><a [routerLink]="['/myhouse/edit',house.id]" style="color: white"> Edit</a></td>-->
-<!--    <td><a> Delete</a></td>-->
-<!--  </tr>-->
-<!--  &lt;!&ndash;  <tr>&ndash;&gt;-->
-<!--  &lt;!&ndash;    <img src="{{house.avatarHouse}}">&ndash;&gt;-->
-<!--  &lt;!&ndash;  </tr>&ndash;&gt;-->
-
-<!--  <tr *ngFor="let img of images">-->
-<!--    <img src="{{img.image}}">-->
-<!--  </tr>-->
-<!--  <app-fotter></app-fotter>-->
-
-<!--  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>-->
-
-<!--</table>-->
 <app-navbar></app-navbar>
+
+<h1>Infomation My House</h1>
+<table class="table table-striped table-dark">
+  <thead>
+  <tr>
+    <!--    <th scope="col">No.</th>-->
+    <th scope="col">Name</th>
+    <th scope="col">Address</th>
+    <th scope="col">Bedroom</th>
+    <th scope="col">Bathroom</th>
+    <th scope="col">Description</th>
+    <th scope="col">Price</th>
+    <th scope="col">Category</th>
+    <th scope="col">Chỉnh sửa</th>
+  </tr>
+  </thead>
+
+  <tr>
+    <!--    <th scope="row">{{house.id}}</th>-->
+    <td>{{house.name}}</td>
+    <td>{{house.address}}</td>
+    <td>{{house.bedroom}}</td>
+    <td>{{house.bathroom}}</td>
+    <td>{{house.description}}</td>
+    <td>{{house.price}}</td>
+    <td>{{house.category.name}}</td>
+    <td><a [routerLink]="['/myhouse/edit',house.id]" style="color: white"> Edit</a></td>
+    <td><a> Delete</a></td>
+  </tr>
+  <!--  <tr>-->
+  <!--    <img src="{{house.avatarHouse}}">-->
+  <!--  </tr>-->
+
+  <tr *ngFor="let img of images">
+    <img src="{{img.image}}">
+  </tr>
+  <app-fotter></app-fotter>
+
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+</table>
