@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {LoginComponent} from "./components/login/login.component";
 import {SignupComponent} from "./components/signup/signup.component";
 import {HomepageComponent} from "./components/homepage/homepage.component";
@@ -13,7 +13,6 @@ import {OrderCreateComponent} from "./components/orders/order-create/order-creat
 import {MyhouseDetailComponent} from "./components/myhouse/myhouse-detail/myhouse-detail.component";
 import {MyhouseEditComponent} from "./components/myhouse/myhouse-edit/myhouse-edit.component";
 import {UpdatePasswordComponent} from "./components/update-password/update-password.component";
-
 
 
 const routes: Routes = [
@@ -47,18 +46,15 @@ const routes: Routes = [
     component: OrderCreateComponent
   },
   {
-    path:'orderlist',
-    component:OrderListComponent
-  },
-  {
-    path:'show-detail/:id',
-    component:OrderDetailComponent
-  },{
+    path: 'show-detail/:id',
+    component: OrderDetailComponent
+  }, {
     path: 'myhouse', children: [
       {path: 'list', component: MyhouseListComponent},
       {path: 'create', component: MyhouseCreateComponent},
       {path: 'list/myhouse-detail/:id', component: MyhouseDetailComponent},
       {path: 'edit/:id', component: MyhouseEditComponent},
+      {path: 'orderlist', component: OrderListComponent}
 
     ]
   }
@@ -69,4 +65,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
