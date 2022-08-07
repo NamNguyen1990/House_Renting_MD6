@@ -16,10 +16,8 @@ export class OrderService {
   constructor(private httpClient: HttpClient) {
   }
 
-  findAll(): Observable<any> {
-    // @ts-ignore
-
-    return this.httpClient.get(this.API);
+  findAll(id: string | null): Observable<any> {
+    return this.httpClient.get(this.API+`/find?customer_id=${id}`);
   }
 
   save(orderr: Orderr): Observable<any> {

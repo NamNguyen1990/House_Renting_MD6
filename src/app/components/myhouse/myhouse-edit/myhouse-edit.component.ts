@@ -7,6 +7,7 @@ import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {finalize} from "rxjs";
+import {ImageService} from "../../../services/image.service";
 
 @Component({
   selector: 'app-myhouse-edit',
@@ -36,6 +37,7 @@ export class MyhouseEditComponent implements OnInit {
 
   id: any;
   constructor(private houseService: HouseService,
+              private imageService: ImageService,
               private router:Router,
               private httpClient: HttpClient,
               private activatedRoute: ActivatedRoute,
@@ -72,7 +74,7 @@ export class MyhouseEditComponent implements OnInit {
         status: new FormControl(data.status),
         avatarHouse: new FormControl(data.avatarHouse)
       })
-      this.fb = data.avatarHouse
+      this.image = data.avatarHouse
     });
   }
 
@@ -91,10 +93,23 @@ export class MyhouseEditComponent implements OnInit {
       owner: {
         id: localStorage.getItem("ID")
       },
-      avatarHouse: this.fb
+      avatarHouse: this.images[0]
     }
-    this.houseService.update(id, this.obj).subscribe(() => {
+    this.houseService.update(id, this.obj).subscribe((obj) => {
       // this.router.navigate(['/product/list']);
+      this.idHouseImage = obj.id;
+      for (let i = 0; i < this.images.length; i++) {
+        this.image = {
+          house: {
+            id: this.idHouseImage
+          },
+          image: this.images[i]
+        }
+        this.imageService.save(this.image).subscribe()
+      }
+
+
+
       alert('Cập nhật thành công');
       this.router.navigate(['/myhouse/list'])
     }, error => {
@@ -103,32 +118,98 @@ export class MyhouseEditComponent implements OnInit {
   }
 
 
-  fb: any;
-  downloadURL: any;
-  onFileSelected(event: any) {
-    var n = Date.now();
-    const file = event.target.files[0];
-    const filePath = `RoomsImages/${n}`;
-    const fileRef = this.storage.ref(filePath);
-    const task = this.storage.upload(`RoomsImages/${n}`, file);
-    task
-      .snapshotChanges()
-      .pipe(
-        finalize(() => {
-          this.downloadURL = fileRef.getDownloadURL();
-          this.downloadURL.subscribe((url: any) => {
-            if (url) {
-              this.fb = url;
-            }
-            console.log(this.fb);
-          });
-        })
-      )
-      .subscribe(url => {
-        if (url) {
-          console.log(url);
-        }
-      });
+  image: any;
+  idHouseImage: any;
+
+
+
+
+
+  // fb: any;
+  // downloadURL: any;
+  // onFileSelected(event: any) {
+  //   var n = Date.now();
+  //   const file = event.target.files[0];
+  //   const filePath = `RoomsImages/${n}`;
+  //   const fileRef = this.storage.ref(filePath);
+  //   const task = this.storage.upload(`RoomsImages/${n}`, file);
+  //   task
+  //     .snapshotChanges()
+  //     .pipe(
+  //       finalize(() => {
+  //         this.downloadURL = fileRef.getDownloadURL();
+  //         this.downloadURL.subscribe((url: any) => {
+  //           if (url) {
+  //             this.fb = url;
+  //           }
+  //           console.log(this.fb);
+  //         });
+  //       })
+  //     )
+  //     .subscribe(url => {
+  //       if (url) {
+  //         console.log(url);
+  //       }
+  //     });
+  // }
+
+
+
+
+
+
+
+
+
+
+
+
+  title = "cloudsSorage";
+  // @ts-ignore
+  selectedFile: File = null;
+  // @ts-ignore
+  fb;
+  // @ts-ignore
+  downloadURL: Observable<string>;
+  selectedImages: any[] = [];
+  images: any[] = []
+
+  onFileSelected() {
+    if (this.selectedImages.length !== 0) {
+      for (let i = 0; i < this.selectedImages.length; i++) {
+        let selectedImage = this.selectedImages[i];
+        var n = Date.now();
+        const filePath = `RoomsImages/${n}`;
+        const fileRef = this.storage.ref(filePath);
+        this.storage.upload(filePath, selectedImage).snapshotChanges().pipe(
+          finalize(() => {
+            fileRef.getDownloadURL().subscribe(url => {
+              // const image: Image = {
+              //   linkImg: url,
+              //   postId: data.id
+              // };
+              // console.log('image', url);
+              this.images.push(url);
+              // this.imageService.create(image).subscribe(() => {
+              //   console.log('SUCCESSFULLY CREATE')
+              // });
+            });
+          })
+        ).subscribe();
+      }
+    }
+  }
+
+  showPreview(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      const reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      this.selectedImages = event.target.files;
+      console.log(this.selectedImages);
+    } else {
+      this.selectedImages = [];
+    }
+    this.onFileSelected()
   }
 
 }
