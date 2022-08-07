@@ -5,6 +5,7 @@ import {ActivatedRoute, ParamMap} from "@angular/router";
 
 import {HttpClient} from "@angular/common/http";
 import {ImageService} from "../../services/image.service";
+import {CommentService} from "../../services/comment.service";
 
 @Component({
   selector: 'app-housedetail',
@@ -20,15 +21,18 @@ export class HousedetailComponent implements OnInit {
   constructor(private houseService: HouseService,
               private activatedRouter: ActivatedRoute,
               private httClient: HttpClient,
-              private imageService: ImageService) { }
+              private imageService: ImageService,
+              private commentService: CommentService) { }
 
   ngOnInit(): void {
     this.activatedRouter.paramMap.subscribe((param: ParamMap) => {
       this.httClient.get(this.API + param.get('id')).subscribe((data) => {
         this.house = data
         this.showImages(this.house.id);
+        this.showComment(this.house.id);
       })
     })
+
   }
 
   // images: any[] = [];
@@ -46,6 +50,12 @@ export class HousedetailComponent implements OnInit {
     })
  }
 
+ comment: any
+ showComment(id: any) {
+    this.commentService.findAllByCommentId(id).subscribe((data) => {
+      this.comment = data;
+    })
+ }
 
 
   // houseForm: FormGroup = new FormGroup({
