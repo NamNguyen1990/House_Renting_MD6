@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {Category} from "../../../models/category";
 import {HouseService} from "../../../services/house.service";
@@ -8,6 +8,7 @@ import {HttpClient} from "@angular/common/http";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {finalize} from "rxjs";
 import {ImageService} from "../../../services/image.service";
+import {ResponseBody} from "../../../models/response-body";
 
 @Component({
   selector: 'app-myhouse-edit',
@@ -15,7 +16,6 @@ import {ImageService} from "../../../services/image.service";
   styleUrls: ['./myhouse-edit.component.css']
 })
 export class MyhouseEditComponent implements OnInit {
-
   houseForm: FormGroup = new FormGroup({
     name: new FormControl(),
     address: new FormControl(),
@@ -28,17 +28,22 @@ export class MyhouseEditComponent implements OnInit {
     status: new FormControl(),
     avatarHouse: new FormControl(),
   });
-
-
   obj: any;
-
-  listCategory:Category[] = [];
-
-
+  listCategory: Category[] = [];
   id: any;
+  image: any;
+  idHouseImage: number | undefined;
+  title = "cloudsSorage";
+  // @ts-ignore
+  selectedFile: File = null;
+  // @ts-ignore
+  downloadURL: Observable<string>;
+  selectedImages: any[] = [];
+  images: any[] = []
+
   constructor(private houseService: HouseService,
               private imageService: ImageService,
-              private router:Router,
+              private router: Router,
               private httpClient: HttpClient,
               private activatedRoute: ActivatedRoute,
               private categoryService: CategoryService,
@@ -55,14 +60,14 @@ export class MyhouseEditComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.categoryService.findAll().subscribe((data)=>{
+    this.categoryService.findAll().subscribe((data) => {
       console.log(data)
       this.listCategory = data;
     })
   }
 
   getHouse(id: number) {
-    return this.houseService.findById(id).subscribe(data =>{
+    return this.houseService.findById(id).subscribe(data => {
       this.houseForm = new FormGroup({
         name: new FormControl(data.name),
         price: new FormControl(data.price),
@@ -86,7 +91,7 @@ export class MyhouseEditComponent implements OnInit {
         id: this.houseForm.value.categoryId
       },
       address: this.houseForm.value.address,
-      bedroom: this.houseForm.value. bedroom,
+      bedroom: this.houseForm.value.bedroom,
       bathroom: this.houseForm.value.bathroom,
       description: this.houseForm.value.description,
       status: this.houseForm.value.status,
@@ -95,84 +100,27 @@ export class MyhouseEditComponent implements OnInit {
       },
       avatarHouse: this.images[0]
     }
-    this.houseService.update(id, this.obj).subscribe((obj) => {
-      // this.router.navigate(['/product/list']);
-      this.idHouseImage = obj.id;
-      for (let i = 0; i < this.images.length; i++) {
-        this.image = {
-          house: {
-            id: this.idHouseImage
-          },
-          image: this.images[i]
+    this.houseService.update(id, this.obj).subscribe((resp: ResponseBody) => {
+      if (resp.code === "00") {
+        this.idHouseImage = resp.data.id;
+        for (let i = 0; i < this.images.length; i++) {
+          this.image = {
+            house: {
+              id: this.idHouseImage
+            },
+            image: this.images[i]
+          }
+          this.imageService.save(this.image).subscribe()
         }
-        this.imageService.save(this.image).subscribe()
+        alert('Cập nhật thành công');
+        this.router.navigate(['/myhouse/list'])
+      } else {
+        alert(resp.message)
       }
-
-
-
-      alert('Cập nhật thành công');
-      this.router.navigate(['/myhouse/list'])
     }, error => {
       console.log(error);
     });
   }
-
-
-  image: any;
-  idHouseImage: any;
-
-
-
-
-
-  // fb: any;
-  // downloadURL: any;
-  // onFileSelected(event: any) {
-  //   var n = Date.now();
-  //   const file = event.target.files[0];
-  //   const filePath = `RoomsImages/${n}`;
-  //   const fileRef = this.storage.ref(filePath);
-  //   const task = this.storage.upload(`RoomsImages/${n}`, file);
-  //   task
-  //     .snapshotChanges()
-  //     .pipe(
-  //       finalize(() => {
-  //         this.downloadURL = fileRef.getDownloadURL();
-  //         this.downloadURL.subscribe((url: any) => {
-  //           if (url) {
-  //             this.fb = url;
-  //           }
-  //           console.log(this.fb);
-  //         });
-  //       })
-  //     )
-  //     .subscribe(url => {
-  //       if (url) {
-  //         console.log(url);
-  //       }
-  //     });
-  // }
-
-
-
-
-
-
-
-
-
-
-
-
-  title = "cloudsSorage";
-  // @ts-ignore
-  selectedFile: File = null;
-  // @ts-ignore
-  fb;
-  // @ts-ignore
-  downloadURL: Observable<string>;
-  selectedImages: any[] = [];
-  images: any[] = []
 
   onFileSelected() {
     if (this.selectedImages.length !== 0) {
