@@ -36,4 +36,8 @@ export class OrderService {
     return this.httpClient.delete<Orderr>(this.API + `/${id}`);
   }
 
+  updateStatus(): Observable<Object>{
+    return this.httpClient.get(this.API+`/update-order`);
+  }
+
 }

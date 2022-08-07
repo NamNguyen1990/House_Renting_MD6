@@ -6,6 +6,7 @@ import {AuthenticationService} from "../../services/authentication.service";
 import { NgToastService } from 'ng-angular-popup';
 import {GoogleLoginProvider, SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import {user} from "@angular/fire/auth";
+import {OrderService} from "../../services/order.service";
 
 @Component({
   selector: 'app-login',
@@ -28,11 +29,12 @@ export class LoginComponent implements OnInit {
   user: SocialUser | undefined;
   GoogleLoginProvider = GoogleLoginProvider;
 
-  constructor(private activatedRoute: ActivatedRoute,
+  constructor(private activatedRoute: ActivatedRoute,private orderService : OrderService,
               private router: Router,
               private authenticationService: AuthenticationService,
               private toast : NgToastService,
-              private readonly _authService: SocialAuthService
+              private readonly _authService: SocialAuthService,
+
               ) {
     console.log(this.authenticationService.currentUserValue);
     // if (this.authenticationService.currentUserValue) {
@@ -43,6 +45,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.returnUrl = '/users';
     this.adminUrl = '/admin';
+
     this._authService.authState.subscribe((user) => {
       console.log(user)
       this.user = user;

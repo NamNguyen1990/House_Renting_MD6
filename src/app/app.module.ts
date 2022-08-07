@@ -39,7 +39,7 @@ import { UpdatePasswordComponent } from './components/update-password/update-pas
 import {FotterComponent} from "./components/blocks/fotter/fotter.component";
 import {CarouselModule} from "ngx-owl-carousel-o";
 import { CommentListComponent } from './components/comment/comment-list/comment-list.component';
-
+import { OrderByIdHouseComponent } from './components/orders/order-by-id-house/order-by-id-house.component';
 @NgModule({
     declarations: [
         AppComponent,
@@ -59,6 +59,7 @@ import { CommentListComponent } from './components/comment/comment-list/comment-
       MyhouseDetailComponent,
       UpdatePasswordComponent,
       CommentListComponent,
+      OrderByIdHouseComponent,
     ],
   imports: [
     MatInputModule,

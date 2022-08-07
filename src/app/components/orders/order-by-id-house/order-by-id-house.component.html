@@ -1,0 +1,91 @@
+<app-navbar></app-navbar>
+<div id="search" style="background: #f2f2f2;">
+  <div class="container">
+    <div class="form-row">
+      <div class="control-group col-md-3">
+        <label>Check-In</label>
+        <div class="form-group">
+          <div class="input-group date" id="date-3" data-target-input="nearest">
+            <input type="text" class="form-control datetimepicker-input" data-target="#date-3"/>
+            <div class="input-group-append" data-target="#date-3" data-toggle="datetimepicker">
+              <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="control-group col-md-3">
+        <label>Check-Out</label>
+        <div class="form-group">
+          <div class="input-group date" id="date-4" data-target-input="nearest">
+            <input type="text" class="form-control datetimepicker-input" data-target="#date-4"/>
+            <div class="input-group-append" data-target="#date-4" data-toggle="datetimepicker">
+              <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="control-group col-md-3">
+        <div class="form-row">
+          <div class="control-group col-md-6">
+            <label>Year</label>
+            <select class="custom-select">
+              <option selected>0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+          </div>
+          <div class="control-group col-md-6 control-group-kid">
+            <label>Month</label>
+            <select class="custom-select">
+              <option selected>0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="control-group col-md-3">
+        <button class="btn btn-block">Search</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="amenities"> <!--list order-->
+  <div class="container">
+    <div class="section-header">
+      <h2>List order my house & search</h2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in mi libero. Quisque convallis, enim at venenatis tincidunt.
+      </p>
+    </div>
+    <div class="alert alert-danger" *ngIf="status.code === '0001'"><h1>{{status.message}}</h1></div>
+    <div class="row">
+      <div *ngFor="let o of status.data; index as i"  class="col-md-3 col-sm-6">
+        <div   class="item">
+          <h3 style="color: red"> Order {{i+1}} </h3>
+          <h3> Money : {{o.total}}</h3>
+          <p> Name : {{o.name}}</p>
+          <p>Check in : {{o.startTime}}</p>
+          <p>Check out : {{o.endTime}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-fotter></app-fotter>

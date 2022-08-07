@@ -13,6 +13,7 @@ import {OrderCreateComponent} from "./components/orders/order-create/order-creat
 import {MyhouseDetailComponent} from "./components/myhouse/myhouse-detail/myhouse-detail.component";
 import {MyhouseEditComponent} from "./components/myhouse/myhouse-edit/myhouse-edit.component";
 import {UpdatePasswordComponent} from "./components/update-password/update-password.component";
+import {OrderByIdHouseComponent} from "./components/orders/order-by-id-house/order-by-id-house.component";
 
 
 
@@ -53,7 +54,8 @@ const routes: Routes = [
   {
     path:'show-detail/:id',
     component:OrderDetailComponent
-  },{
+  },
+  {
     path: 'myhouse', children: [
       {path: 'list', component: MyhouseListComponent},
       {path: 'create', component: MyhouseCreateComponent},
@@ -61,6 +63,10 @@ const routes: Routes = [
       {path: 'edit/:id', component: MyhouseEditComponent},
 
     ]
+  },
+  {
+    path:'list-order-by-house/:id',
+    component:OrderByIdHouseComponent
   }
 
 ];
