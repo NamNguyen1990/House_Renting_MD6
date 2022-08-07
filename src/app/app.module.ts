@@ -38,6 +38,7 @@ import {AngularFireModule} from "@angular/fire/compat";
 import { UpdatePasswordComponent } from './components/update-password/update-password.component';
 import {FotterComponent} from "./components/blocks/fotter/fotter.component";
 import {CarouselModule} from "ngx-owl-carousel-o";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
     declarations: [
@@ -80,7 +81,8 @@ import {CarouselModule} from "ngx-owl-carousel-o";
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
     SocialLoginModule,
-    CarouselModule
+    CarouselModule,
+    BrowserAnimationsModule
   ],
   providers: [
     {
