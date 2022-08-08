@@ -1,4 +1,4 @@
 export interface Time{
-  year?:number;
-  month?:number;
+  year?:string;
+  month?:string;
 }

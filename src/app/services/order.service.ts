@@ -41,8 +41,8 @@ export class OrderService {
     return this.httpClient.get(this.API + `/update-order`);
   }
 
-  findByMonthAndYear(id: string | null, time: FormGroup): Observable<any>{
-    return this.httpClient.get(this.API + `/total/${id}`)
+  findByMonthAndYear(id: string | null, time: Time): Observable<ResponseBody>{
+    return this.httpClient.post<ResponseBody>(this.API + `/total/${id}`, time)
   }
 
 }

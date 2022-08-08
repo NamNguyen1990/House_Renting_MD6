@@ -5,6 +5,7 @@ import {HttpClient} from "@angular/common/http";
 import {ResponseBody} from "../../../models/response-body";
 import {Orderr} from "../../../models/orderr";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {Time} from "../../../models/time";
 
 @Component({
   selector: 'app-order-by-id-house',
@@ -27,11 +28,10 @@ export class OrderByIdHouseComponent implements OnInit {
     this.searchForm = this.fb.group({
       year: [''],
       month: [''],
-    })
+    });
     this.activatedRouter.paramMap.subscribe((param: ParamMap) => {
       this.httClient.get(this.API + param.get('id')).subscribe((data: ResponseBody) => {
-        this.status = data;
-        console.log(data)
+        this.status = data
         for (let i = 0; i < data.data.length; i++) {
           if (data.data[i].status != 1) {
             this.total += data.data[i].total
@@ -53,16 +53,19 @@ export class OrderByIdHouseComponent implements OnInit {
     }
   }
   searchByMonthAndYear(){
+    console.log(this.searchForm.value)
     this.activatedRouter.paramMap.subscribe((param: ParamMap) => {
-      this.orderService.findByMonthAndYear(param.get("id"),this.searchForm).subscribe((data: ResponseBody) => {
+      this.orderService.findByMonthAndYear(param.get("id"),this.searchForm.value).subscribe((data: ResponseBody) => {
         this.status = data;
         console.log(data)
+        this.total=0;
         for (let i = 0; i < data.data.length; i++) {
           if (data.data[i].status != 1) {
             this.total += data.data[i].total
           }
         }
       }, error => {
+
         this.status = error;
       })
     })
