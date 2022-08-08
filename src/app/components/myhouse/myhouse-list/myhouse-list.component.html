@@ -80,7 +80,6 @@
     </div>
     <br>
     <div class="row">
-
       <div class="col-md-12 room" *ngFor="let item of homes; even as isEven">
         <div class="row" *ngIf="isEven">
           <div class="col-md-6">
@@ -114,7 +113,7 @@
                 <li class="icon-10"></li>
               </ul>
               <div class="room-link">
-                <a [routerLink]="['/myhouse/list/myhouse-detail',item.id]"> Read More</a>
+                <a  [routerLink]="['/myhouse/list/myhouse-detail',item.id]"> Read More</a>
               </div>
             </div>
           </div>
@@ -161,5 +160,43 @@
     </div>
   </div>
 </div>
+
+<!--&lt;!&ndash;modal&ndash;&gt;-->
+<!--<div id="modal-id" class="modal fade" tabindex="-1" role="dialog">-->
+<!--  <div class="modal-dialog modal-lg">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header">-->
+<!--        <button type="button" class="close" data-dismiss="modal">&times;</button>-->
+<!--      </div>-->
+<!--      <div class="modal-body">-->
+<!--        <div class="row">-->
+<!--          <div class="col-12">-->
+<!--            <div class="port-slider">-->
+<!--              <div><img src="img/room-slider/room-1.jpg"></div>-->
+<!--            </div>-->
+<!--            <div class="port-slider-nav">-->
+<!--              <div><img src="img/room-slider/room-1.jpg"></div>-->
+
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="col-12">-->
+<!--            <h2>{{house.name}}</h2>-->
+<!--            <p>-->
+<!--              {{house.description}}-->
+<!--            </p>-->
+<!--            <div class="modal-link">-->
+<!--              <a href="#">Book Now</a>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+
 <app-fotter></app-fotter>
+
+
+
 

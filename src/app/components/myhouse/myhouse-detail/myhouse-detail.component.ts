@@ -15,6 +15,7 @@ export class MyhouseDetailComponent implements OnInit {
 
   API = 'http://localhost:8888/houses/';
 
+  homes!: House[];
   house!: House;
   customOptions: OwlOptions = {
     loop: true,
