@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {House} from "../models/house";
+import {ResponseBody} from "../models/response-body";
 
 @Injectable({
   providedIn: 'root'
@@ -25,12 +26,12 @@ export class HouseService {
     return this.httpClient.get<House>(this.API + `/${id}`);
   }
 
-  findHouseByOwnerId (owner_id: any): Observable<House[]> {
-    return this.httpClient.get<House[]>(this.API + `/find-by-ownerId?owner_id=${owner_id}`)
+  findHouseByOwnerId (owner_id: any): Observable<House> {
+    return this.httpClient.get<House>(this.API + `/find-by-ownerId?owner_id=${owner_id}`)
   }
 
-  update(id: number, house: House): Observable<House> {
-    return this.httpClient.put<House>(`${this.API}` + `/${id}`, house);
+  update(id: number, house: House): Observable<ResponseBody> {
+    return this.httpClient.put<ResponseBody>(`${this.API}` + `/${id}`, house);
   }
   findTop5():Observable<House[]>{
   // @ts-ignore

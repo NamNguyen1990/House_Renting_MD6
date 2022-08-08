@@ -1,5 +1,5 @@
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 import {LoginComponent} from "./components/login/login.component";
 import {SignupComponent} from "./components/signup/signup.component";
 import {HomepageComponent} from "./components/homepage/homepage.component";
@@ -15,6 +15,7 @@ import {MyhouseEditComponent} from "./components/myhouse/myhouse-edit/myhouse-ed
 import {UpdatePasswordComponent} from "./components/update-password/update-password.component";
 import {FindTopComponent} from "./components/find-top/find-top.component";
 import {OrderByIdHouseComponent} from "./components/orders/order-by-id-house/order-by-id-house.component";
+
 
 
 
@@ -45,10 +46,6 @@ const routes: Routes = [
     component: HousedetailComponent,
   },
   {
-    path:'findTop',
-    component:FindTopComponent
-  },
-  {
     path: 'order/:idHome',
     component: OrderCreateComponent
   },
@@ -60,10 +57,7 @@ const routes: Routes = [
     path:'show-detail/:id',
     component:OrderDetailComponent
   },
-  {
-    path: 'show-detail/:id',
-    component: OrderDetailComponent
-  }, {
+ {
     path: 'myhouse', children: [
       {path: 'list', component: MyhouseListComponent},
       {path: 'create', component: MyhouseCreateComponent},
@@ -84,5 +78,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule { }

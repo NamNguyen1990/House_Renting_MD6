@@ -38,6 +38,8 @@ import {AngularFireModule} from "@angular/fire/compat";
 import { UpdatePasswordComponent } from './components/update-password/update-password.component';
 import {FotterComponent} from "./components/blocks/fotter/fotter.component";
 import {CarouselModule} from "ngx-owl-carousel-o";
+import { CommentCreateComponent } from './components/comment/comment-create/comment-create.component';
+
 import { FindTopComponent } from './components/find-top/find-top.component';
 
 import { CommentListComponent } from './components/comment/comment-list/comment-list.component';
@@ -62,6 +64,8 @@ import {NgxStarRatingModule} from "ngx-star-rating";
         FotterComponent,
       MyhouseDetailComponent,
       UpdatePasswordComponent,
+      CommentListComponent,
+      CommentCreateComponent,
       FindTopComponent,
       CommentListComponent,
       OrderByIdHouseComponent,

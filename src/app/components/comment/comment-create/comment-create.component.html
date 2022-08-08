@@ -1,0 +1,17 @@
+<p>comment-create works!</p>
+
+<h1>Tạo mới Comment</h1>
+<form [formGroup]="commentForm" (ngSubmit)="add()">
+  <table>
+    <tr>
+      <td></td>
+      <td><input type="text" formControlName="description"></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><button>Tạo mới</button></td>
+    </tr>
+  </table>
+</form>
+
+
