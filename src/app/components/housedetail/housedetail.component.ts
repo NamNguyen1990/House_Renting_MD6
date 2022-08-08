@@ -6,6 +6,7 @@ import {ActivatedRoute, ParamMap} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {ImageService} from "../../services/image.service";
 import {CommentService} from "../../services/comment.service";
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-housedetail',
