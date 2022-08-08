@@ -1,5 +1,6 @@
 import {User} from "./user";
 import {Category} from "./category";
+import {Image} from "./image";
 
 export interface House {
   id: string,
@@ -12,5 +13,6 @@ export interface House {
   status: string,
   category: Category,
   user: User,
-  avatarHouse: string
+  avatarHouse: string,
+  images: Image[];
 }
