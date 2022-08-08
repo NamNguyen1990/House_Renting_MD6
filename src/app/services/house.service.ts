@@ -21,12 +21,12 @@ export class HouseService {
     return this.httpClient.post(this.API, house);
   }
 
-   findById(id: number): Observable<House> {
+   findById(id: any): Observable<House> {
     return this.httpClient.get<House>(this.API + `/${id}`);
   }
 
-  findHouseByOwnerId (owner_id: any): Observable<House> {
-    return this.httpClient.get<House>(this.API + `/find-by-ownerId?owner_id=${owner_id}`)
+  findHouseByOwnerId (owner_id: any): Observable<House[]> {
+    return this.httpClient.get<House[]>(this.API + `/find-by-ownerId?owner_id=${owner_id}`)
   }
 
   update(id: number, house: House): Observable<House> {

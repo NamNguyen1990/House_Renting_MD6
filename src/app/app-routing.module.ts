@@ -14,6 +14,8 @@ import {MyhouseDetailComponent} from "./components/myhouse/myhouse-detail/myhous
 import {MyhouseEditComponent} from "./components/myhouse/myhouse-edit/myhouse-edit.component";
 import {UpdatePasswordComponent} from "./components/update-password/update-password.component";
 import {FindTopComponent} from "./components/find-top/find-top.component";
+import {OrderByIdHouseComponent} from "./components/orders/order-by-id-house/order-by-id-house.component";
+
 
 
 const routes: Routes = [
@@ -51,6 +53,14 @@ const routes: Routes = [
     component: OrderCreateComponent
   },
   {
+    path:'orderlist',
+    component:OrderListComponent
+  },
+  {
+    path:'show-detail/:id',
+    component:OrderDetailComponent
+  },
+  {
     path: 'show-detail/:id',
     component: OrderDetailComponent
   }, {
@@ -62,6 +72,10 @@ const routes: Routes = [
       {path: 'orderlist', component: OrderListComponent}
 
     ]
+  },
+  {
+    path:'list-order-by-house/:id',
+    component:OrderByIdHouseComponent
   }
 
 ];

@@ -40,6 +40,9 @@ import {FotterComponent} from "./components/blocks/fotter/fotter.component";
 import {CarouselModule} from "ngx-owl-carousel-o";
 import { FindTopComponent } from './components/find-top/find-top.component';
 
+import { CommentListComponent } from './components/comment/comment-list/comment-list.component';
+import { OrderByIdHouseComponent } from './components/orders/order-by-id-house/order-by-id-house.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 @NgModule({
     declarations: [
         AppComponent,
@@ -59,6 +62,8 @@ import { FindTopComponent } from './components/find-top/find-top.component';
       MyhouseDetailComponent,
       UpdatePasswordComponent,
       FindTopComponent,
+      CommentListComponent,
+      OrderByIdHouseComponent,
     ],
   imports: [
     MatInputModule,
@@ -82,7 +87,8 @@ import { FindTopComponent } from './components/find-top/find-top.component';
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
     SocialLoginModule,
-    CarouselModule
+    CarouselModule,
+    BrowserAnimationsModule
   ],
   providers: [
     {
