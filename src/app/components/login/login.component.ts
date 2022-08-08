@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
   user: SocialUser | undefined;
   GoogleLoginProvider = GoogleLoginProvider;
 
-  constructor(private activatedRoute: ActivatedRoute,private orderService : OrderService,
+  constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
               private authenticationService: AuthenticationService,
               private toast : NgToastService,
