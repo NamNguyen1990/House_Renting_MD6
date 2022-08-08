@@ -8,7 +8,7 @@ export interface Orderr {
   startTime?: string;
   endTime?: string;
   total?: string;
-  status?:string;
+  status:number;
   name?:string;
   email?:string;
   phone?:string;

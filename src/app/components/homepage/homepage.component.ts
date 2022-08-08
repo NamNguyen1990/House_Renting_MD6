@@ -57,13 +57,12 @@ export class HomepageComponent implements OnInit {
   getAll(){
     // @ts-ignore
     this.houseService.findAll(this.p).subscribe((houses) => {
-      console.log(houses)
       // @ts-ignore
       this.homes = houses.content;
       // @ts-ignore
       this.total=houses.total;
     })
-    this.showDetail(this.houseId);
+    // this.showDetail(this.houseId);
   }
 
   getHouse(id: number) {
