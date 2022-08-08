@@ -68,9 +68,26 @@
     </div>
   </tr>
 
+
+
+
+
+
   </tbody>
 </table>
 
+<form [formGroup]="commentForm" (ngSubmit)="add()">
+  <table>
+    <tr>
+      <td></td>
+      <td><input type="text" formControlName="description"></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><button>Tạo mới</button></td>
+    </tr>
+  </table>
+</form>
 <!--<app-comment-list></app-comment-list>-->
 
-<app-comment-create></app-comment-create>
+<!--<app-comment-create></app-comment-create>-->
