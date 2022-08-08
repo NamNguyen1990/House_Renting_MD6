@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {Category} from "../../../models/category";
 import {HouseService} from "../../../services/house.service";
@@ -8,7 +8,7 @@ import {HttpClient} from "@angular/common/http";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {finalize} from "rxjs";
 import {ImageService} from "../../../services/image.service";
-import {ResponseBody} from "../../../models/response-body";
+import {NgToastService} from "ng-angular-popup";
 
 @Component({
   selector: 'app-myhouse-edit',
@@ -16,6 +16,7 @@ import {ResponseBody} from "../../../models/response-body";
   styleUrls: ['./myhouse-edit.component.css']
 })
 export class MyhouseEditComponent implements OnInit {
+
   houseForm: FormGroup = new FormGroup({
     name: new FormControl(),
     address: new FormControl(),
@@ -28,20 +29,17 @@ export class MyhouseEditComponent implements OnInit {
     status: new FormControl(),
     avatarHouse: new FormControl(),
   });
+
+
   obj: any;
+
   listCategory: Category[] = [];
+
+
   id: any;
-  image: any;
-  idHouseImage: number | undefined;
-  title = "cloudsSorage";
-  // @ts-ignore
-  selectedFile: File = null;
-  // @ts-ignore
-  downloadURL: Observable<string>;
-  selectedImages: any[] = [];
-  images: any[] = []
 
   constructor(private houseService: HouseService,
+              private toast: NgToastService,
               private imageService: ImageService,
               private router: Router,
               private httpClient: HttpClient,
@@ -100,27 +98,41 @@ export class MyhouseEditComponent implements OnInit {
       },
       avatarHouse: this.images[0]
     }
-    this.houseService.update(id, this.obj).subscribe((resp: ResponseBody) => {
-      if (resp.code === "00") {
-        this.idHouseImage = resp.data.id;
-        for (let i = 0; i < this.images.length; i++) {
-          this.image = {
-            house: {
-              id: this.idHouseImage
-            },
-            image: this.images[i]
-          }
-          this.imageService.save(this.image).subscribe()
+    this.houseService.update(id, this.obj).subscribe((obj) => {
+      // this.router.navigate(['/product/list']);
+      this.idHouseImage = obj.id;
+      for (let i = 0; i < this.images.length; i++) {
+        this.image = {
+          house: {
+            id: this.idHouseImage
+          },
+          image: this.images[i]
         }
-        alert('Cập nhật thành công');
-        this.router.navigate(['/myhouse/list'])
-      } else {
-        alert(resp.message)
+        this.imageService.save(this.image).subscribe()
       }
+      this.toast.success({detail: "Notification", summary: "Update Successfully", duration: 3000, position: "br"});
+      this.router.navigate(['/myhouse/list'])
     }, error => {
+      this.toast.error({detail: "Notification", summary: "Update failed", duration: 3000, position: "br"});
+
       console.log(error);
     });
   }
+
+
+  image: any;
+  idHouseImage: any;
+
+
+  title = "cloudsSorage";
+  // @ts-ignore
+  selectedFile: File = null;
+  // @ts-ignore
+  fb;
+  // @ts-ignore
+  downloadURL: Observable<string>;
+  selectedImages: any[] = [];
+  images: any[] = []
 
   onFileSelected() {
     if (this.selectedImages.length !== 0) {
@@ -132,15 +144,7 @@ export class MyhouseEditComponent implements OnInit {
         this.storage.upload(filePath, selectedImage).snapshotChanges().pipe(
           finalize(() => {
             fileRef.getDownloadURL().subscribe(url => {
-              // const image: Image = {
-              //   linkImg: url,
-              //   postId: data.id
-              // };
-              // console.log('image', url);
               this.images.push(url);
-              // this.imageService.create(image).subscribe(() => {
-              //   console.log('SUCCESSFULLY CREATE')
-              // });
             });
           })
         ).subscribe();

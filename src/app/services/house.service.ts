@@ -22,7 +22,7 @@ export class HouseService {
     return this.httpClient.post(this.API, house);
   }
 
-   findById(id: number): Observable<House> {
+   findById(id: any): Observable<House> {
     return this.httpClient.get<House>(this.API + `/${id}`);
   }
 
@@ -33,5 +33,7 @@ export class HouseService {
   update(id: number, house: House): Observable<ResponseBody> {
     return this.httpClient.put<ResponseBody>(`${this.API}` + `/${id}`, house);
   }
-
+  findTop5():Observable<House[]>{
+  // @ts-ignore
+    return this.httpClient.get(this.API+`/findTop5`)}
 }

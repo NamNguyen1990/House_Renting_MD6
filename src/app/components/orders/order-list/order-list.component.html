@@ -1,27 +1,33 @@
+<app-navbar></app-navbar>
+<br>
+<br>
 <div class="col-12">
   <h1 class="text-center">Order List</h1>
-  <table class="table table-striped">
+  <br>
+  <br>
+  <table class="table table-striped" >
     <thead>
-    <tr>
+    <tr style="text-align: center">
       <th scope="col">ID</th>
       <th scope="col">Total</th>
       <th scope="col">Start_Time</th>
       <th scope="col">End_Time</th>
       <th scope="col">Customer of Name</th>
       <th scope="col">House Of Address</th>
+      <th scope="col" colspan="3" style="text-align: center">Action</th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let o of oderrs; index as i">
+    <tr *ngFor="let o of oderrs; index as i" style="text-align: center">
       <td>{{i + 1}}</td>
       <td>{{o.total}}</td>
       <td>{{o.startTime}}</td>
       <td>{{o.endTime}}</td>
-      <td>{{o.customer.username}}</td>
-      <td>{{o.house.address}}</td>
-      <td><button routerLink="/show-detail/{{o.id}}">Detail</button></td>
-      <td><button (click)="deleteOrder(o.id)">Delete</button></td>
-      <td><a [routerLink]="['delete',o.id]">Edit</a></td>
+      <td >{{o.customer.username}}</td>
+      <td >{{o.house.address}}</td>
+      <td><button routerLink="/show-detail/{{o.id}}" class="btn-dark" style="width: 65px; height: 35px">Detail</button></td>
+      <td><button (click)="deleteOrder(o.id)" class="btn-dark" style="width: 65px; height: 35px">Delete</button></td>
+      <td><button [routerLink]="['delete',o.id]" class="btn-dark" style="width: 65px; height: 35px">Edit</button></td>
     </tr>
     </tbody>
   </table>

@@ -7,6 +7,7 @@ import {HttpClient} from "@angular/common/http";
 import {ImageService} from "../../services/image.service";
 import {CommentService} from "../../services/comment.service";
 import {FormControl, FormGroup} from "@angular/forms";
+import {OwlOptions} from "ngx-owl-carousel-o";
 
 @Component({
   selector: 'app-housedetail',
@@ -14,6 +15,33 @@ import {FormControl, FormGroup} from "@angular/forms";
   styleUrls: ['./housedetail.component.css']
 })
 export class HousedetailComponent implements OnInit {
+  customOptions: OwlOptions = {
+    autoplay: true,
+    autoplaySpeed: 200,
+    loop: true,
+    mouseDrag: true,
+    touchDrag: false,
+    pullDrag: false,
+    dots: false,
+    navSpeed: 700,
+    navText: [ '<<', '>>' ],
+    responsive: {
+      0: {
+        items: 1
+      },
+      400: {
+        items: 1
+      },
+      740: {
+        items: 1
+      },
+      940: {
+        items: 1
+      }
+    },
+    nav: true
+  }
+
 
   API = 'http://localhost:8888/houses/'
  id:any
@@ -93,8 +121,6 @@ export class HousedetailComponent implements OnInit {
       this.comment = data;
     })
  }
-
-
 
 
   // houseForm: FormGroup = new FormGroup({

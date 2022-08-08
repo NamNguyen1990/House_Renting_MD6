@@ -44,38 +44,31 @@
                 <label style="margin-top: -2px">Type</label>
                 <select type="text" formControlName="categoryId"
                         style=" border-radius: 20px; padding: 5px 20px" class="form-control datetimepicker-input">
-                  <option *ngFor="let category of listCategories" [value]="category.id" style="background-color: #fff">{{category.name}}</option>
+                  <option *ngFor="let category of listCategories" [value]="category.id"
+                          style="background-color: #fff">{{category.name}}</option>
                 </select>
                 <p class="help-block text-danger"></p>
               </div>
-
               <div class="control-group col-sm-6">
                 <label>Price</label>
                 <input type="text" class="form-control datetimepicker-input" id="date-2" placeholder="Enter price"
                        required="required"
                        data-validation-required-message="Please enter price" formControlName="price">
-                <p class="help-block text-danger" ></p>
+                <p class="help-block text-danger"></p>
               </div>
               <div class="control-group col-sm-6" style="margin-top: 30px;margin-left: 486px">
                 <label>Description</label>
                 <textarea class="form-control datetimepicker-input" id="date-1"
                           placeholder="Enter description" required="required"
                           data-validation-required-message="Please enter description" formControlName="description"
-                          style="height: 200px; color: white"></textarea>
+                          style="height: 200px"></textarea>
                 <p class="help-block text-danger"></p>
-
               </div>
-<!--              <div class="control-group col-sm-6" style="margin-top: -256px">-->
-<!--                <input type="file" id="file" #userPhoto multiple (change)="showPreview($event)" name="image" autocomplete="off">-->
-<!--                <div *ngFor="let img of images">-->
-<!--                  <img src="{{img}}" alt="" style="width: 200px;height: 200px;margin-top: 15px">-->
-<!--                </div>-->
-<!--              </div>-->
-
               <div class="control-group col-sm-6" style="height: 235px; margin-top: -256px; overflow: auto">
-                <input type="file" id="file" #userPhoto multiple (change)="showPreview($event)" name="image" autocomplete="off">
-                <img *ngFor="let img of images" src="{{img}}" alt="" style="height: 150px; width: 200px;margin-top: 15px; margin-left: 10px">
-                <!-- glightbox Albums left bar END  -->
+                <input type="file" id="file" #userPhoto multiple (change)="showPreview($event)" name="image"
+                       autocomplete="off">
+                <img *ngFor="let img of images" src="{{img}}" alt=""
+                     style="height: 150px; width: 200px;margin-top: 15px; margin-left: 10px">
               </div>
 
 

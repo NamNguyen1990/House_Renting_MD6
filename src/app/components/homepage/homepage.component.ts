@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {HouseService} from "../../services/house.service";
 import {ActivatedRoute, ParamMap} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
+import {OwlOptions} from "ngx-owl-carousel-o";
+import {House} from "../../models/house";
 
 @Component({
   selector: 'app-homepage',
@@ -10,8 +12,36 @@ import {HttpClient} from "@angular/common/http";
 })
 export class HomepageComponent implements OnInit {
 
-  homes: any;
+  customOptions: OwlOptions = {
+    autoplay: true,
+    autoplaySpeed: 200,
+    loop: true,
+    mouseDrag: true,
+    touchDrag: false,
+    pullDrag: false,
+    dots: false,
+    navSpeed: 700,
+    navText: [ '<<', '>>' ],
+    responsive: {
+      0: {
+        items: 1
+      },
+      400: {
+        items: 1
+      },
+      740: {
+        items: 1
+      },
+      940: {
+        items: 1
+      }
+    },
+    nav: true
+  }
 
+  top5Houses : House[] | any
+
+  homes: any;
   house: any;
   houseId = 1;
   p: number = 1;
@@ -23,19 +53,19 @@ export class HomepageComponent implements OnInit {
   }
   ngOnInit(): void {
     this.currentId=localStorage.getItem("ID")
-  this.getAll()
+  this.getAll();
+    this.getTop5();
 
   }
   getAll(){
     // @ts-ignore
     this.houseService.findAll(this.p).subscribe((houses) => {
-      console.log(houses)
       // @ts-ignore
       this.homes = houses.content;
       // @ts-ignore
       this.total=houses.total;
     })
-    this.showDetail(this.houseId);
+    // this.showDetail(this.houseId);
   }
 
   getHouse(id: number) {
@@ -53,5 +83,23 @@ export class HomepageComponent implements OnInit {
 
     this.p = event;
     this.getAll();
+  }
+
+  // getTop5(){
+  //   this.houseService.findTop5().subscribe((houses)=>{
+  //     console.log(houses)
+  //     // @ts-ignore
+  //     this.homes=houses.content;
+  //   })
+  // }
+
+  getTop5() {
+    this.houseService.findTop5().subscribe(data => {
+        console.log(data)
+        this.top5Houses = data;
+      },
+      error => {
+        console.log(error);
+      });
   }
 }
