@@ -5,6 +5,10 @@
   /*remove the gap so it doesn't close*/
 }
 
+.apartment:hover {
+  color: #fff;
+}
+
 .open {
   display: none !important;
 }
