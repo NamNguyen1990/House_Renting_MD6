@@ -117,52 +117,8 @@ export class MyhouseEditComponent implements OnInit {
     });
   }
 
-
   image: any;
   idHouseImage: any;
-
-
-
-
-
-  // fb: any;
-  // downloadURL: any;
-  // onFileSelected(event: any) {
-  //   var n = Date.now();
-  //   const file = event.target.files[0];
-  //   const filePath = `RoomsImages/${n}`;
-  //   const fileRef = this.storage.ref(filePath);
-  //   const task = this.storage.upload(`RoomsImages/${n}`, file);
-  //   task
-  //     .snapshotChanges()
-  //     .pipe(
-  //       finalize(() => {
-  //         this.downloadURL = fileRef.getDownloadURL();
-  //         this.downloadURL.subscribe((url: any) => {
-  //           if (url) {
-  //             this.fb = url;
-  //           }
-  //           console.log(this.fb);
-  //         });
-  //       })
-  //     )
-  //     .subscribe(url => {
-  //       if (url) {
-  //         console.log(url);
-  //       }
-  //     });
-  // }
-
-
-
-
-
-
-
-
-
-
-
 
   title = "cloudsSorage";
   // @ts-ignore
