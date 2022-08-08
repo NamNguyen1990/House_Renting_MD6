@@ -6,4 +6,5 @@ export interface Comment {
   house: House,
   user: User,
   description: string,
+  rate: string
 }

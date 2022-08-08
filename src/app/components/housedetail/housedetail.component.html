@@ -60,17 +60,13 @@
 
   <tr>
     <div class="d-flex flex-column col-md-8" *ngFor="let item of comment">
-
       <div class="d-flex flex-row align-items-center commented-user">
         <h5 class="mr-2">{{item.user.username}}</h5></div>
       <div class="comment-text-sm"><span>{{item.description}}</span></div>
-
+<!--      <div class="comment-text-sm"><span>{{item.rate}}</span></div>-->
+      <h1 style="color: yellow">{{item.rate}}</h1>
     </div>
   </tr>
-
-
-
-
 
 
   </tbody>
@@ -80,11 +76,25 @@
   <table>
     <tr>
       <td></td>
-      <td><input type="text" formControlName="description"></td>
+      <td><input type="text" class="form-control mr-3" placeholder="Thêm bình luận" formControlName="description"></td>
     </tr>
     <tr>
       <td></td>
-      <td><button>Tạo mới</button></td>
+<!--      <td><input type="text" class="form-control mr-3" placeholder="Đánh giá (bạn cho bao nhiêu *)" formControlName="rate"></td>-->
+      <td>
+        <select type="text" class="form-control mr-3" placeholder="Đánh giá (bạn cho bao nhiêu *)" style="color: red" formControlName="rate">
+          <option value="*">*</option>
+          <option value="**">**</option>
+          <option value="***">***</option>
+          <option value="****">****</option>
+          <option value="*****">*****</option>
+        </select>
+      </td>
+
+    </tr>
+    <tr>
+      <td></td>
+      <td><button>Bình luận</button></td>
     </tr>
   </table>
 </form>

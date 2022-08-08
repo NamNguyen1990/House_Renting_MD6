@@ -24,6 +24,7 @@ export class HousedetailComponent implements OnInit {
   commentForm: FormGroup = new FormGroup({
     id: new FormControl(),
     description: new FormControl(),
+    rate: new FormControl()
   })
 
 
@@ -59,7 +60,8 @@ export class HousedetailComponent implements OnInit {
       user: {
         id: localStorage.getItem('ID')
       },
-      description: this.commentForm.value.description
+      description: this.commentForm.value.description,
+      rate: this.commentForm.value.rate
     }
     this.commentService.save(this.obj).subscribe((data) => {
       this.showComment(this.house.id);
@@ -91,6 +93,8 @@ export class HousedetailComponent implements OnInit {
       this.comment = data;
     })
  }
+
+
 
 
   // houseForm: FormGroup = new FormGroup({
