@@ -1,157 +1,156 @@
-<p>myhouse-edit works!</p>
 
+<!--<h1>Sửa thông tin căn nhà:</h1>-->
+<!--<form [formGroup]="houseForm" (ngSubmit)="update(id)">-->
+<!--  <table>-->
+<!--    <tr>-->
+<!--      <td>Name House:</td>-->
+<!--      <td><input type="text" formControlName="name"></td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td>Address House:</td>-->
+<!--      <td><input type="text" formControlName="address"></td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td>	Bedroom House:</td>-->
+<!--      <td><input type="number" formControlName="bedroom"></td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td>Bathroom House:</td>-->
+<!--      <td><input type="number" formControlName="bathroom"></td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td>Description:</td>-->
+<!--      <td><input type="text" formControlName="description"></td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td>Price House:</td>-->
+<!--      <td><input type="number" formControlName="price"></td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td>Loại:</td>-->
+<!--      <td>-->
+<!--        <select type="text" formControlName="categoryId">-->
+<!--          <option *ngFor="let category of listCategory" [value]="category.id">-->
+<!--            {{category.name}}-->
+<!--          </option>-->
+<!--        </select>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td>Trạng Thái</td>-->
+<!--      <td>-->
+<!--        <select type="text" formControlName="status">-->
+<!--          <option value="1">Trống</option>-->
+<!--          <option value="2">Đã có người thuê</option>-->
+<!--          <option value="3">Đang nâng cấp</option>-->
+<!--        </select>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
 
-<h1>Sửa thông tin căn nhà:</h1>
-<form [formGroup]="houseForm" (ngSubmit)="update(id)">
-  <table>
-    <tr>
-      <td>Name House:</td>
-      <td><input type="text" formControlName="name"></td>
-    </tr>
-    <tr>
-      <td>Address House:</td>
-      <td><input type="text" formControlName="address"></td>
-    </tr>
-    <tr>
-      <td>	Bedroom House:</td>
-      <td><input type="number" formControlName="bedroom"></td>
-    </tr>
-    <tr>
-      <td>Bathroom House:</td>
-      <td><input type="number" formControlName="bathroom"></td>
-    </tr>
-    <tr>
-      <td>Description:</td>
-      <td><input type="text" formControlName="description"></td>
-    </tr>
-    <tr>
-      <td>Price House:</td>
-      <td><input type="number" formControlName="price"></td>
-    </tr>
-    <tr>
-      <td>Loại:</td>
-      <td>
-        <select type="text" formControlName="categoryId">
-          <option *ngFor="let category of listCategory" [value]="category.id">
-            {{category.name}}
-          </option>
-        </select>
-      </td>
-    </tr>
-    <tr>
-      <td>Trạng Thái</td>
-      <td>
-        <select type="text" formControlName="status">
-          <option value="1">Trống</option>
-          <option value="2">Đã có người thuê</option>
-          <option value="3">Đang nâng cấp</option>
-        </select>
-      </td>
-    </tr>
-    <tr>
-
-      <div>
-        <label>Avatar House</label>
-        <input type="file" placeholder="Chọn ảnh" id="file" #userPhoto multiple (change)="showPreview($event)" name="image" autocomplete="off">
-        <!--                <img src="{{fb}}" style="width: 100%">-->
-        <div *ngFor="let img of images"><img src="{{img}}" alt=""></div>
-      </div>
-
-    </tr>
-    <tr>
-      <td></td>
-      <td><button>Cập nhật</button></td>
-    </tr>
-  </table>
-</form>
-
-<!--<div id="booking">-->
-<!--  <div class="container">-->
-<!--    <div class="section-header">-->
-<!--      <h2>Edit House</h2>-->
-<!--    </div>-->
-<!--    <div class="row">-->
-<!--      <div class="col-12">-->
-<!--        <div class="booking-form">-->
-<!--          <div id="success"></div>-->
-<!--          <form [formGroup]="houseForm" (ngSubmit)="update(id)">-->
-<!--            <div class="form-row">-->
-<!--              <div class="control-group col-sm-6">-->
-<!--                <label>Apartment Name</label>-->
-<!--                <input type="text" class="form-control" placeholder="Enter apartment name" required="required"-->
-<!--                       data-validation-required-message="Please enter apartment name" formControlName="name">-->
-<!--                <p class="help-block text-danger"></p>-->
-<!--              </div>-->
-<!--              <div class="control-group col-sm-6">-->
-<!--                <label>Address</label>-->
-<!--                <input type="text" class="form-control" placeholder="Enter address" required="required"-->
-<!--                       data-validation-required-message="Please enter address" formControlName="address">-->
-<!--                <p class="help-block text-danger"></p>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--            <div class="form-row">-->
-<!--              <div class="control-group col-sm-6">-->
-<!--                <label>Bedroom</label>-->
-<!--                <input type="text" class="form-control" placeholder="Number of bedrooms" required="required"-->
-<!--                       data-validation-required-message="Please enter number of bedrooms" formControlName="bedroom">-->
-<!--                <p class="help-block text-danger"></p>-->
-<!--              </div>-->
-<!--              <div class="control-group col-sm-6">-->
-<!--                <label>Bathroom</label>-->
-<!--                <input type="text" class="form-control" placeholder="Number of bathroom"-->
-<!--                       required="required" data-validation-required-message="Please enter number of bathroom"-->
-<!--                       formControlName="bathroom">-->
-<!--                <p class="help-block text-danger"></p>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--            <div class="form-row">-->
-<!--              <div class="control-group col-sm-6">-->
-<!--                <label style="margin-top: -2px">Type</label>-->
-<!--                <select type="text" formControlName="categoryId"-->
-<!--                        style=" border-radius: 20px; padding: 5px 20px" class="form-control datetimepicker-input">-->
-<!--                  <option *ngFor="let category of listCategory" [value]="category.id" style="background-color: #fff">{{category.name}}</option>-->
-<!--                </select>-->
-<!--                <p class="help-block text-danger"></p>-->
-<!--              </div>-->
-
-<!--              <div class="control-group col-sm-6">-->
-<!--                <label>Price</label>-->
-<!--                <input type="text" class="form-control datetimepicker-input" id="date-2" placeholder="Enter price"-->
-<!--                       required="required"-->
-<!--                       data-validation-required-message="Please enter price" formControlName="price">-->
-<!--                <p class="help-block text-danger" ></p>-->
-<!--              </div>-->
-<!--              <div class="control-group col-sm-6" style="margin-top: 30px;margin-left: 486px">-->
-<!--                <label>Description</label>-->
-<!--                <textarea class="form-control datetimepicker-input" id="date-1"-->
-<!--                          placeholder="Enter description" required="required"-->
-<!--                          data-validation-required-message="Please enter description" formControlName="description"-->
-<!--                          style="height: 200px; color: white"></textarea>-->
-<!--                <p class="help-block text-danger"></p>-->
-
-<!--              </div>-->
-
-<!--&lt;!&ndash;              <div class="control-group col-sm-6" style="height: 235px; margin-top: -256px; overflow: auto">&ndash;&gt;-->
-<!--&lt;!&ndash;                <input type="file" id="file" #userPhoto multiple (change)="showPreview($event)" name="image" autocomplete="off">&ndash;&gt;-->
-<!--&lt;!&ndash;                <img *ngFor="let img of images" src="{{img}}" alt="" style="height: 150px; width: 200px;margin-top: 15px; margin-left: 10px">&ndash;&gt;-->
-<!--&lt;!&ndash;                &lt;!&ndash; glightbox Albums left bar END  &ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;              </div>&ndash;&gt;-->
-<!--                    <div>-->
-<!--                      <label>Avatar House</label>-->
-<!--                      <input type="file" placeholder="Chọn ảnh" id="file" #userPhoto multiple (change)="showPreview($event)" name="image" autocomplete="off">-->
-<!--                      <div *ngFor="let img of images"><img src="{{img}}" alt=""></div>-->
-<!--                    </div>-->
-
-<!--            </div>-->
-<!--            <div class="form-row">-->
-<!--            </div>-->
-<!--            <div class="button">-->
-<!--              <button type="submit">Update</button>-->
-<!--              <button class="button-back" [routerLink]="['/myhouse/list']">Back</button>-->
-<!--            </div>-->
-<!--          </form>-->
-<!--        </div>-->
+<!--      <div>-->
+<!--        <label>Avatar House</label>-->
+<!--        <input type="file" placeholder="Chọn ảnh" id="file" #userPhoto multiple (change)="showPreview($event)" name="image" autocomplete="off">-->
+<!--        <div *ngFor="let img of images"><img src="{{img}}" alt=""></div>-->
 <!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
+<!--      -->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td></td>-->
+<!--      <td><button>Cập nhật</button></td>-->
+<!--    </tr>-->
+<!--  </table>-->
+<!--</form>-->
+<app-navbar></app-navbar>
+<body>
+<div id="booking">
+  <div class="container">
+    <div class="section-header">
+      <h2>Edit My House</h2>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="booking-form">
+          <div id="success"></div>
+          <form  [formGroup]="houseForm" (ngSubmit)="update(id)">
+            <div class="form-row">
+              <div class="control-group col-sm-6">
+                <label>Name House : </label>
+                <input type="text" class="form-control"
+                        formControlName="name">
+                <p class="help-block text-danger"></p>
+              </div>
+              <div class="control-group col-sm-6">
+                <label>Address</label>
+                <input type="text" class="form-control"
+                        formControlName="address">
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="control-group col-sm-6">
+                <label>Bedroom</label>
+                <input type="text" class="form-control" formControlName="bedroom">
+                <p class="help-block text-danger"></p>
+              </div>
+              <div class="control-group col-sm-6">
+                <label>Bathroom</label>
+                <input type="text" class="form-control" formControlName="bathroom">
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="control-group col-sm-6">
+                <label style="margin-top: -2px">Type</label>
+                <select type="text" formControlName="categoryId"
+                        style=" border-radius: 20px; padding: 5px 20px" class="form-control datetimepicker-input">
+                  <option *ngFor="let category of listCategory" [value]="category.id"
+                          style="background-color: #fff">{{category.name}}</option>
+                </select>
+                <p class="help-block text-danger"></p>
+              </div>
+              <div class="control-group col-sm-6">
+                <label>Price</label>
+                <input type="text" class="form-control datetimepicker-input"
+             formControlName="price">
+                <p class="help-block text-danger"></p>
+              </div>
+              <div class="control-group col-sm-6">
+                <label style="margin-top: -2px">Status</label>
+                <select type="text" formControlName="status"
+                        style=" border-radius: 20px; padding: 5px 20px" class="form-control datetimepicker-input">
+                  <option value="1">
+                    Empty room</option>
+                  <option value="1">Room was rented</option>
+                  <option value="1">To be upgrading</option>
+                </select>
+                <p class="help-block text-danger"></p>
+              </div>
+              <div class="control-group col-sm-6" style=";margin-left: 486px;margin-top: -83px">
+                <label>Description</label>
+                <textarea class="form-control datetimepicker-input" formControlName="description"
+                          style="height: 200px"></textarea>
+                <p class="help-block text-danger"></p>
+              </div>
+
+              <div class="control-group col-sm-6" style="height: 235px; margin-top: -155px; overflow: auto">
+                <input type="file" id="file" #userPhoto multiple (change)="showPreview($event)" name="image"
+                       autocomplete="off">
+                <img *ngFor="let img of images" src="{{img}}" alt=""
+                     style="height: 150px; width: 200px;margin-top: 15px; margin-left: 10px">
+              </div>
+
+            </div>
+            <div class="form-row">
+            </div>
+            <div class="button" style="margin-left: 748px; margin-top: -70px;">
+              <button type="submit" style="margin-left: -50px">Update</button>
+              <button class="button-back" [routerLink]="['/myhouse/list']" style="margin-left: 50px">Back</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>

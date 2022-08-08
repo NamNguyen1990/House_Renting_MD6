@@ -1,6 +1,6 @@
 export interface ResponseBody {
   code?: string;
-  message: string;
-  data?: unknown;
+  message?: string;
+  data?: any;
   toast?: string;
 }

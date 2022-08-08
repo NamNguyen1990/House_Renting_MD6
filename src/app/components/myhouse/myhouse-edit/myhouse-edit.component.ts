@@ -8,6 +8,7 @@ import {HttpClient} from "@angular/common/http";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {finalize} from "rxjs";
 import {ImageService} from "../../../services/image.service";
+import {NgToastService} from "ng-angular-popup";
 
 @Component({
   selector: 'app-myhouse-edit',
@@ -32,13 +33,15 @@ export class MyhouseEditComponent implements OnInit {
 
   obj: any;
 
-  listCategory:Category[] = [];
+  listCategory: Category[] = [];
 
 
   id: any;
+
   constructor(private houseService: HouseService,
+              private toast: NgToastService,
               private imageService: ImageService,
-              private router:Router,
+              private router: Router,
               private httpClient: HttpClient,
               private activatedRoute: ActivatedRoute,
               private categoryService: CategoryService,
@@ -55,14 +58,14 @@ export class MyhouseEditComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.categoryService.findAll().subscribe((data)=>{
+    this.categoryService.findAll().subscribe((data) => {
       console.log(data)
       this.listCategory = data;
     })
   }
 
   getHouse(id: number) {
-    return this.houseService.findById(id).subscribe(data =>{
+    return this.houseService.findById(id).subscribe(data => {
       this.houseForm = new FormGroup({
         name: new FormControl(data.name),
         price: new FormControl(data.price),
@@ -86,7 +89,7 @@ export class MyhouseEditComponent implements OnInit {
         id: this.houseForm.value.categoryId
       },
       address: this.houseForm.value.address,
-      bedroom: this.houseForm.value. bedroom,
+      bedroom: this.houseForm.value.bedroom,
       bathroom: this.houseForm.value.bathroom,
       description: this.houseForm.value.description,
       status: this.houseForm.value.status,
@@ -107,18 +110,19 @@ export class MyhouseEditComponent implements OnInit {
         }
         this.imageService.save(this.image).subscribe()
       }
-
-
-
-      alert('Cập nhật thành công');
+      this.toast.success({detail: "Notification", summary: "Update Successfully", duration: 3000, position: "br"});
       this.router.navigate(['/myhouse/list'])
     }, error => {
+      this.toast.error({detail: "Notification", summary: "Update failed", duration: 3000, position: "br"});
+
       console.log(error);
     });
   }
 
+
   image: any;
   idHouseImage: any;
+
 
   title = "cloudsSorage";
   // @ts-ignore
@@ -140,15 +144,7 @@ export class MyhouseEditComponent implements OnInit {
         this.storage.upload(filePath, selectedImage).snapshotChanges().pipe(
           finalize(() => {
             fileRef.getDownloadURL().subscribe(url => {
-              // const image: Image = {
-              //   linkImg: url,
-              //   postId: data.id
-              // };
-              // console.log('image', url);
               this.images.push(url);
-              // this.imageService.create(image).subscribe(() => {
-              //   console.log('SUCCESSFULLY CREATE')
-              // });
             });
           })
         ).subscribe();

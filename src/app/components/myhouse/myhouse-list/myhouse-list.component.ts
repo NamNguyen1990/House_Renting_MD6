@@ -10,6 +10,7 @@ import {House} from "../../../models/house";
 })
 export class MyhouseListComponent implements OnInit {
 
+
   homes!: House[];
   customOptions: OwlOptions = {
     autoplay: true,
@@ -38,6 +39,7 @@ export class MyhouseListComponent implements OnInit {
     nav: true
   }
 
+
   constructor(private houseService: HouseService) { }
 
   ngOnInit(): void {
@@ -45,4 +47,5 @@ export class MyhouseListComponent implements OnInit {
       this.homes = houses;
     })
   }
+
 }
