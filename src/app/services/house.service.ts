@@ -32,5 +32,7 @@ export class HouseService {
   update(id: number, house: House): Observable<House> {
     return this.httpClient.put<House>(`${this.API}` + `/${id}`, house);
   }
-
+  findTop5():Observable<House[]>{
+  // @ts-ignore
+    return this.httpClient.get(this.API+`/findTop5`)}
 }

@@ -3,6 +3,7 @@ import {HouseService} from "../../services/house.service";
 import {ActivatedRoute, ParamMap} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {OwlOptions} from "ngx-owl-carousel-o";
+import {House} from "../../models/house";
 
 @Component({
   selector: 'app-homepage',
@@ -38,8 +39,9 @@ export class HomepageComponent implements OnInit {
     nav: true
   }
 
-  homes: any;
+  top5Houses : House[] | any
 
+  homes: any;
   house: any;
   houseId = 1;
   p: number = 1;
@@ -51,7 +53,8 @@ export class HomepageComponent implements OnInit {
   }
   ngOnInit(): void {
     this.currentId=localStorage.getItem("ID")
-  this.getAll()
+  this.getAll();
+    this.getTop5();
 
   }
   getAll(){
@@ -80,5 +83,23 @@ export class HomepageComponent implements OnInit {
 
     this.p = event;
     this.getAll();
+  }
+
+  // getTop5(){
+  //   this.houseService.findTop5().subscribe((houses)=>{
+  //     console.log(houses)
+  //     // @ts-ignore
+  //     this.homes=houses.content;
+  //   })
+  // }
+
+  getTop5() {
+    this.houseService.findTop5().subscribe(data => {
+        console.log(data)
+        this.top5Houses = data;
+      },
+      error => {
+        console.log(error);
+      });
   }
 }

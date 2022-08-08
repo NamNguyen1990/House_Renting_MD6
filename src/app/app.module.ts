@@ -38,9 +38,12 @@ import {AngularFireModule} from "@angular/fire/compat";
 import { UpdatePasswordComponent } from './components/update-password/update-password.component';
 import {FotterComponent} from "./components/blocks/fotter/fotter.component";
 import {CarouselModule} from "ngx-owl-carousel-o";
+import { FindTopComponent } from './components/find-top/find-top.component';
+
 import { CommentListComponent } from './components/comment/comment-list/comment-list.component';
 import { OrderByIdHouseComponent } from './components/orders/order-by-id-house/order-by-id-house.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {NgxStarRatingModule} from "ngx-star-rating";
 @NgModule({
     declarations: [
         AppComponent,
@@ -59,6 +62,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
         FotterComponent,
       MyhouseDetailComponent,
       UpdatePasswordComponent,
+      FindTopComponent,
       CommentListComponent,
       OrderByIdHouseComponent,
     ],
@@ -85,7 +89,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
     SocialLoginModule,
     CarouselModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxStarRatingModule
   ],
   providers: [
     {
