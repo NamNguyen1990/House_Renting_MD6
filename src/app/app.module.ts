@@ -39,6 +39,7 @@ import { UpdatePasswordComponent } from './components/update-password/update-pas
 import {FotterComponent} from "./components/blocks/fotter/fotter.component";
 import {CarouselModule} from "ngx-owl-carousel-o";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {CommentListComponent} from "./components/comment/comment-list/comment-list.component";
 
 @NgModule({
     declarations: [
@@ -58,6 +59,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
         FotterComponent,
       MyhouseDetailComponent,
       UpdatePasswordComponent,
+      CommentListComponent
     ],
   imports: [
     MatInputModule,
