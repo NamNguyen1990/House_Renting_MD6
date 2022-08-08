@@ -21,7 +21,7 @@ export class HomepageComponent implements OnInit {
     pullDrag: false,
     dots: false,
     navSpeed: 700,
-    navText: [ '<<', '>>' ],
+    navText: ['<<', '>>'],
     responsive: {
       0: {
         items: 1
@@ -39,33 +39,26 @@ export class HomepageComponent implements OnInit {
     nav: true
   }
 
-  top5Houses : House[] | any
-
   homes: any;
   house: any;
   houseId = 1;
   p: number = 1;
   total: number = 0;
   currentId: any;
-  constructor(private houseService: HouseService,
-              private activatedRouter: ActivatedRoute,
-              private httClient: HttpClient) {
-  }
-  ngOnInit(): void {
-    this.currentId=localStorage.getItem("ID")
-  this.getAll();
-    this.getTop5();
 
+  constructor(private houseService: HouseService) {
   }
-  getAll(){
-    // @ts-ignore
-    this.houseService.findAll(this.p).subscribe((houses) => {
-      // @ts-ignore
+
+  ngOnInit(): void {
+    this.currentId = localStorage.getItem("ID")
+    this.getAll();
+  }
+
+  getAll() {
+    this.houseService.findAll().subscribe((houses) => {
       this.homes = houses.content;
-      // @ts-ignore
-      this.total=houses.total;
+      this.total = houses.total;
     })
-    // this.showDetail(this.houseId);
   }
 
   getHouse(id: number) {
@@ -78,28 +71,11 @@ export class HomepageComponent implements OnInit {
       this.house = house;
     })
   }
-  pageChangeEvent(event: number){
+
+  pageChangeEvent(event: number) {
     console.log(event)
 
     this.p = event;
     this.getAll();
-  }
-
-  // getTop5(){
-  //   this.houseService.findTop5().subscribe((houses)=>{
-  //     console.log(houses)
-  //     // @ts-ignore
-  //     this.homes=houses.content;
-  //   })
-  // }
-
-  getTop5() {
-    this.houseService.findTop5().subscribe(data => {
-        console.log(data)
-        this.top5Houses = data;
-      },
-      error => {
-        console.log(error);
-      });
   }
 }

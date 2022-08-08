@@ -1,66 +1,3 @@
-
-<!--<h1>Sửa thông tin căn nhà:</h1>-->
-<!--<form [formGroup]="houseForm" (ngSubmit)="update(id)">-->
-<!--  <table>-->
-<!--    <tr>-->
-<!--      <td>Name House:</td>-->
-<!--      <td><input type="text" formControlName="name"></td>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--      <td>Address House:</td>-->
-<!--      <td><input type="text" formControlName="address"></td>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--      <td>	Bedroom House:</td>-->
-<!--      <td><input type="number" formControlName="bedroom"></td>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--      <td>Bathroom House:</td>-->
-<!--      <td><input type="number" formControlName="bathroom"></td>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--      <td>Description:</td>-->
-<!--      <td><input type="text" formControlName="description"></td>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--      <td>Price House:</td>-->
-<!--      <td><input type="number" formControlName="price"></td>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--      <td>Loại:</td>-->
-<!--      <td>-->
-<!--        <select type="text" formControlName="categoryId">-->
-<!--          <option *ngFor="let category of listCategory" [value]="category.id">-->
-<!--            {{category.name}}-->
-<!--          </option>-->
-<!--        </select>-->
-<!--      </td>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--      <td>Trạng Thái</td>-->
-<!--      <td>-->
-<!--        <select type="text" formControlName="status">-->
-<!--          <option value="1">Trống</option>-->
-<!--          <option value="2">Đã có người thuê</option>-->
-<!--          <option value="3">Đang nâng cấp</option>-->
-<!--        </select>-->
-<!--      </td>-->
-<!--    </tr>-->
-<!--    <tr>-->
-
-<!--      <div>-->
-<!--        <label>Avatar House</label>-->
-<!--        <input type="file" placeholder="Chọn ảnh" id="file" #userPhoto multiple (change)="showPreview($event)" name="image" autocomplete="off">-->
-<!--        <div *ngFor="let img of images"><img src="{{img}}" alt=""></div>-->
-<!--      </div>-->
-<!--      -->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--      <td></td>-->
-<!--      <td><button>Cập nhật</button></td>-->
-<!--    </tr>-->
-<!--  </table>-->
-<!--</form>-->
 <app-navbar></app-navbar>
 <body>
 <div id="booking">
@@ -136,7 +73,7 @@
               <div class="control-group col-sm-6" style="height: 235px; margin-top: -155px; overflow: auto">
                 <input type="file" id="file" #userPhoto multiple (change)="showPreview($event)" name="image"
                        autocomplete="off">
-                <img *ngFor="let img of images" src="{{img}}" alt=""
+                <img *ngFor="let img of images" src="{{img.image}}" alt=""
                      style="height: 150px; width: 200px;margin-top: 15px; margin-left: 10px">
               </div>
 

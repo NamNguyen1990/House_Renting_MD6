@@ -13,9 +13,8 @@ export class HouseService {
 
   constructor(private httpClient: HttpClient) { }
 
-  findAll(): Observable<House[]> {
-    // @ts-ignore
-    return this.httpClient.get(this.API);
+  findAll(): Observable<any> {
+    return this.httpClient.get<any>(this.API);
   }
 
   save(house: House): Observable<any> {

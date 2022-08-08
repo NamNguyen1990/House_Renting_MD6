@@ -67,7 +67,7 @@
               <div class="control-group col-sm-6" style="height: 235px; margin-top: -256px; overflow: auto">
                 <input type="file" id="file" #userPhoto multiple (change)="showPreview($event)" name="image"
                        autocomplete="off">
-                <img *ngFor="let img of images" src="{{img}}" alt=""
+                <img *ngFor="let img of images" src="{{img.image}}" alt=""
                      style="height: 150px; width: 200px;margin-top: 15px; margin-left: 10px">
               </div>
 

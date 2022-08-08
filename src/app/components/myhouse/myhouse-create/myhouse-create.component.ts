@@ -9,7 +9,9 @@ import {NgToastService} from "ng-angular-popup";
 import {AngularFireStorage} from '@angular/fire/compat/storage';
 import {finalize} from "rxjs";
 import {ImageService} from "../../../services/image.service";
-import { OwlOptions } from 'ngx-owl-carousel-o';
+import {OwlOptions} from 'ngx-owl-carousel-o';
+import {House} from "../../../models/house";
+import {Image} from "../../../models/image";
 
 @Component({
   selector: 'app-myhouse-create',
@@ -43,95 +45,6 @@ export class MyhouseCreateComponent implements OnInit {
     nav: true
   }
 
-  // houseForm = new FormGroup({
-  //   name: new FormControl(''),
-  //   address: new FormControl(''),
-  //   bedroom: new FormControl(''),
-  //   bathroom: new FormControl(''),
-  //   description: new FormControl(''),
-  //   price: new FormControl(''),
-  //   categoryId: new FormControl(''),
-  //   ownerId: new FormControl(''),
-  //   status: new FormControl('1'),
-  //   avatarHouse: new FormControl('')
-  // })
-  // obj: any;
-  //
-  // listCategory: Category[] = [];
-  //
-  // constructor(private httpClient: HttpClient,
-  //             private activatedRoute: ActivatedRoute,
-  //             private houseService: HouseService,
-  //             private categoryService: CategoryService,
-  //             private toast: NgToastService,
-  //             private storage: AngularFireStorage
-  // ) {
-  // }
-  //
-  // ngOnInit(): void {
-  //   this.categoryService.findAll().subscribe((data) => {
-  //     console.log(data)
-  //     this.listCategory = data;
-  //   })
-  // }
-  //
-  // submit() {
-  //   console.log(this.houseForm.value)
-  //   this.obj = {
-  //     name: this.houseForm.value.name,
-  //     category: {
-  //       id: this.houseForm.value.categoryId
-  //     },
-  //     address: this.houseForm.value.address,
-  //     bedroom: this.houseForm.value.bedroom,
-  //     bathroom: this.houseForm.value.bathroom,
-  //     description: this.houseForm.value.description,
-  //     price: this.houseForm.value.price,
-  //     status: this.houseForm.value.status,
-  //     owner: {
-  //       id: localStorage.getItem("ID")
-  //     },
-  //     avatarHouse: this.fb
-  //   }
-  //   this.houseService.save(this.obj).subscribe(() => {
-  //     this.toast.success({detail: "Notification", summary: "More successful houses", duration: 3000});
-  //   }, error => {
-  //     this.toast.error({detail: "Notification", summary: "More failed houses", duration: 3000});
-  //   })
-  // }
-  //
-  // // up load filebase
-  // title = "cloudsSorage";
-  // selectedFile: any;
-  // fb: any;
-  // downloadURL: any;
-  //
-  // onFileSelected(event: any) {
-  //   var n = Date.now();
-  //   const file = event.target.files[0];
-  //   const filePath = `RoomsImages/${n}`;
-  //   const fileRef = this.storage.ref(filePath);
-  //   const task = this.storage.upload(`RoomsImages/${n}`, file);
-  //   task
-  //     .snapshotChanges()
-  //     .pipe(
-  //       finalize(() => {
-  //         this.downloadURL = fileRef.getDownloadURL();
-  //         this.downloadURL.subscribe((url: any) => {
-  //           if (url) {
-  //             this.fb = url;
-  //           }
-  //           console.log(this.fb);
-  //         });
-  //       })
-  //     )
-  //     .subscribe(url => {
-  //       if (url) {
-  //         console.log(url);
-  //       }
-  //     });
-  // }
-
   houseForm: FormGroup = new FormGroup({
     name: new FormControl(),
     categoryId: new FormControl(),
@@ -140,9 +53,9 @@ export class MyhouseCreateComponent implements OnInit {
     bathroom: new FormControl(),
     description: new FormControl(),
     price: new FormControl(),
-    status: new FormControl('1')
+    status: new FormControl(1)
   })
-  house: any;
+  house!: House;
   listCategories: Category[] = [];
 
   constructor(private houseService: HouseService,
@@ -168,10 +81,12 @@ export class MyhouseCreateComponent implements OnInit {
   image: any;
 
   add() {
+    // @ts-ignore
+    const ownerId = localStorage.getItem('ID') ? parseInt(localStorage.getItem('ID')) : 0;
     this.house = {
       name: this.houseForm.value.name,
       category: {
-        id: this.houseForm.value.categoryId
+        id: +this.houseForm.value.categoryId
       },
       address: this.houseForm.value.address,
       bedroom: this.houseForm.value.bedroom,
@@ -179,24 +94,15 @@ export class MyhouseCreateComponent implements OnInit {
       description: this.houseForm.value.description,
       price: this.houseForm.value.price,
       owner: {
-        id: localStorage.getItem('ID')
+        id: ownerId
       },
       status: this.houseForm.value.status,
-      avatarHouse: this.images[0]
+      avatarHouse: this.images[0].image,
+      images: this.images
     }
     this.houseService.save(this.house).subscribe((house) => {
-      this.idHouseImage = house.id;
-      for (let i = 0; i < this.images.length; i++) {
-        this.image = {
-          house: {
-            id: this.idHouseImage
-          },
-          image: this.images[i]
-        }
-        this.imageService.save(this.image).subscribe()
-      }
       this.router.navigate(['']);
-    })
+    });
   }
 
 
@@ -208,7 +114,7 @@ export class MyhouseCreateComponent implements OnInit {
   // @ts-ignore
   downloadURL: Observable<string>;
   selectedImages: any[] = [];
-  images: any[] = []
+  images: Image[] = []
 
   onFileSelected() {
     if (this.selectedImages.length !== 0) {
@@ -220,15 +126,8 @@ export class MyhouseCreateComponent implements OnInit {
         this.storage.upload(filePath, selectedImage).snapshotChanges().pipe(
           finalize(() => {
             fileRef.getDownloadURL().subscribe(url => {
-              // const image: Image = {
-              //   linkImg: url,
-              //   postId: data.id
-              // };
-              // console.log('image', url);
-              this.images.push(url);
-              // this.imageService.create(image).subscribe(() => {
-              //   console.log('SUCCESSFULLY CREATE')
-              // });
+              console.log(url);
+              this.images.push({image: url});
             });
           })
         ).subscribe();
