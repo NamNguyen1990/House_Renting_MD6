@@ -3,7 +3,6 @@ import {HouseService} from "../../services/house.service";
 import {ActivatedRoute, ParamMap} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {OwlOptions} from "ngx-owl-carousel-o";
-import {House} from "../../models/house";
 
 @Component({
   selector: 'app-homepage',
@@ -11,7 +10,6 @@ import {House} from "../../models/house";
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
-
 
   customOptions: OwlOptions = {
     autoplay: true,

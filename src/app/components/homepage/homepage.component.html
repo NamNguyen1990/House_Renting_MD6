@@ -198,7 +198,6 @@
       <div class="col-md-12 room" *ngFor="let item of homes| paginate: { itemsPerPage: 2, currentPage: p, totalItems: total } ; even as isEven">
         <div class="row" *ngIf="isEven">
           <div class="col-md-6">
-
             <owl-carousel-o [options]="customOptions">
               <ng-container *ngFor="let slide of item.images">
                 <ng-template carouselSlide>
@@ -206,7 +205,6 @@
                 </ng-template>
               </ng-container>
             </owl-carousel-o>
-
 <!--            <div class="room-img">-->
 <!--              <img src="{{item.avatarHouse}}" style="width: 600px;height: 450px">-->
 <!--            </div>-->
@@ -271,7 +269,6 @@
             </div>
           </div>
           <div class="col-md-6">
-
             <owl-carousel-o [options]="customOptions">
               <ng-container *ngFor="let slide of item.images">
                 <ng-template carouselSlide>
@@ -279,7 +276,6 @@
                 </ng-template>
               </ng-container>
             </owl-carousel-o>
-
 <!--            <div class="room-img">-->
 <!--              <img src="{{item.avatarHouse}}" style="width: 600px;height: 450px">-->
 <!--            </div>-->
