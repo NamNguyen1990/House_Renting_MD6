@@ -76,13 +76,13 @@
     <div style="text-align: center;border-radius: 25%">
       <button  style="background: #F5E8C7;width: 100px;height: 40px;margin-right: 20px;border-radius: 20px;border-color: #F5E8C7">avaiable</button>
       <button  style="background: #00CED1;width: 100px;height: 40px;border-radius: 20px;border-color: #00CED1">renting</button>
-      <button  style="background: white;width: 100px;height: 40px;border-radius: 20px;margin-left: 20px;border-color: white">hered</button>
+      <button  style="background: #bea041;width: 100px;height: 40px;border-radius: 20px;margin-left: 20px;border-color: white">hered</button>
     </div>
     <br>
     <br>
     <div class="alert alert-danger" *ngIf="status.code === '0001'"><h1>{{status.message}}</h1></div>
-    <div class="row">
-      <div *ngFor="let o of status.data; index as i" class="col-md-3 col-sm-6">
+    <div style="text-align: center" class="row">
+      <div  *ngFor="let o of status.data; index as i" class="col-md-3 col-sm-6">
         <div [class]="bgColor(o)">
           <h3 style="color: red"> Order {{i + 1}} </h3>
           <h3> Money : {{o.total}}</h3>
