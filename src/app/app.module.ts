@@ -39,9 +39,7 @@ import { UpdatePasswordComponent } from './components/update-password/update-pas
 import {FotterComponent} from "./components/blocks/fotter/fotter.component";
 import {CarouselModule} from "ngx-owl-carousel-o";
 import { CommentCreateComponent } from './components/comment/comment-create/comment-create.component';
-
 import { FindTopComponent } from './components/find-top/find-top.component';
-
 import { CommentListComponent } from './components/comment/comment-list/comment-list.component';
 import { OrderByIdHouseComponent } from './components/orders/order-by-id-house/order-by-id-house.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
