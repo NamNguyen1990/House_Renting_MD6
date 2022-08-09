@@ -18,7 +18,7 @@ export class OrderService {
   }
 
   findAll(id: string | null): Observable<any> {
-    return this.httpClient.get(this.API + `/find?customer_id=${id}`);
+    return this.httpClient.get(this.API + `/find1?customer_id=${id}`);
   }
 
   save(orderr: Orderr): Observable<any> {

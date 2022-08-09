@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import {OrderService} from "../../../services/order.service";
 import {Orderr} from "../../../models/orderr";
 
+
 @Component({
   selector: 'app-order-list',
   templateUrl: './order-list.component.html',
@@ -11,7 +12,10 @@ import {Orderr} from "../../../models/orderr";
 export class OrderListComponent implements OnInit {
   id:any;
   oderrs: Orderr[] = [];
-  constructor(private orderService : OrderService) { }
+  p: number = 1;
+  total: number = 0;
+  constructor(private orderService : OrderService,
+              ) { }
 
   ngOnInit(): void {
     this.getAllOrders();
@@ -19,23 +23,27 @@ export class OrderListComponent implements OnInit {
 
   getAllOrders(){
     this.orderService.findAll(localStorage.getItem("ID")).subscribe((data)=>{
-    this.oderrs=data;
-    console.log(this.oderrs);
+    this.oderrs=data.content;
+      console.log(data.content)
+      this.total = data.total;
+
   })
   }
   deleteOrder(id:any) {
     console.log(id)
     if (confirm("are you sure?")){
       this.orderService.delete(id).subscribe(() => {
-        alert(" Complete!! ?")
         this.getAllOrders()
       }, error => {
         alert("Can't cancel ! Only cancel the rental 1 day before the start date")
-        console.log(error)
       })
     }
   }
+  pageChangeEvent(event: number) {
+    console.log(event)
 
-
+    this.p = event;
+    this.getAllOrders();
+  }
 
 }

@@ -13,11 +13,13 @@ import {Time} from "../../../models/time";
   styleUrls: ['./order-by-id-house.component.css']
 })
 export class OrderByIdHouseComponent implements OnInit {
-  API = 'http://localhost:8888/orders/find-by-house/';
+  API = 'http://localhost:8888/orders/find-by-house1/';
   status: any;
   classExpression: string = '';
   total: number = 0;
   searchForm!: FormGroup
+  p: number = 1;
+  total1: number = 0;
   constructor(private orderService: OrderService,
               private activatedRouter: ActivatedRoute,
               private httClient: HttpClient,
@@ -31,10 +33,12 @@ export class OrderByIdHouseComponent implements OnInit {
     });
     this.activatedRouter.paramMap.subscribe((param: ParamMap) => {
       this.httClient.get(this.API + param.get('id')).subscribe((data: ResponseBody) => {
-        this.status = data
-        for (let i = 0; i < data.data.length; i++) {
-          if (data.data[i].status != 1) {
-            this.total += data.data[i].total
+        this.status = data.data.content
+        this.total1= data.data.total
+        console.log(data.data.content)
+        for (let i = 0; i < data.data.content.length; i++) {
+          if (data.data.content[i].status != 1) {
+            this.total += data.data.content[i].total
           }
         }
       }, error => {
@@ -45,11 +49,11 @@ export class OrderByIdHouseComponent implements OnInit {
 
   bgColor(item: Orderr) {
     if (item.status == 1) {
-      return 'item item-avaiable';
+      return 'avaiable';
     } else if (item.status == 2) {
-      return 'item item-renting';
+      return 'renting';
     } else {
-      return 'item item-hered';
+      return 'hered';
     }
   }
   searchByMonthAndYear(){
@@ -57,7 +61,7 @@ export class OrderByIdHouseComponent implements OnInit {
     this.activatedRouter.paramMap.subscribe((param: ParamMap) => {
       this.orderService.findByMonthAndYear(param.get("id"),this.searchForm.value).subscribe((data: ResponseBody) => {
         this.status = data;
-        console.log(data)
+
         this.total=0;
         for (let i = 0; i < data.data.length; i++) {
           if (data.data[i].status != 1) {
@@ -69,6 +73,13 @@ export class OrderByIdHouseComponent implements OnInit {
         this.status = error;
       })
     })
+  }
+
+  pageChangeEvent(event: number) {
+    console.log(event)
+
+    this.p = event;
+    this.ngOnInit();
   }
 
 }
