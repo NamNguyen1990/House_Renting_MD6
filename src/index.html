@@ -37,5 +37,11 @@
 <script src="assets/js/booking.js"></script>
 <script src="assets/js/jqBootstrapValidation.min.js"></script>
 <script src="assets/js/main.js"></script>
+<script>
+  let loadFile = function (event) {
+    let image = document.getElementById("output");
+    image.src = URL.createObjectURL(event.target.files[0]);
+  };
+</script>
 </body>
 </html>
