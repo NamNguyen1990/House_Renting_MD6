@@ -48,7 +48,7 @@ export class HousedetailComponent implements OnInit {
   id: any
   house: any;
   obj: any = {};
-
+avatar : any;
   id_house: any
   commentForm: FormGroup = new FormGroup({
     id: new FormControl(),
@@ -79,6 +79,7 @@ export class HousedetailComponent implements OnInit {
         this.obj = data;
       });
     })
+    this.avatar = localStorage.getItem('AVATAR');
   }
 
   add() {
@@ -102,13 +103,6 @@ export class HousedetailComponent implements OnInit {
     })
   }
 
-  // images: any[] = [];
-  // getImages(id: number) {
-  //   this.imageService.showFullImage(id).subscribe((images) => {
-  //     this.images = images;
-  //   })
-  // }
-
 
   images: any[] = []
 
@@ -127,56 +121,6 @@ export class HousedetailComponent implements OnInit {
   }
 
 
-  // houseForm: FormGroup = new FormGroup({
-  //   name: new FormControl(),
-  //   categoryId: new FormControl(),
-  //   address: new FormControl(),
-  //   bedroom: new FormControl(),
-  //   bathroom: new FormControl(),
-  //   description: new FormControl(),
-  //   price: new FormControl(),
-  // });
-  //
-  // obj: any;
-  //
-  // listCategory:Category[] = [];
-  //
-  //
-  // id: any;
-  // constructor(private houseService: HouseService,
-  //             private activatedRoute: ActivatedRoute,
-  //             private categoryService: CategoryService,) {
-  //   this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
-  //     // @ts-ignore
-  //     this.id = +paramMap.get('id');
-  //
-  //     const product = this.getHouse(this.id);
-  //     // @ts-ignore
-  //     this.productForm.setValue(product);
-  //   });
-  // }
-  //
-  // ngOnInit(): void {
-  //
-  //   this.categoryService.findAll().subscribe((data)=>{
-  //     console.log(data)
-  //     this.listCategory = data;
-  //   })
-  // }
-  //
-  // getHouse(id: number) {
-  //   return this.houseService.findById(id).subscribe(data =>{
-  //     this.houseForm = new FormGroup({
-  //       name: new FormControl(data.name),
-  //       price: new FormControl(data.price),
-  //       categoryId: new FormControl(data.category.id),
-  //       address: new FormControl(data.address),
-  //       bedroom: new FormControl(data.bedroom),
-  //       bathroom: new FormControl(data.bathroom),
-  //       description: new FormControl(data.description),
-  //     })
-  //   });
-  // }
 
   data: any[] = [];
   submitting = false;

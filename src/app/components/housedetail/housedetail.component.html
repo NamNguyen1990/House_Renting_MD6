@@ -121,37 +121,7 @@
 <!--  <app-fotter></app-fotter>-->
 
 
-<!--  <form [formGroup]="commentForm" (ngSubmit)="add()">-->
-<!--    <table>-->
-<!--      <tr>-->
-<!--        <td></td>-->
-<!--        <td><input type="text" class="form-control mr-3" placeholder="Thêm bình luận" formControlName="description">-->
-<!--        </td>-->
-<!--      </tr>-->
-<!--      <tr>-->
-<!--        <td></td>-->
-<!--        &lt;!&ndash;      <td><input type="text" class="form-control mr-3" placeholder="Đánh giá (bạn cho bao nhiêu *)" formControlName="rate"></td>&ndash;&gt;-->
-<!--        <td>-->
-<!--          <select type="text" class="form-control mr-3" placeholder="Đánh giá (bạn cho bao nhiêu *)"-->
-<!--                  style="color: red" formControlName="rate">-->
-<!--            <option value="*">*</option>-->
-<!--            <option value="**">**</option>-->
-<!--            <option value="***">***</option>-->
-<!--            <option value="****">****</option>-->
-<!--            <option value="*****">*****</option>-->
-<!--          </select>-->
-<!--        </td>-->
-<!--      </tr>-->
-<!--      <tr>-->
-<!--        <td></td>-->
-<!--        <td>-->
-<!--          <button>Bình luận</button>-->
-<!--        </td>-->
-<!--      </tr>-->
-<!--    </table>-->
-<!--  </form>-->
-<!--<app-comment-list></app-comment-list>-->
-<!--</div>-->
+
 <div id="rooms">
   <div class="container">
     <div class="section-header">
@@ -209,37 +179,87 @@
                 <li class="icon-10"></li>
               </ul>
 <!--              <div class="star w-50 rating-star" style="margin-left: 241px">-->
-<!--&lt;!&ndash;                <ngx-star-rating [id]="'rating2'"></ngx-star-rating>&ndash;&gt;-->
+<!--                <ngx-star-rating [id]="'rating2'"></ngx-star-rating>-->
 <!--              </div>-->
-              <nz-rate [ngModel]="2.5" nzAllowHalf></nz-rate>
-              <div class="room-link">
+<!--              <div class="room-link">-->
 
 
-                <nz-list *ngIf="data.length" [nzDataSource]="data" [nzRenderItem]="item" [nzItemLayout]="'horizontal'">
-                  <ng-template #item let-item>
-                    <nz-comment [nzAuthor]="item.author" [nzDatetime]="item.displayTime">
-                      <nz-avatar nz-comment-avatar nzIcon="user" [nzSrc]="item.avatar"></nz-avatar>
-                      <nz-comment-content>
-                        <p>{{ item.content }}</p>
-                      </nz-comment-content>
-                    </nz-comment>
-                  </ng-template>
-                </nz-list>
-                <nz-comment>
-                  <nz-avatar nz-comment-avatar nzIcon="user" [nzSrc]="user.avatar"></nz-avatar>
-                  <nz-comment-content>
-                    <nz-form-item>
-                      <textarea [(ngModel)]="inputValue" nz-input rows="8" style="margin-top: 45px;max-width: 100%;width: 500%  "></textarea>
-                    </nz-form-item>
-                    <nz-form-item>
-                      <button nz-button nzType="primary" [nzLoading]="submitting" [disabled]="!inputValue" (click)="handleSubmit()" style="margin-left: 415px">
-                        Add Comment
-                      </button>
-                    </nz-form-item>
-                  </nz-comment-content>
-                </nz-comment>
+<!--                <nz-list *ngIf="data.length" [nzDataSource]="data" [nzRenderItem]="item" [nzItemLayout]="'horizontal'">-->
+<!--                  <ng-template #item let-item>-->
+<!--                    <nz-comment [nzAuthor]="item.author" [nzDatetime]="item.displayTime">-->
+<!--                      <nz-avatar nz-comment-avatar nzIcon="user" [nzSrc]="item.avatar"></nz-avatar>-->
+<!--                      <nz-comment-content>-->
+<!--                        <p>{{ item.content }}</p>-->
+<!--                      </nz-comment-content>-->
+<!--                    </nz-comment>-->
+<!--                  </ng-template>-->
+<!--                </nz-list>-->
+<!--                <nz-comment>-->
 
-                </div>
+<!--                  <nz-avatar nz-comment-avatar nzIcon="user" [nzSrc]="user.avatar"></nz-avatar>-->
+<!--                  <nz-comment-content>-->
+<!--                    <nz-form-item>-->
+
+
+<!--                      <div class="d-flex flex-column col-md-8" *ngFor="let item of comment">-->
+
+<!--                        <div class="d-flex flex-row align-items-center commented-user">-->
+<!--                          <h5 class="mr-2">{{item.user.username}}</h5></div>-->
+<!--                        <div class="comment-text-sm"><span>{{item.description}}</span></div>-->
+
+<!--                      </div>-->
+<!--                      -->
+<!--                      <textarea [(ngModel)]="inputValue" nz-input rows="8" style="margin-top: 45px;max-width: 100%;width: 500%  ">-->
+<!--                      </textarea>-->
+<!--                    </nz-form-item>-->
+<!--                    <nz-form-item>-->
+<!--                      <button nz-button nzType="primary" [nzLoading]="submitting" [disabled]="!inputValue" (click)="handleSubmit()" style="margin-left: 415px">-->
+<!--                        Add Comment-->
+<!--                      </button>-->
+<!--                    </nz-form-item>-->
+<!--                  </nz-comment-content>-->
+<!--                </nz-comment>-->
+
+<!--                </div>-->
+              <div class="d-flex flex-column col-md-8" *ngFor="let item of comment">
+
+                <div class="d-flex flex-row align-items-center commented-user">
+                  <img src="{{avatar}}" alt="" style="border-radius: 50%; width: 40px;height: 40px; margin-right: 15px " ><h5 class="mr-2">{{item.user.username}}</h5></div>
+                <div class="comment-text-sm"><span>{{item.description}}</span></div>
+                <div class="comment-text-sm"><span>{{item.rate}}</span></div>
+
+              </div>
+
+                <form [formGroup]="commentForm" (ngSubmit)="add()">
+                  <table>
+                    <tr>
+                      <td></td>
+                      <td><input type="text" class="form-control mr-3" placeholder="Thêm bình luận" formControlName="description">
+                      </td>
+                    </tr>
+<!--                    <tr>-->
+<!--                      <td></td>-->
+<!--                      &lt;!&ndash;      <td><input type="text" class="form-control mr-3" placeholder="Đánh giá (bạn cho bao nhiêu *)" formControlName="rate"></td>&ndash;&gt;-->
+<!--                      <td>-->
+<!--                        <select type="text" class="form-control mr-3" placeholder="Đánh giá (bạn cho bao nhiêu *)"-->
+<!--                                style="color: red" formControlName="rate">-->
+<!--                          <option value="*">*</option>-->
+<!--                          <option value="**">**</option>-->
+<!--                          <option value="***">***</option>-->
+<!--                          <option value="****">****</option>-->
+<!--                          <option value="*****">*****</option>-->
+<!--                        </select>-->
+<!--                      </td>-->
+<!--                    </tr>-->
+                    <tr>
+                      <td></td>
+                      <td>
+                        <button>Bình luận</button>
+                      </td>
+                    </tr>
+                  </table>
+                </form>
+              </div>
               </div>
             </div>
           </div>
@@ -247,5 +267,5 @@
         </div>
       </div>
     </div>
-  </div>
+
 
