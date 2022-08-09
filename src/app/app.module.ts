@@ -49,6 +49,7 @@ import {NzListModule} from "ng-zorro-antd/list";
 import {NzAvatarModule} from "ng-zorro-antd/avatar";
 import {NzFormModule} from "ng-zorro-antd/form";
 import {NzButtonModule} from "ng-zorro-antd/button";
+import {NzRateModule} from "ng-zorro-antd/rate";
 
 @NgModule({
   declarations: [
@@ -104,7 +105,8 @@ import {NzButtonModule} from "ng-zorro-antd/button";
     NzListModule,
     NzAvatarModule,
     NzFormModule,
-    NzButtonModule
+    NzButtonModule,
+    NzRateModule
 
   ],
   providers: [
