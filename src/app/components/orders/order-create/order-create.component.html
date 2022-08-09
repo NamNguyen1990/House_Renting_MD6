@@ -18,12 +18,13 @@
         <div class="booking-form">
           <div id="success"></div>
           <form [formGroup]="orderForm" method="post" (submit)="orderCreate()">
-            <div  class="alert " [ngClass]="status.code === '0000' ? 'alert-info' : 'alert-danger'"
+            <div class="alert " [ngClass]="status.code === '0000' ? 'alert-info' : 'alert-danger'"
                  *ngIf="status.code">{{status.message}}</div>
             <div class="form-row">
               <div class="control-group col-sm-6">
                 <label>Full Name</label>
-                <input type="text" class="form-control" formControlName="name" id="name" name="name" placeholder="name.." required="required"
+                <input type="text" class="form-control" formControlName="name" id="name" name="name"
+                       placeholder="name.." required="required"
                        data-validation-required-message="Please enter first name"/>
                 <div *ngIf="name?.invalid && (name?.dirty || name?.touched)"
                      class="" style="color: red">
@@ -41,7 +42,8 @@
             <div class="form-row">
               <div class="control-group col-sm-6">
                 <label>Mobile</label>
-                <input type="text" class="form-control" formControlName="phone" id="phone" name="phone"  placeholder="phone.."
+                <input type="text" class="form-control" formControlName="phone" id="phone" name="phone"
+                       placeholder="phone.."
                        required="required" data-validation-required-message="Please enter your mobile number"/>
                 <div *ngIf="phone?.invalid && (phone?.dirty || phone?.touched)"
                      class="" style="color: red">
@@ -60,7 +62,8 @@
               </div>
               <div class="control-group col-sm-6">
                 <label>Email</label>
-                <input type="text" class="form-control" formControlName="email" id="email" name="email" placeholder="email@example.com"
+                <input type="text" class="form-control" formControlName="email" id="email" name="email"
+                       placeholder="email@example.com"
                        required="required" data-validation-required-message="Please enter your email"/>
                 <div *ngIf="email?.invalid && (email?.dirty || email?.touched)"
                      class="" style="color: red">
@@ -79,24 +82,26 @@
             <div class="form-row">
               <div class="control-group col-sm-6">
                 <label>Check-In</label>
-                <input type="Date" class="form-control datetimepicker-input" formControlName="startTime" id="startTime" name="startTime" data-toggle="datetimepicker"
+                <input type="Date" class="form-control datetimepicker-input" formControlName="startTime" id="startTime"
+                       name="startTime" data-toggle="datetimepicker"
                        data-target="#date-1" placeholder="E.g. MM-DD-YYYY" required="required"
                        data-validation-required-message="Please enter date"/>
                 <p class="help-block text-danger"></p>
               </div>
               <div class="control-group col-sm-6">
                 <label>Check-Out</label>
-                <input type="Date" class="form-control datetimepicker-input" formControlName="endTime" id="endTime" name="endTime" data-toggle="datetimepicker"
+                <input type="Date" class="form-control datetimepicker-input" formControlName="endTime" id="endTime"
+                       name="endTime" data-toggle="datetimepicker"
                        data-target="#date-2" placeholder="E.g. MM-DD-YYYY" required="required"
                        data-validation-required-message="Please enter date"/>
                 <p class="help-block text-danger"></p>
               </div>
             </div>
             <div class="form-row">
-              <div class="control-group col-sm-6" >
+              <div class="control-group col-sm-6">
                 <label>Adult</label>
                 <!--                <select class="custom-select" id="adult" required="required" data-validation-required-message="Please select one"/>-->
-                <select formControlName="adult" id="adult" name="adult">
+                <select style="margin-left: 10px;border-radius: 10px" formControlName="adult" id="adult" name="adult">
                   <option value="0">0</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
@@ -121,7 +126,7 @@
               <div class="control-group col-sm-6">
                 <label>KId</label>
                 <!--                <select class="custom-select" id="kid" required="required" data-validation-required-message="Please select one"/>-->
-                <select formControlName="kis" id="kis" name="kis">
+                <select style="margin-left: 10px;border-radius: 10px" formControlName="kis" id="kis" name="kis">
                   <option value="0">0</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
@@ -146,7 +151,8 @@
             </div>
             <div class="control-group">
               <label>Special Request</label>
-              <input type="text" class="form-control" formControlName="request" id="request" name="request" placeholder="Special Request"
+              <input type="text" class="form-control" formControlName="request" id="request" name="request"
+                     placeholder="Special Request"
                      required="required" data-validation-required-message="Please enter your special request"/>
               <div *ngIf="request?.invalid && (request?.dirty || request?.touched)"
                    class="" style="color: red">
