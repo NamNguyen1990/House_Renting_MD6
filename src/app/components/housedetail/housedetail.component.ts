@@ -8,6 +8,7 @@ import {ImageService} from "../../services/image.service";
 import {CommentService} from "../../services/comment.service";
 import {FormControl, FormGroup} from "@angular/forms";
 import {OwlOptions} from "ngx-owl-carousel-o";
+import {NgToastService} from "ng-angular-popup";
 
 
 @Component({
@@ -50,6 +51,7 @@ export class HousedetailComponent implements OnInit {
   obj: any = {};
 avatar : any;
   id_house: any
+
   commentForm: FormGroup = new FormGroup({
     id: new FormControl(),
     description: new FormControl(),
@@ -62,7 +64,8 @@ avatar : any;
               private httClient: HttpClient,
               private router: Router,
               private imageService: ImageService,
-              private commentService: CommentService) {
+              private commentService: CommentService,
+              private toast: NgToastService) {
   }
 
   ngOnInit(): void {
@@ -98,7 +101,7 @@ avatar : any;
       this.showComment(this.house.id);
       this.commentForm.reset()
     }, error => {
-      alert("Mày thuê đi rồi hãy comment nhà của tao!")
+      this.toast.error({detail: "Notification", summary: "You haven't rented a house yet. so don't comment", duration :3000})
       console.log(error)
     })
   }

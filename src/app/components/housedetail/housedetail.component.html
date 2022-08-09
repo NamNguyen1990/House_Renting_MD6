@@ -54,14 +54,13 @@
                 <li class="icon-9"></li>
                 <li class="icon-10"></li>
               </ul>
-              <div class="d-flex flex-column col-md-8" *ngFor="let item of comment">
+              <div class="d-flex flex-column col-md-8" *ngFor="let item of comment" style="width: ">
 
                 <div class="d-flex flex-row align-items-center commented-user">
                   <img src="{{avatar}}" alt=""
                        style="border-radius: 50%; width: 40px;height: 40px; margin-right: 15px "><h5
                   class="mr-2">{{item.user.username}}</h5></div>
                 <div class="comment-text-sm"><span>{{item.description}}</span></div>
-                <div class="comment-text-sm"><span>{{item.rate}}</span></div>
               </div>
               <form [formGroup]="commentForm" (ngSubmit)="add()">
                 <table>
