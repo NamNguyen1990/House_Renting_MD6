@@ -3,6 +3,7 @@ import {HouseService} from "../../services/house.service";
 import {ActivatedRoute, ParamMap} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {OwlOptions} from "ngx-owl-carousel-o";
+import {House} from "../../models/house";
 
 @Component({
   selector: 'app-homepage',
@@ -20,7 +21,7 @@ export class HomepageComponent implements OnInit {
     pullDrag: false,
     dots: false,
     navSpeed: 700,
-    navText: [ '<<', '>>' ],
+    navText: ['<<', '>>'],
     responsive: {
       0: {
         items: 1
@@ -44,25 +45,20 @@ export class HomepageComponent implements OnInit {
   p: number = 1;
   total: number = 0;
   currentId: any;
-  constructor(private houseService: HouseService,
-              private activatedRouter: ActivatedRoute,
-              private httClient: HttpClient) {
-  }
-  ngOnInit(): void {
-    this.currentId=localStorage.getItem("ID")
-  this.getAll();
-    this.getTop5();
 
+  constructor(private houseService: HouseService) {
   }
-  getAll(){
-    // @ts-ignore
-    this.houseService.findAll(this.p).subscribe((houses) => {
-      // @ts-ignore
+
+  ngOnInit(): void {
+    this.currentId = localStorage.getItem("ID")
+    this.getAll();
+  }
+
+  getAll() {
+    this.houseService.findAll().subscribe((houses) => {
       this.homes = houses.content;
-      // @ts-ignore
-      this.total=houses.total;
+      this.total = houses.total;
     })
-    // this.showDetail(this.houseId);
   }
 
   getHouse(id: number) {
@@ -75,19 +71,11 @@ export class HomepageComponent implements OnInit {
       this.house = house;
     })
   }
-  pageChangeEvent(event: number){
+
+  pageChangeEvent(event: number) {
     console.log(event)
 
     this.p = event;
     this.getAll();
   }
-
-  getTop5(){
-    this.houseService.findTop5().subscribe((houses)=>{
-      console.log(houses)
-      // @ts-ignore
-      this.homes=houses.content;
-    })
-  }
-
 }

@@ -74,16 +74,16 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('AVATAR',data.avatar)
           localStorage.setItem('PASSWORD',this.loginForm.value.password)
           if (data.roles[0].authority == "ROLE_ADMIN") {
-            this.toast.success({detail: "Notification", summary: "Logged in successfully", duration :3000, position: 'br'})
+            this.toast.success({detail: "Notification", summary: "Logged in successfully", duration :3000})
             this.router.navigate(["/"])
           } else {
-            this.toast.success({detail: "Notification", summary: "Logged in successfully", duration :3000 ,position: 'br'})
+            this.toast.success({detail: "Notification", summary: "Logged in successfully", duration :3000})
             this.router.navigate(["/"]);
           }
 
         },
         error => {
-          this.toast.error({detail: "Notification", summary: "Login failed, Please check again", duration :3000, position: 'br'})
+          this.toast.error({detail: "Notification", summary: "Login failed, Please check again", duration :3000})
           this.loading = false;
         });
   }

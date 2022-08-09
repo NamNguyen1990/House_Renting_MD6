@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {Category} from "../../../models/category";
 import {HouseService} from "../../../services/house.service";
@@ -9,6 +9,8 @@ import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {finalize} from "rxjs";
 import {ImageService} from "../../../services/image.service";
 import {NgToastService} from "ng-angular-popup";
+import {ResponseBody} from "../../../models/response-body";
+import {Image} from "../../../models/image";
 
 @Component({
   selector: 'app-myhouse-edit',
@@ -29,14 +31,20 @@ export class MyhouseEditComponent implements OnInit {
     status: new FormControl(),
     avatarHouse: new FormControl(),
   });
-
-
   obj: any;
-
   listCategory: Category[] = [];
-
-
   id: any;
+  image: any;
+  idHouseImage: any;
+  title = "cloudsSorage";
+  // @ts-ignore
+  selectedFile: File = null;
+  // @ts-ignore
+  fb;
+  // @ts-ignore
+  downloadURL: Observable<string>;
+  selectedImages: any[] = [];
+  images: Image[] = []
 
   constructor(private houseService: HouseService,
               private toast: NgToastService,
@@ -49,15 +57,11 @@ export class MyhouseEditComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       // @ts-ignore
       this.id = +paramMap.get('id');
-
-      const product = this.getHouse(this.id);
-      // @ts-ignore
-      this.productForm.setValue(product);
+      this.getHouse(this.id);
     });
   }
 
   ngOnInit(): void {
-
     this.categoryService.findAll().subscribe((data) => {
       console.log(data)
       this.listCategory = data;
@@ -65,19 +69,19 @@ export class MyhouseEditComponent implements OnInit {
   }
 
   getHouse(id: number) {
-    return this.houseService.findById(id).subscribe(data => {
+    this.houseService.findById(id).subscribe(data => {
       this.houseForm = new FormGroup({
         name: new FormControl(data.name),
         price: new FormControl(data.price),
-        categoryId: new FormControl(data.category.id),
+        categoryId: new FormControl(data?.category?.id),
         address: new FormControl(data.address),
         bedroom: new FormControl(data.bedroom),
         bathroom: new FormControl(data.bathroom),
         description: new FormControl(data.description),
         status: new FormControl(data.status),
         avatarHouse: new FormControl(data.avatarHouse)
-      })
-      this.image = data.avatarHouse
+      });
+      this.image = data.avatarHouse;
     });
   }
 
@@ -96,43 +100,16 @@ export class MyhouseEditComponent implements OnInit {
       owner: {
         id: localStorage.getItem("ID")
       },
-      avatarHouse: this.images[0]
+      avatarHouse: this.images[0].image,
+      images: this.images
     }
-    this.houseService.update(id, this.obj).subscribe((obj) => {
-      // this.router.navigate(['/product/list']);
-      this.idHouseImage = obj.id;
-      for (let i = 0; i < this.images.length; i++) {
-        this.image = {
-          house: {
-            id: this.idHouseImage
-          },
-          image: this.images[i]
-        }
-        this.imageService.save(this.image).subscribe()
-      }
+    this.houseService.update(id, this.obj).subscribe((obj: ResponseBody) => {
       this.toast.success({detail: "Notification", summary: "Update Successfully", duration: 3000, position: "br"});
       this.router.navigate(['/myhouse/list'])
     }, error => {
       this.toast.error({detail: "Notification", summary: "Update failed", duration: 3000, position: "br"});
-
-      console.log(error);
     });
   }
-
-
-  image: any;
-  idHouseImage: any;
-
-
-  title = "cloudsSorage";
-  // @ts-ignore
-  selectedFile: File = null;
-  // @ts-ignore
-  fb;
-  // @ts-ignore
-  downloadURL: Observable<string>;
-  selectedImages: any[] = [];
-  images: any[] = []
 
   onFileSelected() {
     if (this.selectedImages.length !== 0) {
@@ -144,7 +121,7 @@ export class MyhouseEditComponent implements OnInit {
         this.storage.upload(filePath, selectedImage).snapshotChanges().pipe(
           finalize(() => {
             fileRef.getDownloadURL().subscribe(url => {
-              this.images.push(url);
+              this.images.push({image: url});
             });
           })
         ).subscribe();

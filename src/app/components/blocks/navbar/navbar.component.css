@@ -5,6 +5,10 @@
   /*remove the gap so it doesn't close*/
 }
 
+.apartment:hover {
+  color: #fff;
+}
+
 .open {
   display: none !important;
 }
@@ -31,10 +35,10 @@
   color: #fff;
 }
 
-.apartment:hover {
-  color: #fff;
-}
 
+.open {
+  display: none !important;
+}
 .dropdown-menu{
   background-color: white;
 }
@@ -47,6 +51,7 @@
   text-align: center;
   font-size: 12px;
   color: #00CED1;
+
 }
 .dropdown-menu li:hover{
   display: block;
@@ -54,4 +59,3 @@
   text-align: center;
   background-color: pink;
 }
-

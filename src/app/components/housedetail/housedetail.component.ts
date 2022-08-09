@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {HouseService} from "../../services/house.service";
-import {ActivatedRoute, ParamMap} from "@angular/router";
+import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 
 
 import {HttpClient} from "@angular/common/http";
 import {ImageService} from "../../services/image.service";
 import {CommentService} from "../../services/comment.service";
+import {FormControl, FormGroup} from "@angular/forms";
 import {OwlOptions} from "ngx-owl-carousel-o";
 
 @Component({
@@ -45,10 +46,20 @@ export class HousedetailComponent implements OnInit {
   API = 'http://localhost:8888/houses/'
  id:any
   house: any;
+  obj: any
+
+  id_house: any
+  commentForm: FormGroup = new FormGroup({
+    id: new FormControl(),
+    description: new FormControl(),
+    rate: new FormControl()
+  })
+
 
   constructor(private houseService: HouseService,
               private activatedRouter: ActivatedRoute,
               private httClient: HttpClient,
+              private router: Router,
               private imageService: ImageService,
               private commentService: CommentService) { }
 
@@ -59,8 +70,34 @@ export class HousedetailComponent implements OnInit {
         this.showImages(this.house.id);
         this.showComment(this.house.id);
       })
+      this.id_house = param.get('id')
+      console.log(param);
+      this.houseService.findById(this.id_house).subscribe((data) => {
+        console.log(data);
+        this.obj = data;
+      });
     })
+  }
 
+  add() {
+    console.log(this.commentForm.value)
+    this.obj = {
+      house: {
+        id: this.id_house
+      },
+      user: {
+        id: localStorage.getItem('ID')
+      },
+      description: this.commentForm.value.description,
+      rate: this.commentForm.value.rate
+    }
+    this.commentService.save(this.obj).subscribe((data) => {
+      this.showComment(this.house.id);
+      this.commentForm.reset()
+    },error => {
+      alert("Mày thuê đi rồi hãy comment nhà của tao!")
+      console.log(error)
+    })
   }
 
   // images: any[] = [];
