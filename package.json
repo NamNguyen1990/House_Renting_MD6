@@ -23,6 +23,7 @@
     "@angular/router": "^14.0.0",
     "firebase": "^9.9.1",
     "ng-angular-popup": "^0.1.2",
+    "ng-zorro-antd": "^13.4.0",
     "ngx-owl-carousel-o": "^14.0.1",
     "ngx-pagination": "^6.0.2",
     "ngx-star-rating": "^2.1.0",

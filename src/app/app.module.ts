@@ -35,39 +35,46 @@ import {MatInputModule} from "@angular/material/input";
 import {MatRadioModule} from "@angular/material/radio";
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {AngularFireModule} from "@angular/fire/compat";
-import { UpdatePasswordComponent } from './components/update-password/update-password.component';
+import {UpdatePasswordComponent} from './components/update-password/update-password.component';
 import {FotterComponent} from "./components/blocks/fotter/fotter.component";
 import {CarouselModule} from "ngx-owl-carousel-o";
+import {FindTopComponent} from './components/find-top/find-top.component';
+import {CommentListComponent} from './components/comment/comment-list/comment-list.component';
+import {OrderByIdHouseComponent} from './components/orders/order-by-id-house/order-by-id-house.component';
 import { CommentCreateComponent } from './components/comment/comment-create/comment-create.component';
-import { FindTopComponent } from './components/find-top/find-top.component';
-import { CommentListComponent } from './components/comment/comment-list/comment-list.component';
-import { OrderByIdHouseComponent } from './components/orders/order-by-id-house/order-by-id-house.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {NgxStarRatingModule} from "ngx-star-rating";
+import {NzCommentModule} from 'ng-zorro-antd/comment';
+import {NzListModule} from "ng-zorro-antd/list";
+import {NzAvatarModule} from "ng-zorro-antd/avatar";
+import {NzFormModule} from "ng-zorro-antd/form";
+import {NzButtonModule} from "ng-zorro-antd/button";
+
 @NgModule({
-    declarations: [
-        AppComponent,
-        LoginComponent,
-        SignupComponent,
-        HomepageComponent,
-        HousedetailComponent,
-        NavbarComponent,
-        OrderCreateComponent,
-        OrderListComponent,
-        OrderDetailComponent,
-        MyhouseListComponent,
-        MyhouseCreateComponent,
-        MyhouseEditComponent,
-        UpdateProfileComponent,
-        FotterComponent,
-      MyhouseDetailComponent,
-      UpdatePasswordComponent,
-      CommentListComponent,
-      CommentCreateComponent,
-      FindTopComponent,
-      CommentListComponent,
-      OrderByIdHouseComponent,
-    ],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    SignupComponent,
+    HomepageComponent,
+    HousedetailComponent,
+    NavbarComponent,
+    OrderCreateComponent,
+    OrderListComponent,
+    OrderDetailComponent,
+    MyhouseListComponent,
+    MyhouseCreateComponent,
+    MyhouseEditComponent,
+    UpdateProfileComponent,
+    FotterComponent,
+    MyhouseDetailComponent,
+    UpdatePasswordComponent,
+    CommentListComponent,
+    CommentCreateComponent,
+    FindTopComponent,
+    CommentListComponent,
+    OrderByIdHouseComponent,
+
+  ],
   imports: [
     MatInputModule,
     MatCardModule,
@@ -92,7 +99,13 @@ import {NgxStarRatingModule} from "ngx-star-rating";
     SocialLoginModule,
     CarouselModule,
     BrowserAnimationsModule,
-    NgxStarRatingModule
+    NgxStarRatingModule,
+    NzCommentModule,
+    NzListModule,
+    NzAvatarModule,
+    NzFormModule,
+    NzButtonModule
+
   ],
   providers: [
     {
@@ -112,4 +125,5 @@ import {NgxStarRatingModule} from "ngx-star-rating";
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
