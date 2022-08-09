@@ -79,6 +79,8 @@ export class UpdateProfileComponent implements OnInit {
   title = 'firebase';
   selectedFile:any;
   downloadURL: any;
+
+
   onFileSelected(event:any) {
     var n = Date.now();
     const file = event.target.files[0];
