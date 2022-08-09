@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HouseService} from "../../services/house.service";
 import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 
@@ -8,6 +8,7 @@ import {ImageService} from "../../services/image.service";
 import {CommentService} from "../../services/comment.service";
 import {FormControl, FormGroup} from "@angular/forms";
 import {OwlOptions} from "ngx-owl-carousel-o";
+
 
 @Component({
   selector: 'app-housedetail',
@@ -24,7 +25,7 @@ export class HousedetailComponent implements OnInit {
     pullDrag: false,
     dots: false,
     navSpeed: 700,
-    navText: [ '<<', '>>' ],
+    navText: ['<<', '>>'],
     responsive: {
       0: {
         items: 1
@@ -44,9 +45,9 @@ export class HousedetailComponent implements OnInit {
 
 
   API = 'http://localhost:8888/houses/'
- id:any
+  id: any
   house: any;
-  obj: any
+  obj: any = {};
 
   id_house: any
   commentForm: FormGroup = new FormGroup({
@@ -61,7 +62,8 @@ export class HousedetailComponent implements OnInit {
               private httClient: HttpClient,
               private router: Router,
               private imageService: ImageService,
-              private commentService: CommentService) { }
+              private commentService: CommentService) {
+  }
 
   ngOnInit(): void {
     this.activatedRouter.paramMap.subscribe((param: ParamMap) => {
@@ -94,7 +96,7 @@ export class HousedetailComponent implements OnInit {
     this.commentService.save(this.obj).subscribe((data) => {
       this.showComment(this.house.id);
       this.commentForm.reset()
-    },error => {
+    }, error => {
       alert("Mày thuê đi rồi hãy comment nhà của tao!")
       console.log(error)
     })
@@ -108,19 +110,21 @@ export class HousedetailComponent implements OnInit {
   // }
 
 
- images: any[] = []
- showImages(id: any) {
+  images: any[] = []
+
+  showImages(id: any) {
     this.imageService.findByIdHouse(id).subscribe((data) => {
       this.images = data;
     })
- }
+  }
 
- comment: any
- showComment(id: any) {
+  comment: any
+
+  showComment(id: any) {
     this.commentService.findAllByCommentId(id).subscribe((data) => {
       this.comment = data;
     })
- }
+  }
 
 
   // houseForm: FormGroup = new FormGroup({
@@ -174,4 +178,37 @@ export class HousedetailComponent implements OnInit {
   //   });
   // }
 
+  data: any[] = [];
+  submitting = false;
+  inputValue = '';
+  user = {
+    author: this.obj.name,
+    avatar: this.obj.avatar,
+  };
+
+  handleSubmit(): void {
+    this.submitting = true;
+    const content = this.inputValue;
+    this.inputValue = '';
+    setTimeout(() => {
+      this.submitting = false;
+      this.data = [
+        ...this.data,
+        {
+          ...this.user,
+          content,
+          datetime: new Date(),
+          displayTime: formatDistance(new Date(), new Date())
+        }
+      ].map(e => ({
+        ...e,
+        displayTime: formatDistance(new Date(), e.datetime)
+      }));
+    }, 800);
+  }
 }
+
+function formatDistance(arg0: Date, arg1: Date) {
+  throw new Error('Function not implemented.');
+}
+
