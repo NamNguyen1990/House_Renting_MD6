@@ -13,6 +13,7 @@
       <th scope="col">Start_Time</th>
       <th scope="col">End_Time</th>
       <th scope="col">Customer of Name</th>
+      <th scope="col">Phone</th>
       <th scope="col">House Of Address</th>
       <th scope="col" colspan="3" style="text-align: center">Action</th>
     </tr>
@@ -20,14 +21,13 @@
     <tbody>
     <tr *ngFor="let o of oderrs; index as i" style="text-align: center">
       <td>{{i + 1}}</td>
-      <td>{{o.total}}</td>
+      <td ><h4 style="color: red;">{{o.total}}</h4></td>
       <td>{{o.startTime}}</td>
       <td>{{o.endTime}}</td>
-      <td >{{o.customer.username}}</td>
+      <td >{{o.name}}</td>
+      <td >{{o.phone}}</td>
       <td >{{o.house.address}}</td>
-      <td><button routerLink="/show-detail/{{o.id}}" class="btn-dark" style="width: 65px; height: 35px">Detail</button></td>
       <td><button (click)="deleteOrder(o.id)" class="btn-dark" style="width: 65px; height: 35px">Delete</button></td>
-      <td><button [routerLink]="['delete',o.id]" class="btn-dark" style="width: 65px; height: 35px">Edit</button></td>
     </tr>
     </tbody>
   </table>

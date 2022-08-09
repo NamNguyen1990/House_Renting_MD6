@@ -104,8 +104,12 @@ export class MyhouseEditComponent implements OnInit {
       images: this.images
     }
     this.houseService.update(id, this.obj).subscribe((obj: ResponseBody) => {
-      this.toast.success({detail: "Notification", summary: "Update Successfully", duration: 3000, position: "br"});
-      this.router.navigate(['/myhouse/list'])
+      if (obj.code==='99'){
+        this.toast.error({detail: "Notification", summary: "Update failed", duration: 3000, position: "br"});
+      }else {
+        this.toast.success({detail: "Notification", summary: "Update Successfully", duration: 3000, position: "br"});
+        this.router.navigate(['/myhouse/list'])
+      }
     }, error => {
       this.toast.error({detail: "Notification", summary: "Update failed", duration: 3000, position: "br"});
     });
