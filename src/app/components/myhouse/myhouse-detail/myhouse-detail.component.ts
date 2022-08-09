@@ -5,6 +5,7 @@ import {HttpClient} from "@angular/common/http";
 import {ImageService} from "../../../services/image.service";
 import {House} from "../../../models/house";
 import {OwlOptions} from "ngx-owl-carousel-o";
+import {NgToastService} from "ng-angular-popup";
 
 @Component({
   selector: 'app-myhouse-detail',
@@ -44,7 +45,8 @@ export class MyhouseDetailComponent implements OnInit {
 
   constructor(private houseService: HouseService,
               private activatedRouter: ActivatedRoute,
-              private httClient: HttpClient) {
+              private httClient: HttpClient,
+              private toast: NgToastService) {
   }
 
   ngOnInit(): void {
