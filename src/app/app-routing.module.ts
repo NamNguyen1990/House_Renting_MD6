@@ -42,6 +42,10 @@ const routes: Routes = [
     component: HomepageComponent
   },
   {
+    path: 'findTop',
+    component: FindTopComponent
+  },
+  {
     path: 'view/:id',
     component: HousedetailComponent,
   },
