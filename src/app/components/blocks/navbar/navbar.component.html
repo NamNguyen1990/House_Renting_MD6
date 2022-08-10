@@ -43,6 +43,7 @@
     </ul>
   </div>
 
+
 <!--  <div class="phone"><img src="{{img}}" style="width: 40px; height: 40px; border-radius: 50%" alt=""><i class="fa fa" [routerLink]="['/update-profile',userId]">{{USERNAME}}</i>-->
 <!--  </div>-->
   <div class="mobile-menu-btn"><i class="fa fa-bars"></i></div>
@@ -75,8 +76,9 @@
 
 <!--      <li><a [routerLink]="['/myhouse/create']">Create House</a></li>-->
 <!--      <li><a routerLink="/orderlist">Booking</a></li>-->
-      <li><a href="">Notification ({{message.length}})</a>
-
+      <li>
+        <i class='bx bx-bell bx-tada bx-flip-horizontal' style="color: #00CED1; font-size: 20px;margin-left: 10px">({{message.length}})</i>
+<!--        <a href="">Notification ({{message.length}})</a>-->
       <li *ngFor="let m of message; index as i "  class="drop-menu-item">
         <a routerLink="/#">{{i+1}}
           <span style="color: green">.{{m.house.name}}</span><span style="color: green"></span>
@@ -84,8 +86,6 @@
         <button (click)="delete(m.id)" class="btn-success"> OK
         </button>
       </li>
-
-
       <li class="nav-item dropdown">
 
 <!--        <a class="nav-link dropdown-toggle gr-toggle-arrow px-3 ml-7 font-size-7 notification-block flex-y-center position-relative" id="navbarDropdown8" href="#features" role="button"-->
