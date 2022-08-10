@@ -11,6 +11,8 @@ import {ImageService} from "../../../services/image.service";
 import {NgToastService} from "ng-angular-popup";
 import {ResponseBody} from "../../../models/response-body";
 import {Image} from "../../../models/image";
+import {NzModalRef, NzModalService} from 'ng-zorro-antd/modal';
+import {update} from "@angular/fire/database";
 
 @Component({
   selector: 'app-myhouse-edit',
@@ -53,7 +55,8 @@ export class MyhouseEditComponent implements OnInit {
               private httpClient: HttpClient,
               private activatedRoute: ActivatedRoute,
               private categoryService: CategoryService,
-              private storage: AngularFireStorage,) {
+              private storage: AngularFireStorage,
+              private modal: NzModalService) {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       // @ts-ignore
       this.id = +paramMap.get('id');
@@ -143,6 +146,20 @@ export class MyhouseEditComponent implements OnInit {
       this.selectedImages = [];
     }
     this.onFileSelected()
+  }
+
+  confirmModal?: NzModalRef; // For testing by now
+
+  showConfirm(): void {
+    this.modal.confirm({
+      nzTitle: 'Are you sure to save this update?',
+      nzContent: '<b style="color: red;"></b>',
+      nzOkText: 'Yes',
+      nzOkType: 'primary',
+      nzOnOk: () => this.update(this.id),
+      nzCancelText: 'No',
+      nzOnCancel: () => console.log('Cancel')
+    });
   }
 
 }

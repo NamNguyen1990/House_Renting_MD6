@@ -8,26 +8,7 @@
       <li><a routerLink="/">Home</a></li>
       <li><a href="about.html">About Us</a></li>
       <li><a href="booking.html">Booking</a></li>
-      <li><a href="">Contact Us </a></li>
-
-<!--      <li class="nav-item dropdown"> thông báo-->
-
-<!--        <ul class="gr-menu-dropdown dropdown-menu" aria-labelledby="navbarDropdown2">-->
-<!--          <li *ngFor="let m of message; index as i "  class="drop-menu-item">-->
-<!--            <a routerLink="/#">{{i+1}}-->
-<!--              <span style="color: green">.{{m.user.name}}</span>{{m.content}}<span style="color: green">{{m.recruitmentNews.title}}</span>-->
-<!--            </a>-->
-<!--            <button (click)="delete(m.id)" class="btn-success"> OK-->
-<!--            </button>-->
-<!--          </li>-->
-<!--          <li><p *ngIf="checkMessage"> Không có thông báo</p></li>-->
-
-<!--        </ul>-->
-<!--      </li>-->
-
-
-
-
+      <li><a href="">Contact Us</a></li>
     </ul>
   </nav>
   <div class="login" routerLink="/login">Login</div>
@@ -68,6 +49,7 @@
   <nav class="main-menu top-menu" style="background-color: #545454">
     <ul>
       <li><a routerLink="/">Home</a></li>
+      <li><a [routerLink]="['/findTop']">Top Five Order </a></li>
 
       <li>
         <a  class="apartment btn dropdown-toggle" data-toggle="dropdown" type="" data-bs-toggle="dropdown"
@@ -84,7 +66,7 @@
             </a>
           </li>
           <li>
-            <a class="btn btn-transparent text-uppercase font-size-3 heading-default-color focus-reset" routerLink="/orderlist">
+            <a class="btn btn-transparent text-uppercase font-size-3 heading-default-color focus-reset" [routerLink]="['/orderlist']">
               History
             </a>
           </li>
