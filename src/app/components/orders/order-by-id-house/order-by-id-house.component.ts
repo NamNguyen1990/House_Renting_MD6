@@ -33,7 +33,7 @@ export class OrderByIdHouseComponent implements OnInit {
     });
     this.activatedRouter.paramMap.subscribe((param: ParamMap) => {
       this.httClient.get(this.API + param.get('id')).subscribe((data: ResponseBody) => {
-        this.status = data
+        this.status = data.data.content
         this.total1= data.data.total
         for (let i = 0; i < data.data.content.length; i++) {
           if (data.data.content[i].status != 1) {
@@ -79,6 +79,7 @@ export class OrderByIdHouseComponent implements OnInit {
 
     this.p = event;
     this.ngOnInit();
+    this.total = 0;
   }
 
 }
