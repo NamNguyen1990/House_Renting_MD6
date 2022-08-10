@@ -36,7 +36,7 @@ export class SignupComponent implements OnInit {
     this.userService.register(user).subscribe((data: ResponseBody) => {
       if (data.message) {
         this.status = data;
-        this.toast.success({detail: "Notification", summary: data.message, duration: 3000, position: 'bottom'});
+        this.toast.success({detail: "Notification", summary: data.message, duration: 3000});
         this.router.navigate(['/login']);
 
       } else {

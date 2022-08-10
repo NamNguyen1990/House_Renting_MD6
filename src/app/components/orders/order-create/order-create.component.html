@@ -56,7 +56,7 @@
                 </div>
                 <p class="help-block text-danger"></p>
               </div>
-              <div class="control-group col-sm-6">
+              <div class="control-group col-sm-6" style="margin-top: -80px">
                 <label>Email</label>
                 <input type="text" class="form-control" formControlName="email" id="email" name="email"
                        placeholder="email@example.com"
@@ -71,6 +71,20 @@
                     Email invalidate!
                   </div>
 
+                </div>
+                <p class="help-block text-danger"></p>
+              </div>
+              <div class="control-group col-sm-6" style="margin-left: 485px; margin-top: -79px">
+                <label>Special Request</label>
+                <input type="text" class="form-control" formControlName="request" id="request" name="request"
+                       placeholder="Special Request"
+                       required="required" data-validation-required-message="Please enter your special request"/>
+                <div *ngIf="request?.invalid && (request?.dirty || request?.touched)"
+                     class="" style="color: red">
+
+                  <div *ngIf="request?.errors?.['maxlength']">
+                    Request number must have 1000 characters!
+                  </div>
                 </div>
                 <p class="help-block text-danger"></p>
               </div>
@@ -143,20 +157,6 @@
                 </div>
                 <p class="help-block text-danger"></p>
               </div>
-            </div>
-            <div class="control-group">
-              <label>Special Request</label>
-              <input type="text" class="form-control" formControlName="request" id="request" name="request"
-                     placeholder="Special Request"
-                     required="required" data-validation-required-message="Please enter your special request"/>
-              <div *ngIf="request?.invalid && (request?.dirty || request?.touched)"
-                   class="" style="color: red">
-
-                <div *ngIf="request?.errors?.['maxlength']">
-                  Request number must have 1000 characters!
-                </div>
-              </div>
-              <p class="help-block text-danger"></p>
             </div>
             <div class="button">
               <button type="submit" id="bookingButton">Book Now</button>

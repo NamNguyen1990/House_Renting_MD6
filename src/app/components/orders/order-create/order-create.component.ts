@@ -52,10 +52,10 @@ export class OrderCreateComponent implements OnInit {
       this.orderService.create(this.orderForm.value, this.idHome, localStorage.getItem("ID")).subscribe((data) => {
         this.status = data;
         if (data.code==='0000'){
-          this.toast.success({detail: "Notification", summary: data.message, duration: 3000, position: 'bottom'});
+          this.toast.success({detail: "Notification", summary: data.message, duration: 3000});
           this.router.navigate(['/orderlist']);
         }else {
-          this.toast.error({detail: "Notification", summary: data.message, duration: 3000, position: 'bottom'});
+          this.toast.error({detail: "Notification", summary: data.message, duration: 3000});
         }
 
       }, (err) => {
