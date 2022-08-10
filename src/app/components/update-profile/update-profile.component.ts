@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {User} from "../../models/user";
 import {UserService} from "../../services/user.service";
@@ -15,24 +15,25 @@ import {NgToastModule, NgToastService} from "ng-angular-popup";
 export class UpdateProfileComponent implements OnInit {
 
   editForm: FormGroup = new FormGroup({
-    phone : new FormControl(),
-    email : new FormControl(),
-    address : new FormControl(),
-    fullName : new FormControl(),
-    avatar : new FormControl(),
+    phone: new FormControl(),
+    email: new FormControl(),
+    address: new FormControl(),
+    fullName: new FormControl(),
+    avatar: new FormControl(),
   })
 
-   id = localStorage.getItem('ID');
-  user : User | any;
+  id = localStorage.getItem('ID');
+  user: User | any;
 
-  constructor(private userService : UserService,
-              private router : Router,
-              private activatedRoute : ActivatedRoute,
+  constructor(private userService: UserService,
+              private router: Router,
+              private activatedRoute: ActivatedRoute,
               private storage: AngularFireStorage,
-              private toast: NgToastService) { }
+              private toast: NgToastService) {
+  }
 
-  getUser(){
-    this.userService.getUserProfile(this.id).subscribe((data) =>{
+  getUser() {
+    this.userService.getUserProfile(this.id).subscribe((data) => {
       this.user = data
     })
   }
@@ -41,47 +42,49 @@ export class UpdateProfileComponent implements OnInit {
     this.id = localStorage.getItem('ID')
     this.userService.getUserProfile(this.id).subscribe(data => {
         this.editForm.patchValue({
-          phone : data.phone,
-          email : data.email,
-          address : data.address,
-          fullName : data.fullName,
-          avatar : data.avatar,
+          phone: data.phone,
+          email: data.email,
+          address: data.address,
+          fullName: data.fullName,
+          avatar: data.avatar,
         })
-      this.avatar = data.avatar
+        this.avatar = data.avatar
         console.log(data)
       },
       error => {
         console.log(error);
       });
   }
+
   editUser() {
     this.user = {
       username: '',
       password: '',
       confirmPassword: '',
-      phone : this.editForm.value.phone,
-      email : this.editForm.value.email,
-      address : this.editForm.value.address,
-      fullName : this.editForm.value.fullName,
-      avatar : this.avatar,
-      enabled : '',
+      phone: this.editForm.value.phone,
+      email: this.editForm.value.email,
+      address: this.editForm.value.address,
+      fullName: this.editForm.value.fullName,
+      avatar: this.avatar,
+      enabled: '',
     }
     this.userService.updateUserProfile(this.id, this.user).subscribe(() => {
-      console.log('id',this.id)
-      localStorage.setItem('AVATAR',this.user.avatar)
+      console.log('id', this.id)
+      localStorage.setItem('AVATAR', this.user.avatar)
       this.router.navigate(["/"])
-      this.toast.success({detail: "Notification", summary: "Successfully changed information", duration :3000})
+      this.toast.success({detail: "Notification", summary: "Successfully changed information", duration: 3000})
     }, error => {
-      console.log(error)
+      this.toast.error({detail: "Notification", summary: "Change information failed", duration: 3000})
     })
   }
+
   avatar: any;
   title = 'firebase';
-  selectedFile:any;
+  selectedFile: any;
   downloadURL: any;
 
 
-  onFileSelected(event:any) {
+  onFileSelected(event: any) {
     var n = Date.now();
     const file = event.target.files[0];
     const filePath = `RoomsImages/${n}`;
@@ -91,13 +94,12 @@ export class UpdateProfileComponent implements OnInit {
       .snapshotChanges()
       .pipe(
         finalize(() => {
-          this.toast.success({detail: "Notification", summary: "Please wait a moment", duration :2000})
+          this.toast.success({detail: "Notification", summary: "Please wait a moment", duration: 2000})
 
           this.downloadURL = fileRef.getDownloadURL();
-          this.downloadURL.subscribe((url:any) => {
+          this.downloadURL.subscribe((url: any) => {
             if (url) {
               this.avatar = url;
-
             }
             console.log(this.avatar);
           });
