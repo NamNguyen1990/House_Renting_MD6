@@ -6,7 +6,7 @@
   <!-- Search Section Start -->
   <div id="search" class="search-slider">
     <div class="container">
-      <h1>Feel at Home When You're Away</h1>
+      <h1>Feel At Home When You're Away</h1>
       <div class="form-row">
         <div class="control-group col-md-3">
           <label>Check-In</label>
@@ -49,7 +49,7 @@
               </select>
             </div>
             <div class="control-group col-md-6 control-group-kid">
-              <label>Kid</label>
+              <label>Children</label>
               <select class="custom-select">
                 <option selected>0</option>
                 <option value="1">1</option>
@@ -153,7 +153,7 @@
             </select>
           </div>
           <div class="control-group col-md-6 control-group-kid">
-            <label>Kid</label>
+            <label>Children</label>
             <select class="custom-select">
               <option selected>0</option>
               <option value="1">1</option>
@@ -195,7 +195,7 @@
 
     <div class="row">
 
-      <div class="col-md-12 room" *ngFor="let item of homes| paginate: { itemsPerPage: 2, currentPage: p, totalItems: total } ; even as isEven">
+      <div class="col-md-12 room" *ngFor="let item of homes| paginate: { itemsPerPage: 4, currentPage: p, totalItems: total } ; even as isEven">
         <div class="row" *ngIf="isEven">
           <div class="col-md-6">
             <owl-carousel-o [options]="customOptions">

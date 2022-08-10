@@ -3,7 +3,7 @@
 <div id="booking">
   <div class="container">
     <div class="section-header">
-      <h2>Edit My House</h2>
+      <h2>Update My House</h2>
     </div>
     <div class="row">
       <div class="col-12">
@@ -69,8 +69,8 @@
                           style="height: 200px"></textarea>
                 <p class="help-block text-danger"></p>
               </div>
-
               <div class="control-group col-sm-6" style="height: 235px; margin-top: -155px; overflow: auto">
+                <label style="margin-right: 20px">Image: </label>
                 <input type="file" id="file" #userPhoto multiple (change)="showPreview($event)" name="image"
                        autocomplete="off">
                 <img *ngFor="let img of images" src="{{img.image}}" alt=""
