@@ -58,7 +58,7 @@
           <p> Phone : {{o.phone}}</p>
           <p style="color: red">Check in : {{o.startTime}}</p>
           <p style="color: red">Check out : {{o.endTime}}</p>
-          <button (click)="deleteOrder(o.id)" type="button" class="btn btn-primary"><span class="bi bi-trash"></span> Cancel </button>
+          <button (click)="showConfirm(o.id)" type="button" class="btn btn-primary"><span class="bi bi-trash"></span> Cancel </button>
         </div>
       </div>
       <pagination-controls (pageChange)="pageChangeEvent($event)" style="font-size: 14px; font-family:'FontAwesome'; margin-left: 35%"></pagination-controls>

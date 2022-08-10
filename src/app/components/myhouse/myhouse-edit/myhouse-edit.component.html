@@ -1,5 +1,4 @@
 <app-navbar></app-navbar>
-<body>
 <div id="booking">
   <div class="container">
     <div class="section-header">
@@ -9,7 +8,7 @@
       <div class="col-12">
         <div class="booking-form">
           <div id="success"></div>
-          <form  [formGroup]="houseForm" (ngSubmit)="update(id)">
+          <form  [formGroup]="houseForm" (ngSubmit)="showConfirm()">
             <div class="form-row">
               <div class="control-group col-sm-6">
                 <label>Name House : </label>
@@ -82,7 +81,7 @@
             </div>
             <div class="button" style="margin-left: 748px; margin-top: -70px;">
               <button type="submit" style="margin-left: -50px">Update</button>
-              <button class="button-back" [routerLink]="['/myhouse/list']" style="margin-left: 50px">Back</button>
+              <button type="button" class="button-back" [routerLink]="['/myhouse/list']" style="margin-left: 50px">Back</button>
             </div>
           </form>
         </div>
@@ -90,4 +89,3 @@
     </div>
   </div>
 </div>
-</body>
