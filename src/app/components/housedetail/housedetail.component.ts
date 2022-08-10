@@ -101,7 +101,7 @@ avatar : any;
       this.showComment(this.house.id);
       this.commentForm.reset()
     }, error => {
-      this.toast.error({detail: "Notification", summary: "You haven't rented a house yet. so don't comment", duration :3000})
+      this.toast.error({detail: "Notification", summary: "You haven't rented a house yet. s\o don't comment", duration :3000})
       console.log(error)
     })
   }
