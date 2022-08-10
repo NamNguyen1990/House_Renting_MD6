@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {User} from "../../models/user";
 import {UserService} from "../../services/user.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {finalize} from "rxjs";
 import {NgToastModule, NgToastService} from "ng-angular-popup";
+import {ResponseBody} from "../../models/response-body";
 
 @Component({
   selector: 'app-update-profile',
@@ -15,13 +16,13 @@ import {NgToastModule, NgToastService} from "ng-angular-popup";
 export class UpdateProfileComponent implements OnInit {
 
   editForm: FormGroup = new FormGroup({
-    phone : new FormControl(),
-    email : new FormControl(),
-    address : new FormControl(),
-    fullName : new FormControl(),
+    phone : new FormControl('',[Validators.required,Validators.minLength(10),Validators.maxLength(10)]),
+    email : new FormControl('',[Validators.email,Validators.required]),
+    address : new FormControl('',[Validators.required,Validators.maxLength(50)]),
+    fullName : new FormControl('',[Validators.required,Validators.maxLength(35)]),
     avatar : new FormControl(),
   })
-
+  status : ResponseBody = {code:'', message: ''}
    id = localStorage.getItem('ID');
   user : User | any;
 
@@ -66,14 +67,24 @@ export class UpdateProfileComponent implements OnInit {
       avatar : this.avatar,
       enabled : '',
     }
-    this.userService.updateUserProfile(this.id, this.user).subscribe(() => {
-      console.log('id',this.id)
-      localStorage.setItem('AVATAR',this.user.avatar)
-      this.router.navigate(["/"])
-      this.toast.success({detail: "Notification", summary: "Successfully changed information", duration :3000})
-    }, error => {
-      console.log(error)
-    })
+
+    if (this.editForm.valid){
+      this.userService.updateUserProfile(this.id, this.user).subscribe((data) => {
+        this.status = data
+        if (data.code==='0000'){
+          localStorage.setItem('AVATAR',this.user.avatar)
+          this.router.navigate(['/']);
+          this.toast.success({detail: "Notification", summary: data.message, duration :3000})
+        }else {
+          this.toast.error({detail: "Notification", summary: "Changed failed", duration :3000})
+        }
+
+      }, error => {
+        console.log(error)
+      })
+    }else {
+      this.status = {code: 'ffff', message: 'Please enter required fields!'}
+    }
   }
   avatar: any;
   title = 'firebase';
@@ -109,4 +120,22 @@ export class UpdateProfileComponent implements OnInit {
         }
       });
   }
+
+  get phone() {
+    return this.editForm.get('phone');
+  }
+
+  get email() {
+    return this.editForm.get('email');
+  }
+
+  get address() {
+    return this.editForm.get('address');
+  }
+
+  get fullName() {
+    return this.editForm.get('fullName');
+  }
+
+
 }

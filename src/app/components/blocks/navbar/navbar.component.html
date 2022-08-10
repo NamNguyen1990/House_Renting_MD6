@@ -70,7 +70,42 @@
           </li>
         </ul>
       </li>
+
       <li><a [routerLink]="['/contactus']">Contact Us</a></li>
+
+<!--      <li><a [routerLink]="['/myhouse/create']">Create House</a></li>-->
+<!--      <li><a routerLink="/orderlist">Booking</a></li>-->
+      <li>
+        <i class='bx bx-bell bx-tada bx-flip-horizontal' style="color: #00CED1; font-size: 20px;margin-left: 10px">({{message.length}})</i>
+<!--        <a href="">Notification ({{message.length}})</a>-->
+      <li *ngFor="let m of message; index as i "  class="drop-menu-item">
+        <a routerLink="/#">{{i+1}}
+          <span style="color: green">.{{m.house.name}}</span><span style="color: green"></span>
+        </a>
+        <button (click)="delete(m.id)" class="btn-success"> OK
+        </button>
+      </li>
+      <li class="nav-item dropdown">
+
+<!--        <a class="nav-link dropdown-toggle gr-toggle-arrow px-3 ml-7 font-size-7 notification-block flex-y-center position-relative" id="navbarDropdown8" href="#features" role="button"-->
+<!--           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--          <i class="fas fa-bell heading-default-color"></i>-->
+<!--          <span style="top: 20px;right: -12px;" class="font-size-3 count font-weight-semibold text-white bg-primary circle-24 border border-width-3 border border-white"></span>-->
+<!--        </a>-->
+
+<!--        <ul class="gr-menu-dropdown dropdown-menu" aria-labelledby="navbarDropdown2">-->
+<!--          <li *ngFor="let m of message; index as i "  class="drop-menu-item">-->
+<!--            <a routerLink="/#">{{i+1}}-->
+<!--              <span style="color: green">.{{m.user.name}}</span>{{m.content}}<span style="color: green">{{m.recruitmentNews.title}}</span>-->
+<!--            </a>-->
+<!--            <button (click)="delete(m.id)" class="btn-success"> OK-->
+<!--            </button>-->
+<!--          </li>-->
+<!--          <li><p *ngIf="checkMessage"> Không có thông báo</p></li>-->
+
+<!--        </ul>-->
+      </li>
+
     </ul>
   </nav>
 </header>
