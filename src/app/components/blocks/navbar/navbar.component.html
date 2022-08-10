@@ -20,27 +20,43 @@
 <!-- Header Section Start -->
 <header id="header" *ngIf="isLogin">
   <a routerLink="/" class="logo"><img src="../assets/img/logo.png" alt="logo"></a>
-  <div style="margin-top: -7px" class="phone btn dropdown-toggle" data-toggle="dropdown" type="" data-bs-toggle="dropdown"
-       aria-expanded="false" ><img src="{{img}}" style=" border-radius: 50%; margin-right: 18px;width: 40px;height: 40px " ><a
-    style="color: #00CED1">{{USERNAME}}</a>
-    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2" >
-      <li>
-        <a class="btn btn-transparent text-uppercase font-size-3 heading-default-color focus-reset" [routerLink]="['/update-profile',userId]" >
-          Edit Profile
-        </a>
-      </li>
-      <li>
-        <a class="btn btn-transparent text-uppercase font-size-3 heading-default-color focus-reset" [routerLink]="['/update-password',userId]">
-          Password Change
-        </a>
-      </li>
-      <li>
-        <a class="btn btn-transparent text-uppercase font-size-3 heading-default-color focus-reset" (click)="logOut()" >
-          Logout
-        </a>
-      </li>
-    </ul>
+
+  <div class="phone btn">
+    <img src="{{img}}" style=" border-radius: 50%; margin-right: 5px;width: 40px;height: 40px">
+    <a nz-dropdown [nzDropdownMenu]="menuLogin" class="confirm" style="color: #00CED1">
+      {{USERNAME}}
+      <i nz-icon nzType="down"></i>
+    </a>
+    <nz-dropdown-menu #menuLogin="nzDropdownMenu">
+      <ul nz-menu nzSelectable>
+        <li nz-menu-item [routerLink]="['/update-profile',userId]">Edit Profile</li>
+        <li nz-menu-item [routerLink]="['/update-password',userId]">Password Change </li>
+        <li nz-menu-item (click)="logOut()">Logout</li>
+      </ul>
+    </nz-dropdown-menu>
   </div>
+
+<!--  <div style="margin-top: -7px" class="phone btn dropdown-toggle" data-toggle="dropdown" type="" data-bs-toggle="dropdown"-->
+<!--       aria-expanded="false" ><img src="{{img}}" style=" border-radius: 50%; margin-right: 18px;width: 40px;height: 40px " ><a-->
+<!--    style="color: #00CED1">{{USERNAME}}</a>-->
+<!--    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2" >-->
+<!--      <li>-->
+<!--        <a class="btn btn-transparent text-uppercase font-size-3 heading-default-color focus-reset" [routerLink]="['/update-profile',userId]" >-->
+<!--          Edit Profile-->
+<!--        </a>-->
+<!--      </li>-->
+<!--      <li>-->
+<!--        <a class="btn btn-transparent text-uppercase font-size-3 heading-default-color focus-reset" [routerLink]="['/update-password',userId]">-->
+<!--          Edit Profile-->
+<!--        </a>-->
+<!--      </li>-->
+<!--      <li>-->
+<!--        <a class="btn btn-transparent text-uppercase font-size-3 heading-default-color focus-reset" (click)="logOut()" >-->
+<!--          Logout-->
+<!--        </a>-->
+<!--      </li>-->
+<!--    </ul>-->
+<!--  </div>-->
 
 <!--  <div class="phone"><img src="{{img}}" style="width: 40px; height: 40px; border-radius: 50%" alt=""><i class="fa fa" [routerLink]="['/update-profile',userId]">{{USERNAME}}</i>-->
 <!--  </div>-->
@@ -49,50 +65,79 @@
     <ul>
       <li><a routerLink="/">Home</a></li>
       <li><a [routerLink]="['/findTop']">Top Five Order </a></li>
+
       <li>
-        <a  class="apartment btn dropdown-toggle" data-toggle="dropdown" type="" data-bs-toggle="dropdown"
-            aria-expanded="false" style="color:#00CED1;" >Apartment</a>
-        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2" style="width: 30px; text-align: center;margin-left: -17px; margin-top: 4px;height: 150px">
-          <li>
-            <a class="btn btn-transparent text-uppercase font-size-3 heading-default-color focus-reset" [routerLink]="['/myhouse/list']" style="height: 18px; padding: 6px;border 1px">
-              My Apartment
-            </a>
-          </li>
-          <li>
-            <a class="btn btn-transparent text-uppercase font-size-3 heading-default-color focus-reset" [routerLink]="['/myhouse/create']">
-              Create House
-            </a>
-          </li>
-          <li>
-            <a class="btn btn-transparent text-uppercase font-size-3 heading-default-color focus-reset" [routerLink]="['/orderlist']">
-              History
-            </a>
-          </li>
-        </ul>
+        <a nz-dropdown [nzDropdownMenu]="menuApartment" class="confirm" style="color: #00CED1">
+          Apartment
+          <i nz-icon nzType="down"></i>
+        </a>
+        <nz-dropdown-menu #menuApartment="nzDropdownMenu">
+          <ul nz-menu nzSelectable>
+            <li nz-menu-item [routerLink]="['/myhouse/list']">My Apartment</li>
+            <li nz-menu-item [routerLink]="['/myhouse/create']">Create House</li>
+            <li nz-menu-item [routerLink]="['/orderlist']">History</li>
+          </ul>
+        </nz-dropdown-menu>
       </li>
+
+
+<!--      <li>-->
+<!--        <a  class="apartment btn dropdown-toggle" data-toggle="dropdown" type="" data-bs-toggle="dropdown"-->
+<!--            aria-expanded="false" style="color:#00CED1;" >Apartment</a>-->
+<!--        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2" style="width: 30px; text-align: center;margin-left: -17px; margin-top: 4px;height: 150px">-->
+<!--          <li>-->
+<!--            <a class="btn btn-transparent text-uppercase font-size-3 heading-default-color focus-reset" [routerLink]="['/myhouse/list']" style="height: 18px; padding: 6px;border: 1px">-->
+<!--              My Apartment-->
+<!--            </a>-->
+<!--          </li>-->
+<!--          <li>-->
+<!--            <a class="btn btn-transparent text-uppercase font-size-3 heading-default-color focus-reset" [routerLink]="['/myhouse/create']">-->
+<!--              Create House-->
+<!--            </a>-->
+<!--          </li>-->
+<!--          <li>-->
+<!--            <a class="btn btn-transparent text-uppercase font-size-3 heading-default-color focus-reset" [routerLink]="['/orderlist']">-->
+<!--              History-->
+<!--            </a>-->
+<!--          </li>-->
+<!--        </ul>-->
+<!--      </li>-->
 
       <li><a [routerLink]="['/contactus']">Contact Us</a></li>
 
 <!--      <li><a [routerLink]="['/myhouse/create']">Create House</a></li>-->
 <!--      <li><a routerLink="/orderlist">Booking</a></li>-->
-      <li>
-        <i class='bx bx-bell bx-tada bx-flip-horizontal' style="color: #00CED1; font-size: 20px;margin-left: 10px">({{message.length}})</i>
-<!--        <a href="">Notification ({{message.length}})</a>-->
-      <li *ngFor="let m of message; index as i "  class="drop-menu-item">
-        <a routerLink="/#">{{i+1}}
-          <span style="color: green">.{{m.house.name}}</span><span style="color: green"></span>
-        </a>
-        <button (click)="delete(m.id)" class="btn-success"> OK
-        </button>
-      </li>
-      <li class="nav-item dropdown">
+<!--      <li>-->
+<!--        <i class='bx bx-bell bx-tada bx-flip-horizontal' style="color: #00CED1; font-size: 20px;margin-left: 10px;cursor: pointer">({{message.length}})</i>-->
+<!--&lt;!&ndash;        <a href="">Notification ({{message.length}})</a>&ndash;&gt;-->
+<!--      <li *ngFor="let m of message; index as i "  class="drop-menu-item">-->
 
+
+
+
+<!--        <a routerLink="/#">{{i+1}}-->
+<!--          <span style="color: green">.{{m.house.name}}</span><span style="color: green"></span>-->
+<!--        </a>-->
+<!--        <button (click)="delete(m.id)" class="btn-success"> OK-->
+<!--        </button>-->
+<!--      </li>-->
+
+
+      <a nz-dropdown [nzDropdownMenu]="menu" class="confirm">
+        <i class='bx bx-bell bx-tada bx-flip-horizontal' style="color: #00CED1; font-size: 20px;margin-left: 10px;cursor: pointer">({{message.length}})</i>
+        <i nz-icon nzType="down"></i>
+      </a>
+      <nz-dropdown-menu #menu="nzDropdownMenu">
+        <ul nz-menu nzSelectable *ngFor="let m of message; index as i ">
+          <li nz-menu-item (click)="delete(m.id)">{{m.house.name}} : Hired</li>
+        </ul>
+      </nz-dropdown-menu>
+      <li class="nav-item dropdown">
 <!--        <a class="nav-link dropdown-toggle gr-toggle-arrow px-3 ml-7 font-size-7 notification-block flex-y-center position-relative" id="navbarDropdown8" href="#features" role="button"-->
 <!--           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
 <!--          <i class="fas fa-bell heading-default-color"></i>-->
 <!--          <span style="top: 20px;right: -12px;" class="font-size-3 count font-weight-semibold text-white bg-primary circle-24 border border-width-3 border border-white"></span>-->
 <!--        </a>-->
-
 <!--        <ul class="gr-menu-dropdown dropdown-menu" aria-labelledby="navbarDropdown2">-->
 <!--          <li *ngFor="let m of message; index as i "  class="drop-menu-item">-->
 <!--            <a routerLink="/#">{{i+1}}-->

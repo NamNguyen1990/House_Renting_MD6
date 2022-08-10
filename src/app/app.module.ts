@@ -52,6 +52,8 @@ import {NzButtonModule} from "ng-zorro-antd/button";
 import {NzRateModule} from "ng-zorro-antd/rate";
 import {NzModalModule} from "ng-zorro-antd/modal";
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
+import {NzDropDownModule} from "ng-zorro-antd/dropdown";
+import {NzIconModule} from "ng-zorro-antd/icon";
 
 @NgModule({
   declarations: [
@@ -111,6 +113,8 @@ import { ContactUsComponent } from './components/contact-us/contact-us.component
     NzButtonModule,
     NzRateModule,
     NzModalModule,
+    NzDropDownModule,
+    NzIconModule,
   ],
   providers: [
     {

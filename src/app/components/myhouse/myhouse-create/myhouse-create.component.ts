@@ -102,11 +102,11 @@ export class MyhouseCreateComponent implements OnInit {
       avatarHouse: this.images[0].image,
       images: this.images
     }
-    this.toast.success({detail:"Notification", summary:"House created successfully", duration:3000,position:"br"});
+    this.toast.success({detail:"Notification", summary:"House created successfully", duration:3000});
     this.houseService.save(this.house).subscribe((house) => {
       this.router.navigate(['']);
     } , error => {
-      this.toast.error({detail:"Notification", summary:"House created failed", duration:3000,position:"br"});
+      this.toast.error({detail:"Notification", summary:"House created failed", duration:3000});
     });
   }
 

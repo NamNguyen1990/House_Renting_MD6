@@ -53,9 +53,15 @@
   color: #00CED1;
 
 }
-.dropdown-menu li:hover{
+.dropdown-menu li:hover {
   display: block;
   /*color: white;*/
   text-align: center;
   background-color: none;
+}
+.bx bx-bell:hover {
+  color: #fff;
+}
+.confirm:hover {
+  color: #fff;
 }

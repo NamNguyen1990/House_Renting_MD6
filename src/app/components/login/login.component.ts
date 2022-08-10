@@ -73,7 +73,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('ID', data.id);
           localStorage.setItem('AVATAR',data.avatar)
           if (data.roles[0].authority == "ROLE_ADMIN") {
-            this.toast.success({detail: "Notification", summary: "Logged in successfully", duration :3000})
+            this.toast.success({detail: "Notification", summary: "Logged in successfully", duration :3000});
             this.router.navigate(["/"])
           } else {
             this.toast.success({detail: "Notification", summary: "Logged in successfully", duration :3000})

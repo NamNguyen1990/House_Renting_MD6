@@ -56,7 +56,7 @@
                        data-validation-required-message="Please enter price" formControlName="price">
                 <p class="help-block text-danger"></p>
               </div>
-              <div class="control-group col-sm-6" style="margin-top: 30px;margin-left: 486px">
+              <div class="control-group col-sm-6" style="margin-top: 13px;margin-left: 486px">
                 <label>Description</label>
                 <textarea class="form-control datetimepicker-input" id="date-1"
                           placeholder="Enter description" required="required"
@@ -64,7 +64,7 @@
                           style="height: 200px"></textarea>
                 <p class="help-block text-danger"></p>
               </div>
-              <div class="control-group col-sm-6" style="height: 235px; margin-top: -256px; overflow: auto">
+              <div class="control-group col-sm-6" style="height: 235px; margin-top: -240px; overflow: auto">
                 <input type="file" id="file" #userPhoto multiple (change)="showPreview($event)" name="image"
                        autocomplete="off">
                 <img *ngFor="let img of images" src="{{img.image}}" alt=""

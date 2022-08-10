@@ -9,19 +9,19 @@
     <br>
     <div style="text-align: center"  class="row">
       <div style="margin-left: 230px"  class="alert alert-danger"  *ngIf="oderrs.length === 0"><h1>House don't have any orders yet!</h1></div>
-      <div  *ngFor="let o of oderrs | paginate: { itemsPerPage: 8, currentPage: p, totalItems: total }; index as i" class="col-md-3 col-sm-6">
+      <div  *ngFor="let o of oderrs | paginate: { itemsPerPage: 4, currentPage: p, totalItems: total }; index as i" class="col-md-3 col-sm-6">
         <div class="item">
           <h2 > <u>Order {{i + 1}}</u> </h2>
           <br>
           <h3> Money : {{o.total}}</h3>
           <p> Name : {{o.name}}</p>
           <p> Phone : {{o.phone}}</p>
-          <p style="color: red">Check in : {{o.startTime}}</p>
-          <p style="color: red">Check out : {{o.endTime}}</p>
+          <p style="color: red">Check in : <u>{{o.startTime}}</u></p>
+          <p style="color: red">Check out : <u>{{o.endTime}}</u></p>
           <button (click)="showConfirm(o.id)" type="button" class="btn btn-primary"><span class="bi bi-trash"></span> Delete </button>
         </div>
       </div>
-      <pagination-controls (pageChange)="pageChangeEvent($event)" style="font-size: 14px; font-family:'FontAwesome'; margin-left: 35%"></pagination-controls>
+      <pagination-controls (pageChange)="pageChangeEvent($event)" style="font-size: 14px; font-family:'FontAwesome'; margin-left: -400px; margin-top: 390px"></pagination-controls>
     </div>
   </div>
 </div>

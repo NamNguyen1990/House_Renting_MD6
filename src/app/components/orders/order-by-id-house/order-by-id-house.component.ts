@@ -79,6 +79,7 @@ export class OrderByIdHouseComponent implements OnInit {
 
     this.p = event;
     this.ngOnInit();
+    this.total = 0;
   }
 
 }

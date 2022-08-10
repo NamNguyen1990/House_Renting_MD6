@@ -108,13 +108,13 @@ export class MyhouseEditComponent implements OnInit {
     }
     this.houseService.update(id, this.obj).subscribe((obj: ResponseBody) => {
       if (obj.code==='99'){
-        this.toast.error({detail: "Notification", summary: "Update failed", duration: 3000, position: "br"});
+        this.toast.error({detail: "Notification", summary: "Update failed", duration: 3000});
       }else {
-        this.toast.success({detail: "Notification", summary: "Update Successfully", duration: 3000, position: "br"});
+        this.toast.success({detail: "Notification", summary: "Update Successfully", duration: 3000});
         this.router.navigate(['/myhouse/list'])
       }
     }, error => {
-      this.toast.error({detail: "Notification", summary: "Update failed", duration: 3000, position: "br"});
+      this.toast.error({detail: "Notification", summary: "Update failed", duration: 3000});
     });
   }
 
