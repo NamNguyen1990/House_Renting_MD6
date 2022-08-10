@@ -4,7 +4,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AuthenticationService} from "../../services/authentication.service";
 import { NgToastService } from 'ng-angular-popup';
-import {GoogleLoginProvider, SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
+import {FacebookLoginProvider, GoogleLoginProvider, SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import {user} from "@angular/fire/auth";
 import {OrderService} from "../../services/order.service";
 
@@ -107,4 +107,9 @@ export class LoginComponent implements OnInit {
     });
   }
 
+
+  signInWithFB(): void {
+    this._authService.signIn(FacebookLoginProvider.PROVIDER_ID);
+    console.log('sign in with fb');
+  }
 }

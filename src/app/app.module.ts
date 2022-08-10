@@ -19,7 +19,12 @@ import { UpdateProfileComponent } from './components/update-profile/update-profi
 import {environment} from "../environments/environment";
 import {OrderListComponent} from "./components/orders/order-list/order-list.component";
 import { OrderDetailComponent } from './components/orders/order-detail/order-detail.component';
-import {GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule} from "@abacritt/angularx-social-login";
+import {
+  FacebookLoginProvider,
+  GoogleLoginProvider,
+  SocialAuthServiceConfig,
+  SocialLoginModule
+} from "@abacritt/angularx-social-login";
 import { MyhouseDetailComponent } from './components/myhouse/myhouse-detail/myhouse-detail.component';
 import {MatCardModule} from "@angular/material/card";
 import {MatToolbarModule} from "@angular/material/toolbar";
@@ -119,8 +124,12 @@ import {NzModalModule} from "ng-zorro-antd/modal";
           {
             id: GoogleLoginProvider.PROVIDER_ID,
             provider: new GoogleLoginProvider(
-              '600600839708-k9l98tk4a2n1hlko1qdgejotbkt1brm4.apps.googleusercontent.com'
+              '600600839708-q7e5ct992ed2sijl2l78tdddf56vghno.apps.googleusercontent.com'
             ),
+          },
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('3253468384934325'),
           },
         ],
       } as SocialAuthServiceConfig,
