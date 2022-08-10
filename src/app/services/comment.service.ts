@@ -7,7 +7,7 @@ import {House} from "../models/house";
   providedIn: 'root'
 })
 export class CommentService {
-  API = 'http://localhost:8888/comments'
+  API = 'http://209.97.167.87:8888/comments'
   constructor(private httpClient: HttpClient) { }
 
   findAll(): Observable<Comment[]> {

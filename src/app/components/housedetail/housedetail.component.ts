@@ -45,7 +45,7 @@ export class HousedetailComponent implements OnInit {
   }
 
 
-  API = 'http://localhost:8888/houses/'
+  API = 'http://209.97.167.87:8888/houses/'
   id: any
   house: any;
   obj: any = {};

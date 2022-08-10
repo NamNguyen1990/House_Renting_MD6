@@ -9,7 +9,7 @@ import {ResponseBody} from "../models/response-body";
 })
 export class HouseService {
 
-  API = 'http://localhost:8888/houses'
+  API = 'http://209.97.167.87:8888/houses'
 
   constructor(private httpClient: HttpClient) { }
 

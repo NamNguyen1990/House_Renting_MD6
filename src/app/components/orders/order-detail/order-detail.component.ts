@@ -10,7 +10,7 @@ import {HttpClient} from "@angular/common/http";
   styleUrls: ['./order-detail.component.css']
 })
 export class OrderDetailComponent implements OnInit {
-  API = 'http://localhost:8888/orders/'
+  API = 'http://209.97.167.87:8888/orders/'
   orderr: any;
   constructor(private orderService: OrderService,
               private activatedRouter: ActivatedRoute,

@@ -12,7 +12,7 @@ import {FormGroup} from "@angular/forms";
 })
 export class OrderService {
 
-  API = 'http://localhost:8888/orders'
+  API = 'http://209.97.167.87:8888/orders'
 
   constructor(private httpClient: HttpClient) {
   }
