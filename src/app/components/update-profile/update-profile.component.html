@@ -11,6 +11,8 @@
         <div class="booking-form">
           <div id="success"></div>
           <form [formGroup]="editForm" (ngSubmit)="editUser()">
+            <div class="alert"
+                 *ngIf="status.code">{{status.message}}</div>
             <div class="form-row">
               <div class="control-group col-sm-6">
                 <label>Phone</label>

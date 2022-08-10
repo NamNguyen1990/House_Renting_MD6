@@ -70,9 +70,15 @@ export class UpdateProfileComponent implements OnInit {
 
     if (this.editForm.valid){
       this.userService.updateUserProfile(this.id, this.user).subscribe((data) => {
-        localStorage.setItem('AVATAR',this.user.avatar)
-        this.router.navigate(['/login']);
-        this.toast.success({detail: "Notification", summary: "Successfully changed information", duration :3000})
+        this.status = data
+        if (data.code==='0000'){
+          localStorage.setItem('AVATAR',this.user.avatar)
+          this.router.navigate(['/']);
+          this.toast.success({detail: "Notification", summary: data.message, duration :3000})
+        }else {
+          this.toast.error({detail: "Notification", summary: "Changed failed", duration :3000})
+        }
+
       }, error => {
         console.log(error)
       })
