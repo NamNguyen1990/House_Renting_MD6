@@ -6,6 +6,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {finalize} from "rxjs";
 import {NgToastModule, NgToastService} from "ng-angular-popup";
+import {ResponseBody} from "../../models/response-body";
 
 @Component({
   selector: 'app-update-profile',
@@ -21,7 +22,7 @@ export class UpdateProfileComponent implements OnInit {
     fullName : new FormControl('',[Validators.required,Validators.maxLength(35)]),
     avatar : new FormControl(),
   })
-  status : any
+  status : ResponseBody = {code:'', message: ''}
    id = localStorage.getItem('ID');
   user : User | any;
 

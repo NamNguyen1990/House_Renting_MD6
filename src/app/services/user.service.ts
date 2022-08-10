@@ -36,8 +36,8 @@ export class UserService {
     return this.http.get<User>(API_URL + `/users/${id}`);
   }
 
-  updateUserProfile(id: any, user: User): Observable<User> {
-    return this.http.put<User>(API_URL + `/users/update-profile/${id}`, user);
+  updateUserProfile(id: any, user: User): Observable<ResponseBody> {
+    return this.http.put<ResponseBody>(API_URL + `/users/update-profile/${id}`, user);
   }
 
   logout() {
