@@ -4,6 +4,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {User} from "../models/user";
 import {ResponseBody} from "../models/response-body";
+import {ChangeUser} from "../models/ChangeUser";
 const API_URL = environment.apiUrl;
 @Injectable({
   providedIn: 'root'
@@ -23,9 +24,9 @@ export class UserService {
     return this.http.post<User>(API_URL + '/login', user);
   }
 
-  updatePassword(id: any ,user: User): Observable<User> {
+  updatePassword(id: any ,user: ChangeUser): Observable<ResponseBody> {
     console.log(user)
-    return this.http.put<User>(API_URL + `/users/update-password/${id}`, user);
+    return this.http.put<ResponseBody>(API_URL + `/users/update-password/${id}`, user);
   }
 
   userDetail(id: string): Observable<User> {
