@@ -4,6 +4,9 @@ import {ActivatedRoute, ParamMap} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {OwlOptions} from "ngx-owl-carousel-o";
 import {House} from "../../models/house";
+import {Message} from "../../models/message";
+import {CommentService} from "../../services/comment.service";
+import {MessageService} from "../../services/message.service";
 
 @Component({
   selector: 'app-homepage',
@@ -45,13 +48,16 @@ export class HomepageComponent implements OnInit {
   p: number = 1;
   total: number = 0;
   currentId: any;
+  message: Message[] = [];
 
-  constructor(private houseService: HouseService) {
+  constructor(private houseService: HouseService,
+              private messageService: MessageService) {
   }
 
   ngOnInit(): void {
     this.currentId = localStorage.getItem("ID")
     this.getAll();
+    // this.getAllMessageByHouse();
   }
 
   getAll() {
@@ -78,4 +84,24 @@ export class HomepageComponent implements OnInit {
     this.p = event;
     this.getAll();
   }
+
+  // checkMessage: any;
+  // getAllMessageByHouse() {
+  //   this.currentId = localStorage.getItem('ID');
+  //   this.messageService.findAllMessageByHouse(this.currentId).subscribe(result => {
+  //     this.message = result;
+  //     if (this.message.length == 0) {
+  //       this.checkMessage = true;
+  //     }
+  //   }, error => {
+  //     console.log(error)
+  //   })
+  // }
+  // delete(id: number) {
+  //   this.messageService.deleteMessage(id).subscribe(() => {
+  //     this.getAllMessageByHouse();
+  //   }, error => {
+  //     console.log(error);
+  //   })
+  // }
 }

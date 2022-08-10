@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
+import {Message} from "../../../models/message";
+import {MessageService} from "../../../services/message.service";
 
 @Component({
   selector: 'app-navbar',
@@ -12,7 +14,10 @@ export class NavbarComponent implements OnInit {
   USERNAME = "";
   userId = "";
   avatar = "";
-  constructor(private router: Router) {
+  message: Message[] = [];
+  currentId: any
+  constructor(private router: Router,
+              private messageService: MessageService) {
   }
 
 
@@ -23,6 +28,7 @@ export class NavbarComponent implements OnInit {
     this.USERNAME = localStorage.getItem('USERNAME');
     // @ts-ignore
     this.userId = localStorage.getItem('ID');
+    this.getAllMessageByUser();
   }
 
   logOut(){
@@ -31,4 +37,21 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
+
+  getAllMessageByUser() {
+    this.currentId = localStorage.getItem('ID');
+    this.messageService.findAllMessageByUser(this.currentId).subscribe(result => {
+      this.message = result;
+    }, error => {
+      console.log(error)
+    })
+  }
+
+  delete(id: any) {
+    this.messageService.deleteMessage(id).subscribe(() => {
+      this.getAllMessageByUser();
+    }, error => {
+      console.log(error);
+    })
+  }
 }
