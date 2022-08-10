@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../services/user.service";
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import firebase from "firebase/compat";
 import {Router} from "@angular/router";
 import {AuthenticationService} from "../../services/authentication.service";
-import {NzModalRef, NzModalService} from "ng-zorro-antd/modal";
+import {ResponseBody} from "../../models/response-body";
 import {NgToastService} from "ng-angular-popup";
 
 @Component({
@@ -15,17 +15,16 @@ import {NgToastService} from "ng-angular-popup";
 export class UpdatePasswordComponent implements OnInit {
 
   id: any = localStorage.getItem('ID')
-
+  status: ResponseBody = {code: '', message: ''}
   editForm: FormGroup = new FormGroup({
-    oldPassword: new FormControl(),
-    password: new FormControl(),
-    confirmPassword: new FormControl(),
+    oldPassword: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
+    password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
+    confirmPassword: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
   })
 
   constructor(private userService: UserService,
               private router: Router,
               private authService: AuthenticationService,
-              private modal: NzModalService,
               private toast: NgToastService) {
   }
 
@@ -34,52 +33,34 @@ export class UpdatePasswordComponent implements OnInit {
   }
 
   editPassword() {
-    if (this.editForm.value.oldPassword == localStorage.getItem('PASSWORD')) {
-      if ((this.editForm.value.oldPassword !== this.editForm.value.password) && (this.editForm.value.password === this.editForm.value.confirmPassword)) {
-        console.log(this.editForm.value)
-        this.userService.updatePassword(this.id, this.editForm.value).subscribe(() => {
-          this.toast.success({
-            detail: "Notification",
-            summary: "Change password successfully",
-            duration: 3000,
-            position: "br"
-          });
-          localStorage.setItem('PASSWORD', this.editForm.value.password);
-          this.editForm.reset();
-          this.router.navigateByUrl('/');
-        }, err => {
-          this.toast.error({detail: "Notification", summary: "Change password failed", duration: 3000, position: "br"});
-        });
-      } else {
-        this.toast.error({
-          detail: "Notification",
-          summary: "New passwords do not match. Please check again",
-          duration: 3000,
-          position: "br"
-        });
-      }
+    if (this.editForm.valid) {
+      this.userService.updatePassword(this.id, this.editForm.value).subscribe((data: ResponseBody) => {
+        this.status = data
+        if (data.code==='0000'){
+          this.toast.success({detail: "Notification", summary: data.message, duration: 3000})
+          localStorage.clear()
+          this.router.navigateByUrl('/login');
+        }else {
+          this.toast.error({detail: "Notification", summary: data.message, duration: 3000})
+        }
+      }, (err: ResponseBody) => {
+        this.toast.error({detail: "Notification", summary: err.message, duration: 3000})
+      })
     } else {
-      this.toast.error({
-        detail: "Notification",
-        summary: "The old password is incorrect, please check again",
-        duration: 3000,
-        position: "br"
-      });
+      this.status = {code: 'ffff', message: 'Please enter required fields!'}
     }
   }
 
-  confirmModal?: NzModalRef; // For testing by now
+  get oldPassword() {
+    return this.editForm.get('oldPassword');
+  }
 
-  showConfirmPassword(): void {
-    this.modal.confirm({
-      nzTitle: 'Do you want to save this change?',
-      nzContent: '<b style="color: red;"></b>',
-      nzOkText: 'Yes',
-      nzOkType: 'primary',
-      nzOnOk: () => this.editPassword(),
-      nzCancelText: 'No',
-      nzOnCancel: () => console.log('Cancel')
-    });
+  get password() {
+    return this.editForm.get('password');
+  }
+
+  get confirmPassword() {
+    return this.editForm.get('confirmPassword');
   }
 
 }
