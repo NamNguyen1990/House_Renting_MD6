@@ -53,7 +53,7 @@
     <br>
     <br>
     <div class="alert alert-danger" *ngIf="status.code === '0001'"><h1>{{status.message}}</h1></div>
-    <div class="alert alert-danger" *ngIf="status.length === 0"><h1>No orders</h1></div>
+    <div class="alert alert-danger" *ngIf="status.data.length === 0"><h1>No orders</h1></div>
     <div style="text-align: center" class="row">
       <div  *ngFor="let o of status | paginate: { itemsPerPage: 8, currentPage: p, totalItems: total1 }; index as i" class="col-md-3 col-sm-6">
         <div class="item">
@@ -68,4 +68,4 @@
     </div>
   </div>
 </div>
-<app-fotter></app-fotter>
+
