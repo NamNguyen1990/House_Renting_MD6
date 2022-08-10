@@ -58,9 +58,8 @@
                   <div class="d-flex flex-row align-items-center commented-user">
                     <img src="{{avatar}}" alt=""
                          style="border-radius: 50%; width: 40px;height: 40px; margin-right: 15px "><h5
-                    class="mr-2" style="font-size: 1rem">{{item.user.username}}</h5></div>
-                  <div class="comment-text-sm" style="font-size: 1rem;margin-left: -65px">
-                    <span>{{item.description}}</span></div>
+                    class="mr-2" style="font-size: 1rem">{{item.user.username}} :<span style="margin-left: 12px">{{item.description}}</span></h5></div>
+
                 </div>
               </div>
               <form [formGroup]="commentForm" (ngSubmit)="add()">
