@@ -8,7 +8,26 @@
       <li><a routerLink="/">Home</a></li>
       <li><a href="about.html">About Us</a></li>
       <li><a href="booking.html">Booking</a></li>
-      <li><a href="">Contact Us</a></li>
+      <li><a href="">Contact Us </a></li>
+
+<!--      <li class="nav-item dropdown"> thông báo-->
+
+<!--        <ul class="gr-menu-dropdown dropdown-menu" aria-labelledby="navbarDropdown2">-->
+<!--          <li *ngFor="let m of message; index as i "  class="drop-menu-item">-->
+<!--            <a routerLink="/#">{{i+1}}-->
+<!--              <span style="color: green">.{{m.user.name}}</span>{{m.content}}<span style="color: green">{{m.recruitmentNews.title}}</span>-->
+<!--            </a>-->
+<!--            <button (click)="delete(m.id)" class="btn-success"> OK-->
+<!--            </button>-->
+<!--          </li>-->
+<!--          <li><p *ngIf="checkMessage"> Không có thông báo</p></li>-->
+
+<!--        </ul>-->
+<!--      </li>-->
+
+
+
+
     </ul>
   </nav>
   <div class="login" routerLink="/login">Login</div>
@@ -74,7 +93,38 @@
 
 <!--      <li><a [routerLink]="['/myhouse/create']">Create House</a></li>-->
 <!--      <li><a routerLink="/orderlist">Booking</a></li>-->
-      <li><a href="">Contact Us</a></li>
+      <li><a href="">Thông báo ({{message.length}})</a>
+
+      <li *ngFor="let m of message; index as i "  class="drop-menu-item">
+        <a routerLink="/#">{{i+1}}
+          <span style="color: green">.{{m.house.name}}</span><span style="color: green"></span>
+        </a>
+        <button (click)="delete(m.id)" class="btn-success"> OK
+        </button>
+      </li>
+
+
+      <li class="nav-item dropdown">
+
+<!--        <a class="nav-link dropdown-toggle gr-toggle-arrow px-3 ml-7 font-size-7 notification-block flex-y-center position-relative" id="navbarDropdown8" href="#features" role="button"-->
+<!--           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--          <i class="fas fa-bell heading-default-color"></i>-->
+<!--          <span style="top: 20px;right: -12px;" class="font-size-3 count font-weight-semibold text-white bg-primary circle-24 border border-width-3 border border-white"></span>-->
+<!--        </a>-->
+
+<!--        <ul class="gr-menu-dropdown dropdown-menu" aria-labelledby="navbarDropdown2">-->
+<!--          <li *ngFor="let m of message; index as i "  class="drop-menu-item">-->
+<!--            <a routerLink="/#">{{i+1}}-->
+<!--              <span style="color: green">.{{m.user.name}}</span>{{m.content}}<span style="color: green">{{m.recruitmentNews.title}}</span>-->
+<!--            </a>-->
+<!--            <button (click)="delete(m.id)" class="btn-success"> OK-->
+<!--            </button>-->
+<!--          </li>-->
+<!--          <li><p *ngIf="checkMessage"> Không có thông báo</p></li>-->
+
+<!--        </ul>-->
+      </li>
+
     </ul>
   </nav>
 </header>
