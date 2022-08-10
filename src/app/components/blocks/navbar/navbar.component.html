@@ -23,7 +23,6 @@
   <div style="margin-top: -7px" class="phone btn dropdown-toggle" data-toggle="dropdown" type="" data-bs-toggle="dropdown"
        aria-expanded="false" ><img src="{{img}}" style=" border-radius: 50%; margin-right: 18px;width: 40px;height: 40px " ><a
     style="color: #00CED1">{{USERNAME}}</a>
-
     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2" >
       <li>
         <a class="btn btn-transparent text-uppercase font-size-3 heading-default-color focus-reset" [routerLink]="['/update-profile',userId]" >
@@ -50,13 +49,12 @@
     <ul>
       <li><a routerLink="/">Home</a></li>
       <li><a [routerLink]="['/findTop']">Top Five Order </a></li>
-
       <li>
         <a  class="apartment btn dropdown-toggle" data-toggle="dropdown" type="" data-bs-toggle="dropdown"
             aria-expanded="false" style="color:#00CED1;" >Apartment</a>
-        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2" style="width: 30px; text-align: center;margin-left: -17px; margin-top: 4px;height: 140px">
+        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2" style="width: 30px; text-align: center;margin-left: -17px; margin-top: 4px;height: 150px">
           <li>
-            <a class="btn btn-transparent text-uppercase font-size-3 heading-default-color focus-reset" [routerLink]="['/myhouse/list']">
+            <a class="btn btn-transparent text-uppercase font-size-3 heading-default-color focus-reset" [routerLink]="['/myhouse/list']" style="height: 18px; padding: 6px;border 1px">
               My Apartment
             </a>
           </li>
@@ -73,10 +71,13 @@
         </ul>
       </li>
 
+      <li><a [routerLink]="['/contactus']">Contact Us</a></li>
+
 <!--      <li><a [routerLink]="['/myhouse/create']">Create House</a></li>-->
 <!--      <li><a routerLink="/orderlist">Booking</a></li>-->
-      <li><a href="">Thông báo ({{message.length}})</a>
-
+      <li>
+        <i class='bx bx-bell bx-tada bx-flip-horizontal' style="color: #00CED1; font-size: 20px;margin-left: 10px">({{message.length}})</i>
+<!--        <a href="">Notification ({{message.length}})</a>-->
       <li *ngFor="let m of message; index as i "  class="drop-menu-item">
         <a routerLink="/#">{{i+1}}
           <span style="color: green">.{{m.house.name}}</span><span style="color: green"></span>
@@ -84,8 +85,6 @@
         <button (click)="delete(m.id)" class="btn-success"> OK
         </button>
       </li>
-
-
       <li class="nav-item dropdown">
 
 <!--        <a class="nav-link dropdown-toggle gr-toggle-arrow px-3 ml-7 font-size-7 notification-block flex-y-center position-relative" id="navbarDropdown8" href="#features" role="button"-->
