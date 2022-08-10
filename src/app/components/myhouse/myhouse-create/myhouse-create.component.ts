@@ -151,5 +151,4 @@ export class MyhouseCreateComponent implements OnInit {
     }
     this.onFileSelected()
   }
-
 }
