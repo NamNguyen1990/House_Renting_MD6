@@ -63,8 +63,9 @@ export class MyhouseCreateComponent implements OnInit {
               private router: Router,
               private storage: AngularFireStorage,
               private imageService: ImageService,
-              private toast: NgToastService,
-              ) {}
+              private toast: NgToastService) {
+  }
+
 
   ngOnInit(): void {
     this.showAllCategories()
@@ -80,7 +81,8 @@ export class MyhouseCreateComponent implements OnInit {
 
   idHouseImage: any;
   image: any;
-  add(){
+
+  add() {
     // @ts-ignore
     const ownerId = localStorage.getItem('ID') ? parseInt(localStorage.getItem('ID')) : 0;
     this.house = {
@@ -100,12 +102,13 @@ export class MyhouseCreateComponent implements OnInit {
       avatarHouse: this.images[0].image,
       images: this.images
     }
-      this.houseService.save(this.house).subscribe((house) => {
-        this.router.navigate(['']);
-      });
-
-}
-
+    this.toast.success({detail:"Notification", summary:"House created successfully", duration:3000,position:"br"});
+    this.houseService.save(this.house).subscribe((house) => {
+      this.router.navigate(['']);
+    } , error => {
+      this.toast.error({detail:"Notification", summary:"House created failed", duration:3000,position:"br"});
+    });
+  }
 
 
   title = "cloudsSorage";
