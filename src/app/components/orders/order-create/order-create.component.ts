@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {OrderService} from "../../../services/order.service";
-import {ActivatedRoute, ParamMap} from "@angular/router";
+import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {ResponseBody} from "../../../models/response-body";
+import {NgToastService} from "ng-angular-popup";
 
 @Component({
   selector: 'app-order-create',
@@ -12,8 +13,6 @@ import {ResponseBody} from "../../../models/response-body";
 export class OrderCreateComponent implements OnInit {
   orderForm!: FormGroup
   idHome!: string | null
-  checkIn!: any
-  checkOut!: any
   status: ResponseBody = {code: '', message: '', toast: 'error'};
 
   constructor
@@ -23,6 +22,10 @@ export class OrderCreateComponent implements OnInit {
     private orderService: OrderService
     ,
     private activatedRouter: ActivatedRoute
+    ,
+    private toast: NgToastService
+    ,
+    private router: Router
   ) {
   }
 
@@ -38,33 +41,23 @@ export class OrderCreateComponent implements OnInit {
       request: ['', [Validators.maxLength(1000)]],
       adult: ['', [Validators.required]],
       kis: ['', [Validators.required]],
-      // name: [''],
-      // phone: [''],
-      // email: [''],
-      // request: [''],
-      // adult: [''],
-      // kis: [''],
     })
     this.activatedRouter.paramMap.subscribe((param: ParamMap) => {
       this.idHome = param.get("idHome")
     })
   }
 
-  timeChange1(value: any) {
-    this.checkIn = value
-    console.log(value)
-  }
-
-  timeChange2(value: any) {
-    this.checkIn = value
-    console.log(value)
-  }
-
   orderCreate() {
     if (this.orderForm.valid) {
       this.orderService.create(this.orderForm.value, this.idHome, localStorage.getItem("ID")).subscribe((data) => {
         this.status = data;
-        console.log(data)
+        if (data.code==='0000'){
+          this.toast.success({detail: "Notification", summary: data.message, duration: 3000, position: 'bottom'});
+          this.router.navigate(['/orderlist']);
+        }else {
+          this.toast.error({detail: "Notification", summary: data.message, duration: 3000, position: 'bottom'});
+        }
+
       }, (err) => {
         console.log(err)
         this.status = err;

@@ -3,29 +3,7 @@
 <form [formGroup]="searchForm" method="get" (ngSubmit)="searchByMonthAndYear()">
   <div id="search" style="background: #f2f2f2;">
     <div class="container">
-      <div class="form-row">
-        <div class="control-group col-md-3">
-          <label>Check-In</label>
-          <div class="form-group">
-            <div class="input-group date" id="date-3" data-target-input="nearest">
-              <input type="text" class="form-control datetimepicker-input" data-target="#date-3"/>
-              <div class="input-group-append" data-target="#date-3" data-toggle="datetimepicker">
-                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="control-group col-md-3">
-          <label>Check-Out</label>
-          <div class="form-group">
-            <div class="input-group date" id="date-4" data-target-input="nearest">
-              <input type="text" class="form-control datetimepicker-input" data-target="#date-4"/>
-              <div class="input-group-append" data-target="#date-4" data-toggle="datetimepicker">
-                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="form-row" style="margin-left: 375px">
         <div class="control-group col-md-3">
           <div class="form-row">
             <div class="control-group col-md-6">
@@ -67,30 +45,25 @@
 <div id="amenities"> <!--list order-->
   <div class="container">
     <div class="section-header">
-      <h2>List order my house & search</h2>
-      <h4>
+      <h2>Order my house</h2>
+      <h4 style="color: #004cbf">
         Total : {{total}} USD
       </h4>
-    </div>
-
-    <div style="text-align: center;border-radius: 25%">
-      <button  style="background: #F5E8C7;width: 100px;height: 40px;margin-right: 20px;border-radius: 20px;border-color: #F5E8C7">avaiable</button>
-      <button  style="background: #00CED1;width: 100px;height: 40px;border-radius: 20px;border-color: #00CED1">renting</button>
-      <button  style="background: #bea041;width: 100px;height: 40px;border-radius: 20px;margin-left: 20px;border-color: white">hered</button>
     </div>
     <br>
     <br>
     <div class="alert alert-danger" *ngIf="status.code === '0001'"><h1>{{status.message}}</h1></div>
     <div style="text-align: center" class="row">
-      <div  *ngFor="let o of status.data; index as i" class="col-md-3 col-sm-6">
-        <div [class]="bgColor(o)">
-          <h3 style="color: red"> Order {{i + 1}} </h3>
+      <div  *ngFor="let o of status | paginate: { itemsPerPage: 8, currentPage: p, totalItems: total1 }; index as i" class="col-md-3 col-sm-6">
+        <div class="item">
+          <h3 style="color: red"><u> Order {{i + 1}} - {{bgColor(o)}}</u></h3>
           <h3> Money : {{o.total}}</h3>
           <p> Name : {{o.name}}</p>
-          <p>Check in : {{o.startTime}}</p>
-          <p>Check out : {{o.endTime}}</p>
+          <p style="color: red">Check in : {{o.startTime}}</p>
+          <p style="color: red">Check out : {{o.endTime}}</p>
         </div>
       </div>
+      <pagination-controls (pageChange)="pageChangeEvent($event)" style="font-size: 14px; font-family:'FontAwesome'; margin-left: 35%"></pagination-controls>
     </div>
   </div>
 </div>
