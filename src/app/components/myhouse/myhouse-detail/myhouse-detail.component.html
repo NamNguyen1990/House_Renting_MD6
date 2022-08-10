@@ -13,7 +13,7 @@
 <div id="rooms">
   <div class="container">
     <div class="section-header">
-      <h2>Information</h2>
+      <h2>{{house.name}}</h2>
       <p>
         Always evolving, Always changing
       </p>
@@ -43,7 +43,7 @@
                 <li><i class="fa fa-arrow-right"></i>Type: {{house?.category?.name}} </li>
               </ul>
               <ul>
-                <li><i>{{house.description}}</i></li>
+                <p><img src="{{house.avatarHouse}}" alt="" style="border-radius: 50%;width: 30px;height: 30px; margin-right: 10px">{{house.description}}</p>
               </ul>
               <ul class="room-icon">
                 <li class="icon-1"></li>
