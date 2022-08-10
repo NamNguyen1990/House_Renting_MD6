@@ -51,6 +51,7 @@ import {NzFormModule} from "ng-zorro-antd/form";
 import {NzButtonModule} from "ng-zorro-antd/button";
 import {NzRateModule} from "ng-zorro-antd/rate";
 import {NzModalModule} from "ng-zorro-antd/modal";
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import {NzModalModule} from "ng-zorro-antd/modal";
     FindTopComponent,
     CommentListComponent,
     OrderByIdHouseComponent,
+    ContactUsComponent,
 
   ],
   imports: [

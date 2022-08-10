@@ -34,5 +34,9 @@ export class HouseService {
   }
   findTop5():Observable<House[]>{
   // @ts-ignore
-    return this.httpClient.get(this.API+`/findTop5`)}
+    return this.httpClient.get(this.API+`/findTop5`)
+  }
+  findManyThing(address: any , start: any, end: any, bathroom: any, bedroom: any, dateBegin: any, dateEnd: any): Observable<ResponseBody> {
+  return this.httpClient.get(this.API + '/searchByAll')
+  }
 }
