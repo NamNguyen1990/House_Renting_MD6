@@ -5,10 +5,8 @@
   <div class="mobile-menu-btn"><i class="fa fa-bars"></i></div>
   <nav class="main-menu top-menu">
     <ul>
-      <li><a routerLink="/">Home</a></li>
-      <li><a href="about.html">About Us</a></li>
-      <li><a href="booking.html">Booking</a></li>
-      <li><a href="">Contact Us</a></li>
+<!--      <li><a routerLink="/">Home</a></li>-->
+<!--      <li><a href="">Contact Us</a></li>-->
     </ul>
   </nav>
   <div class="login" routerLink="/login">Login</div>
@@ -23,9 +21,9 @@
     <img src="{{img}}" style=" border-radius: 50%; margin-right: 5px;width: 40px;height: 40px">
     <a nz-dropdown [nzDropdownMenu]="menuLogin" class="confirm" style="color: #00CED1">
       {{USERNAME}}
-      <i nz-icon nzType="down"></i>
+      <i nz-icon nzType="down" style="color: #545454"></i>
     </a>
-    <nz-dropdown-menu #menuLogin="nzDropdownMenu">
+    <nz-dropdown-menu #menuLogin="nzDropdownMenu" style="color: #545454">
       <ul nz-menu nzSelectable style="margin-top: 20px; margin-left: -10px">
         <li nz-menu-item [routerLink]="['/update-profile',userId]">Edit Profile</li>
         <li nz-menu-item [routerLink]="['/update-password',userId]">Password Change</li>
@@ -67,9 +65,9 @@
       <li>
         <a nz-dropdown [nzDropdownMenu]="menuApartment" class="confirm" style="color: #00CED1">
           Apartment
-          <i nz-icon nzType="down"></i>
+          <i nz-icon nzType="down" style="color: #545454"></i>
         </a>
-        <nz-dropdown-menu #menuApartment="nzDropdownMenu">
+        <nz-dropdown-menu #menuApartment="nzDropdownMenu" style="color: #545454">
           <ul nz-menu nzSelectable>
             <li nz-menu-item [routerLink]="['/myhouse/list']">My Apartment</li>
             <li nz-menu-item [routerLink]="['/myhouse/create']">Create House</li>
@@ -81,7 +79,7 @@
 
       <li><a [routerLink]="['/contactus']">Contact Us</a></li>
 
-      <a nz-dropdown [nzDropdownMenu]="menu" class="confirm" style="color: #00CED1">
+      <a nz-dropdown [nzDropdownMenu]="menu" class="confirm" style="color: #545454">
         <i class='bx bx-bell bx-tada bx-flip-horizontal'
            style="color: #00CED1; font-size: 20px;margin-left: 10px;cursor: pointer">({{message.length}})</i>
         <i nz-icon nzType="down"></i>
