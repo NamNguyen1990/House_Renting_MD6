@@ -12,6 +12,9 @@ import {ImageService} from "../../../services/image.service";
 import {OwlOptions} from 'ngx-owl-carousel-o';
 import {House} from "../../../models/house";
 import {Image} from "../../../models/image";
+import {NzMessageService} from "ng-zorro-antd/message";
+import { NzUploadChangeParam } from 'ng-zorro-antd/upload';
+
 
 @Component({
   selector: 'app-myhouse-create',
@@ -63,7 +66,7 @@ export class MyhouseCreateComponent implements OnInit {
               private router: Router,
               private storage: AngularFireStorage,
               private imageService: ImageService,
-              private toast: NgToastService) {
+              private toast: NgToastService,) {
   }
 
 
@@ -151,4 +154,16 @@ export class MyhouseCreateComponent implements OnInit {
     }
     this.onFileSelected()
   }
+
+  // handleChange(info: NzUploadChangeParam): void {
+  //   if (info.file.status !== 'uploading') {
+  //     console.log(info.file, info.fileList);
+  //   }
+  //   if (info.file.status === 'done') {
+  //     this.msg.success(`${info.file.name} file uploaded successfully`);
+  //   } else if (info.file.status === 'error') {
+  //     this.msg.error(`${info.file.name} file upload failed.`);
+  //   }
+  // }
+
 }
