@@ -54,6 +54,7 @@ import {NzModalModule} from "ng-zorro-antd/modal";
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import {NzDropDownModule} from "ng-zorro-antd/dropdown";
 import {NzIconModule} from "ng-zorro-antd/icon";
+import {NzUploadModule} from "ng-zorro-antd/upload";
 
 @NgModule({
   declarations: [
@@ -115,6 +116,7 @@ import {NzIconModule} from "ng-zorro-antd/icon";
     NzModalModule,
     NzDropDownModule,
     NzIconModule,
+    NzUploadModule,
   ],
   providers: [
     {

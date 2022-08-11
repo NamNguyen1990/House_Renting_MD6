@@ -49,8 +49,9 @@ export class HousedetailComponent implements OnInit {
   id: any
   house: any;
   obj: any = {};
-avatar : any;
+  avatar: any;
   id_house: any
+  idLogin= localStorage.getItem("ID");
 
   commentForm: FormGroup = new FormGroup({
     id: new FormControl(),
@@ -101,7 +102,11 @@ avatar : any;
       this.showComment(this.house.id);
       this.commentForm.reset()
     }, error => {
-      this.toast.error({detail: "Notification", summary: "You haven't rented a house yet. so don't comment", duration :3000})
+      this.toast.error({
+        detail: "Notification",
+        summary: "You haven't rented a house yet. so don't comment",
+        duration: 3000
+      })
       console.log(error)
     })
   }
@@ -122,7 +127,6 @@ avatar : any;
       this.comment = data;
     })
   }
-
 
 
   data: any[] = [];

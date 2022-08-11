@@ -129,6 +129,7 @@ export class MyhouseEditComponent implements OnInit {
           finalize(() => {
             fileRef.getDownloadURL().subscribe(url => {
               this.images.push({image: url});
+              this.toast.info({detail:"Notification", summary: "Please wait a moment", duration:3000});
             });
           })
         ).subscribe();

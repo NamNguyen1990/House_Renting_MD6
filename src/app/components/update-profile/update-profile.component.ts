@@ -83,7 +83,7 @@ export class UpdateProfileComponent implements OnInit {
         console.log(error)
       })
     }else {
-      this.status = {code: 'ffff', message: 'Please enter required fields!'}
+      this.status = {code: '#f8d7da', message: 'Please enter required fields!'}
     }
   }
   avatar: any;
@@ -102,13 +102,12 @@ export class UpdateProfileComponent implements OnInit {
       .snapshotChanges()
       .pipe(
         finalize(() => {
-          this.toast.success({detail: "Notification", summary: "Please wait a moment", duration :2000})
-
+          // this.toast.success({detail: "Notification", summary: "Please wait a moment", duration :2000})
           this.downloadURL = fileRef.getDownloadURL();
           this.downloadURL.subscribe((url:any) => {
             if (url) {
               this.avatar = url;
-
+              this.toast.info({detail:"Notification", summary: "Please wait a moment", duration:3000});
             }
             console.log(this.avatar);
           });
