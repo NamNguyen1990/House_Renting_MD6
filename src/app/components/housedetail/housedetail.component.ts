@@ -51,7 +51,7 @@ export class HousedetailComponent implements OnInit {
   obj: any = {};
   avatar: any;
   id_house: any
-  idLogin= localStorage.getItem("ID");
+
 
   commentForm: FormGroup = new FormGroup({
     id: new FormControl(),
