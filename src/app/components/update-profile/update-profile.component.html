@@ -11,7 +11,7 @@
           <div id="success"></div>
           <form [formGroup]="editForm" (ngSubmit)="editUser()">
             <div class="alert"
-                 *ngIf="status.code">{{status.message}}</div>
+                 *ngIf="status.code" style="background-color: #f8d7da">{{status.message}}</div>
             <div class="form-row">
               <div class="control-group col-sm-6">
                 <label>Phone</label>
@@ -97,7 +97,6 @@
               </div>
             </div>
           </form>
-
         </div>
       </div>
     </div>

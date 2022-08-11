@@ -103,7 +103,8 @@ export class MyhouseCreateComponent implements OnInit {
       },
       status: this.houseForm.value.status,
       avatarHouse: this.images[0].image,
-      images: this.images
+      images: this.images,
+
     }
     this.toast.success({detail:"Notification", summary:"House created successfully", duration:3000});
     this.houseService.save(this.house).subscribe((house) => {
@@ -136,6 +137,7 @@ export class MyhouseCreateComponent implements OnInit {
             fileRef.getDownloadURL().subscribe(url => {
               console.log(url);
               this.images.push({image: url});
+              this.toast.info({detail:"Notification", summary: "Please wait a moment", duration:3000});
             });
           })
         ).subscribe();
