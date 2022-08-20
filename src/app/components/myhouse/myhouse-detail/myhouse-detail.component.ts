@@ -14,7 +14,7 @@ import {NgToastService} from "ng-angular-popup";
 })
 export class MyhouseDetailComponent implements OnInit {
 
-  API = 'http://209.97.167.87:8888/houses/';
+  API = 'http://localhost:8888/houses/';
 
   homes!: House[];
   house!: House;

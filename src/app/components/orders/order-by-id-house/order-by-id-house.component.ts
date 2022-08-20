@@ -13,7 +13,7 @@ import {Time} from "../../../models/time";
   styleUrls: ['./order-by-id-house.component.css']
 })
 export class OrderByIdHouseComponent implements OnInit {
-  API = 'http://209.97.167.87:8888/orders/find-by-house1/';
+  API = 'http://localhost:8888/orders/find-by-house1/';
   status: any;
   classExpression: string = '';
   total: number = 0;

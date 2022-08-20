@@ -57,7 +57,7 @@
                 <div style="height: 300px;width: 600px;overflow: auto; margin-top: 20px; border: 1px">
                   <div class="d-flex flex-column col-md-8" style="margin-top: 15px" *ngFor="let item of comment" >
                     <div class="d-flex flex-row align-items-center commented-user" style="width: 500px">
-                      <img src="{{avatar}}" alt=""
+                      <img src="{{item.user.avatar}}" alt=""
                            style="border-radius: 50%; width: 40px;height: 40px; margin-right: 15px"><h5
                       class="mr-2" style="font-size: 1rem">{{item.user.username}} :<span
                       style="margin-left: 12px">{{item.description}}</span></h5></div>

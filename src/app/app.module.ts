@@ -55,6 +55,7 @@ import { ContactUsComponent } from './components/contact-us/contact-us.component
 import {NzDropDownModule} from "ng-zorro-antd/dropdown";
 import {NzIconModule} from "ng-zorro-antd/icon";
 import {NzUploadModule} from "ng-zorro-antd/upload";
+import {CategoryListComponent} from "./components/category/category-list/category-list.component";
 
 @NgModule({
   declarations: [
@@ -80,6 +81,7 @@ import {NzUploadModule} from "ng-zorro-antd/upload";
     CommentListComponent,
     OrderByIdHouseComponent,
     ContactUsComponent,
+    CategoryListComponent,
 
   ],
   imports: [

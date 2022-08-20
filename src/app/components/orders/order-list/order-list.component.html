@@ -9,7 +9,7 @@
     <br>
     <div style="text-align: center"  class="row">
       <div style="margin-left: 230px; height: 75px"  class="alert alert-danger"  *ngIf="oderrs.length === 0"><h1>House don't have any orders yet!</h1></div>
-      <div  *ngFor="let o of oderrs | paginate: { itemsPerPage: 4, currentPage: p, totalItems: total }; index as i" class="col-md-3 col-sm-6">
+      <div  *ngFor="let o of oderrs | paginate: { itemsPerPage: 8, currentPage: p, totalItems: total }; index as i" class="col-md-3 col-sm-6">
         <div class="item">
           <h2 > <u>Order {{i + 1}}</u> </h2>
           <br>

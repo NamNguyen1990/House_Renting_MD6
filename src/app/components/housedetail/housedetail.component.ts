@@ -45,7 +45,7 @@ export class HousedetailComponent implements OnInit {
   }
 
 
-  API = 'http://209.97.167.87:8888/houses/'
+  API = 'http://localhost:8888/houses/'
   id: any
   house: any;
   obj: any = {};
@@ -125,6 +125,7 @@ export class HousedetailComponent implements OnInit {
   showComment(id: any) {
     this.commentService.findAllByCommentId(id).subscribe((data) => {
       this.comment = data;
+      console.log(data)
     })
   }
 

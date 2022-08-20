@@ -7,7 +7,7 @@ import {Category} from "../models/category";
   providedIn: 'root'
 })
 export class CategoryService {
-  API_CA ='http://209.97.167.87:8888/categories' ;
+  API_CA ='http://localhost:8888/categories' ;
 
   findAll(): Observable<Category[]>{
     // @ts-ignore

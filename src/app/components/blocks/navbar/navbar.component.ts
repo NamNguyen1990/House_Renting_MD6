@@ -48,6 +48,7 @@ export class NavbarComponent implements OnInit {
   }
 
   delete(id: any) {
+    console.log(id)
     this.messageService.deleteMessage(id).subscribe(() => {
       this.getAllMessageByUser();
     }, error => {
